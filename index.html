@@ -121,7 +121,10 @@
             margin-bottom: 60px;
         }
         
-        .material-card {
+        .material-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit; /* Inherit text color from parent */
             background: var(--wcsd-white);
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -130,15 +133,15 @@
             border-top: 5px solid var(--wcsd-burgundy);
         }
         
-        .material-card:nth-child(2) {
+        .material-card-link:nth-child(2) {
             border-top-color: var(--wcsd-burgundy);
         }
         
-        .material-card:nth-child(3) {
+        .material-card-link:nth-child(3) {
             border-top-color: var(--wcsd-burgundy);
         }
         
-        .material-card:hover {
+        .material-card-link:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(0,0,0,0.15);
         }
@@ -346,103 +349,75 @@
                     </div>
                 </a>
                 
-                <div class="material-card">
+                <a href="executivebrief.html" class="material-card-link">
                     <div class="card-preview brief">
                     <div class="preview-icon"><img src="/index_icons/ExecutiveImplementationBrief.png" alt="Executive Implementation Brief Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Executive Implementation Brief</h3>
                         <p>One-page leadership memo with strategic alignment, metrics, timeline, and ROI analysis. Ready for district planning sessions.</p>
-                        <div class="card-actions">
-                            <a href="executivebrief.html" class="btn btn-primary" target="_blank">View</a>
-                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('brief')">Download PDF</a>
-                        </div>
                     </div>
-                </div>
+                </a>
                 
-                <div class="material-card">
+                <a href="conferenceposter.html" class="material-card-link">
                     <div class="card-preview poster">
                         <div class="preview-icon"><img src="/index_icons/ConferencePresentationPoster.png" alt="Conference Presentation Poster Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Conference Presentation Poster</h3>
                         <p>Large-format visual for conferences, training sessions, and stakeholder presentations. Professional timeline and benefits overview.</p>
-                        <div class="card-actions">
-                            <a href="conferenceposter.html" class="btn btn-primary" target="_blank">View</a>
-                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('poster')">Download PDF</a>
-                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="material-card">
+                <a href="curipod_presentation.html" class="material-card-link">
                     <div class="card-preview">
                         <div class="preview-icon"><img src="/index_icons/CuripodPresentation.png" alt="Curipod Presentation Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Curipod Presentation</h3>
                         <p>A comprehensive presentation deck for Curipod, outlining features, benefits, and implementation details.</p>
-                        <div class="card-actions">
-                            <a href="curipod_presentation.html" class="btn btn-primary" target="_blank">View</a>
-                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('presentation')">Download PDF</a>
-                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="material-card">
+                <a href="gantt_chart.html" class="material-card-link">
                     <div class="card-preview">
-                        <div class="preview-icon"><img src="/index_icons/ProjectGanttChart.png" alt="Project Gantt Chart Icon"></div>
+                        <div class="preview-icon"><img src="/index_icons/ProjectGanttChart.png" alt="Gantt Chart Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Project Gantt Chart</h3>
                         <p>Detailed project timeline with key phases, milestones, and deadlines for the Curipod implementation.</p>
-                        <div class="card-actions">
-                            <a href="gantt_chart.html" class="btn btn-primary" target="_blank">View</a>
-                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('gantt')">Download PDF</a>
-                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="material-card">
+                <a href="metrics_tracker.html" class="material-card-link">
                     <div class="card-preview metrics">
                         <div class="preview-icon"><img src="/index_icons/MetricsTracker.png" alt="Metrics Tracker Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Metrics Tracker</h3>
                         <p>A dashboard to track key performance indicators (KPIs) and measure the success of the implementation.</p>
-                        <div class="card-actions">
-                            <a href="metrics_tracker.html" class="btn btn-primary" target="_blank">View</a>
-                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('metrics')">Download PDF</a>
-                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="material-card">
+                <a href="parent_flyer.html" class="material-card-link">
                     <div class="card-preview parent-flyer">
                         <div class="preview-icon"><img src="/index_icons/ParentCommunicationFlyer.png" alt="Parent Communication Flyer Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Parent Communication Flyer</h3>
                         <p>An informational flyer designed to introduce Curipod to parents and guardians in the district.</p>
-                        <div class="card-actions">
-                            <a href="parent_flyer.html" class="btn btn-primary" target="_blank">View</a>
-                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('flyer')">Download PDF</a>
-                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="material-card">
+                <a href="teacher_interest_form.html" class="material-card-link">
                     <div class="card-preview">
                         <div class="preview-icon"><img src="/index_icons/TeacherInterestForm.png" alt="Teacher Interest Form Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Teacher Interest Form</h3>
                         <p>A simple form for teachers to express interest in joining the pilot program and receive more information.</p>
-                        <div class="card-actions">
-                            <a href="teacher_interest_form.html" class="btn btn-primary">View</a>
-                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('form')">Download PDF</a>
-                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
