@@ -536,41 +536,44 @@
     const resultDiv = document.getElementById('result');
     const loadingDiv = document.getElementById('loading');
 
-    // This function runs when you submit the form
-    form.addEventListener('submit', async function(event) {
-        event.preventDefault(); // Prevents the page from reloading
-        
-        const slideUrl = urlInput.value; // Get the URL from the input box
-        
-        loadingDiv.style.display = 'block'; // Show the loading message
-        resultDiv.textContent = ''; // Clear old results
+    // NEW: Check if the form element actually exists before proceeding
+    if (form) {
+        // This function now only runs if the form is on the page
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevents the page from reloading
+            
+            const slideUrl = urlInput.value; // Get the URL from the input box
+            
+            loadingDiv.style.display = 'block'; // Show the loading message
+            resultDiv.textContent = ''; // Clear old results
 
-        try {
-            // This is the NEW, SECURE way to call our backend function
-            const response = await fetch('/api/analyze', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ slideUrl: slideUrl }), // Send the URL to our function
-            });
+            try {
+                // This is the NEW, SECURE way to call our backend function
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ slideUrl: slideUrl }), // Send the URL to our function
+                });
 
-            if (!response.ok) {
-                throw new Error('The analysis failed to load.');
+                if (!response.ok) {
+                    throw new Error('The analysis failed to load.');
+                }
+                
+                const data = await response.json();
+                const analysisText = data.choices[0].text;
+                
+                // Display the result
+                resultDiv.textContent = analysisText.trim();
+
+            } catch (error) {
+                resultDiv.textContent = error.message;
+            } finally {
+                loadingDiv.style.display = 'none'; // Hide the loading message
             }
-            
-            const data = await response.json();
-            const analysisText = data.choices[0].text;
-            
-            // Display the result
-            resultDiv.textContent = analysisText.trim();
-
-        } catch (error) {
-            resultDiv.textContent = error.message;
-        } finally {
-            loadingDiv.style.display = 'none'; // Hide the loading message
-        }
-    });
+        });
+    } // NEW: Closing brace for the safety check
 </script>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
