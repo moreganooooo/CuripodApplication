@@ -174,15 +174,18 @@
         }
         
         .preview-icon {
-            font-size: 4rem;
-            color: var(--wcsd-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%; /* Ensure it takes full height of card-preview */
         }
-        
-        .card-preview.brief .preview-icon,
-        .card-preview.poster .preview-icon {
-            color: var(--wcsd-white);
+
+        .preview-icon img {
+            max-width: 100px; /* Adjust as needed */
+            max-height: 100px; /* Adjust as needed */
+            object-fit: contain;
         }
-        
+
         .card-content {
             padding: 30px;
         }
@@ -370,7 +373,7 @@
             <div class="materials-grid">
                 <div class="material-card">
                     <div class="card-preview infographic">
-                        <div class="preview-icon">📊</div>
+                        <div class="preview-icon"><img src="/index_icons/StakeholderValueInfographic.png" alt="Stakeholder Value Infographic Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Stakeholder Value Infographic</h3>
@@ -384,7 +387,7 @@
                 
                 <div class="material-card">
                     <div class="card-preview brief">
-                        <div class="preview-icon">📄</div>
+                    <div class="preview-icon"><img src="/index_icons/ExecutiveImplementationBrief.png" alt="Executive Implementation Brief Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Executive Implementation Brief</h3>
@@ -398,7 +401,7 @@
                 
                 <div class="material-card">
                     <div class="card-preview poster">
-                        <div class="preview-icon">📋</div>
+                        <div class="preview-icon"><img src="/index_icons/ConferencePresentationPoster.png" alt="Conference Presentation Poster Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Conference Presentation Poster</h3>
@@ -412,7 +415,7 @@
 
                 <div class="material-card">
                     <div class="card-preview">
-                        <div class="preview-icon">🖥️</div>
+                        <div class="preview-icon"><img src="/index_icons/CuripodPresentation.png" alt="Curipod Presentation Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Curipod Presentation</h3>
@@ -426,7 +429,7 @@
 
                 <div class="material-card">
                     <div class="card-preview">
-                        <div class="preview-icon">📈</div>
+                        <div class="preview-icon"><img src="/index_icons/ProjectGanttChart.png" alt="Project Gantt Chart Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Project Gantt Chart</h3>
@@ -440,7 +443,7 @@
 
                 <div class="material-card">
                     <div class="card-preview metrics">
-                        <div class="preview-icon">🎯</div>
+                        <div class="preview-icon"><img src="/index_icons/MetricsTracker.png" alt="Metrics Tracker Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Metrics Tracker</h3>
@@ -454,7 +457,7 @@
 
                 <div class="material-card">
                     <div class="card-preview parent-flyer">
-                        <div class="preview-icon">👨‍👩‍👧‍👦</div>
+                        <div class="preview-icon"><img src="/index_icons/ParentCommunicationFlyer.png" alt="Parent Communication Flyer Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Parent Communication Flyer</h3>
@@ -468,7 +471,7 @@
 
                 <div class="material-card">
                     <div class="card-preview">
-                        <div class="preview-icon">📝</div>
+                        <div class="preview-icon"><img src="/index_icons/TeacherInterestForm.png" alt="Teacher Interest Form Icon"></div>
                     </div>
                     <div class="card-content">
                         <h3>Teacher Interest Form</h3>
