@@ -530,24 +530,47 @@
     </div>
     
     <script>
-        function openDesign(type) {
-            // In a real implementation, these would link to the actual designs
-            const designs = {
-                'stakeholder': 'Opens the stakeholder infographic in a new window',
-                'brief': 'Opens the executive brief document in a new window', 
-                'poster': 'Opens the conference poster in a new window'
-            };
+    // Find the form, input, and result elements on the page
+    const form = document.getElementById('analysis-form');
+    const urlInput = document.getElementById('url-input');
+    const resultDiv = document.getElementById('result');
+    const loadingDiv = document.getElementById('loading');
+
+    // This function runs when you submit the form
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevents the page from reloading
+        
+        const slideUrl = urlInput.value; // Get the URL from the input box
+        
+        loadingDiv.style.display = 'block'; // Show the loading message
+        resultDiv.textContent = ''; // Clear old results
+
+        try {
+            // This is the NEW, SECURE way to call our backend function
+            const response = await fetch('/api/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ slideUrl: slideUrl }), // Send the URL to our function
+            });
+
+            if (!response.ok) {
+                throw new Error('The analysis failed to load.');
+            }
             
-            alert(`${designs[type]}\n\n(In your presentation, these would link directly to the Canva designs or PDFs)`);
+            const data = await response.json();
+            const analysisText = data.choices[0].text;
+            
+            // Display the result
+            resultDiv.textContent = analysisText.trim();
+
+        } catch (error) {
+            resultDiv.textContent = error.message;
+        } finally {
+            loadingDiv.style.display = 'none'; // Hide the loading message
         }
-        
-        function downloadPDF(type) {
-            alert(`Downloads ${type} as PDF\n\n(You can link these to actual PDF exports of your designs)`);
-        }
-        
-        function showPilotPlan() {
-            alert(`Opens detailed pilot implementation plan\n\n(Perfect opportunity to show your comprehensive strategy document)`);
-        }
-    </script>
+    });
+</script>
 </body>
 </html>
