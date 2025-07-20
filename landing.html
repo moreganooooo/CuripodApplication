@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curipod for WCSD - Marketing Materials Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --wcsd-burgundy: #A94442;
+            --wcsd-navy: #2C3E50;
+            --wcsd-white: #FFFFFF;
+            --wcsd-black: #000000;
+            --wcsd-light-gray: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--wcsd-white);
+            color: var(--wcsd-black);
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+            color: var(--wcsd-white);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 400px;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: skewX(-20deg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        .district-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 25px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+        
+        .header .description {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 80px 0;
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .intro-section h2 {
+            color: var(--wcsd-navy);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .intro-section p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .material-card {
+            background: var(--wcsd-white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--wcsd-burgundy);
+        }
+        
+        .material-card:nth-child(2) {
+            border-top-color: var(--wcsd-navy);
+        }
+        
+        .material-card:nth-child(3) {
+            border-top-color: var(--wcsd-burgundy);
+        }
+        
+        .material-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .card-preview {
+            height: 200px;
+            background: var(--wcsd-light-gray);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-preview.infographic {
+            background: linear-gradient(135deg, var(--wcsd-light-gray) 0%, #E8E9EA 100%);
+        }
+        
+        .card-preview.brief {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+        }
+        
+        .card-preview.poster {
+            background: linear-gradient(135deg, var(--wcsd-burgundy) 0%, #8B3A38 100%);
+        }
+        
+        .preview-icon {
+            font-size: 4rem;
+            color: var(--wcsd-navy);
+        }
+        
+        .card-preview.brief .preview-icon,
+        .card-preview.poster .preview-icon {
+            color: var(--wcsd-white);
+        }
+        
+        .card-content {
+            padding: 30px;
+        }
+        
+        .card-content h3 {
+            color: var(--wcsd-navy);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .card-content p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .card-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--wcsd-burgundy);
+            color: var(--wcsd-white);
+        }
+        
+        .btn-primary:hover {
+            background: #8B3A38;
+        }
+        
+        .btn-secondary {
+            background: var(--wcsd-light-gray);
+            color: var(--wcsd-navy);
+            border: 2px solid var(--wcsd-navy);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+        }
+        
+        .stats-section {
+            background: var(--wcsd-light-gray);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-section h3 {
+            color: var(--wcsd-navy);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat .number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--wcsd-burgundy);
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .stat .label {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .cta-section {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: var(--wcsd-burgundy);
+            color: var(--wcsd-white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #8B3A38;
+        }
+        
+        .footer {
+            background: var(--wcsd-white);
+            padding: 40px 0 80px;
+            text-align: center;
+            border-top: 1px solid #E0E0E0;
+        }
+        
+        .footer .district-info {
+            color: var(--wcsd-navy);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .footer .contact {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .container { padding: 0 20px; }
+            .materials-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <a href="https://curipod.com/">
+        <img src="/Logos/CuripodCircleLogo.png" alt="Curipod Logo" style="position: absolute; top: 20px; right: 110px; width: 50px; height: 50px; z-index: 2; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.1));">
+    </a>
+    <a href="https://www.williamsvillek12.org/">
+        <img
+            src="/Logos/WilliamsvilleDistrictLogo.png"
+            alt="Williamsville Central School District Logo"
+            style="position: absolute; top: 20px; right: 20px; width: 75px; height: 50px; z-index: 2; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));"
+        >
+    </a>
+        <div class="container">
+            <div class="header-content">
+                <div class="district-badge">Williamsville Central School District • Est. 1893</div>
+                <h1>Curipod Implementation Hub</h1>
+                <div class="subtitle">Territory Marketing Materials & Strategic Assets</div>
+                <div class="description">Comprehensive go-to-market strategy and branded materials for AI-powered educational technology implementation in WCSD.</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="container">
+            <div class="intro-section">
+                <h2>Professional Marketing Assets</h2>
+                <p>District-ready materials designed for stakeholder presentations, board meetings, and implementation planning. Each piece reflects WCSD's brand identity and strategic priorities.</p>
+            </div>
+            
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="card-preview infographic">
+                        <div class="preview-icon">📊</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Stakeholder Value Infographic</h3>
+                        <p>Professional visual showing benefits for Teachers, IT Staff, Administrators, and Students. Perfect for board presentations and leadership meetings.</p>
+                        <div class="card-actions">
+                            <a href="infographic.html" class="btn btn-primary" target="_blank">View</a>
+                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('infographic')">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="card-preview brief">
+                        <div class="preview-icon">📄</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Executive Implementation Brief</h3>
+                        <p>One-page leadership memo with strategic alignment, metrics, timeline, and ROI analysis. Ready for district planning sessions.</p>
+                        <div class="card-actions">
+                            <a href="executivebrief.html" class="btn btn-primary" target="_blank">View</a>
+                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('brief')">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="card-preview poster">
+                        <div class="preview-icon">📋</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Conference Presentation Poster</h3>
+                        <p>Large-format visual for conferences, training sessions, and stakeholder presentations. Professional timeline and benefits overview.</p>
+                        <div class="card-actions">
+                            <a href="conferenceposter.html" class="btn btn-primary" target="_blank">View</a>
+                            <a href="#" class="btn btn-secondary" onclick="downloadPDF('poster')">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stats-section">
+        <div class="container">
+            <h3>WCSD Territory Opportunity</h3>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="number">10,000</span>
+                    <div class="label">Students Served</div>
+                </div>
+                <div class="stat">
+                    <span class="number">13</span>
+                    <div class="label">School Buildings</div>
+                </div>
+                <div class="stat">
+                    <span class="number">40</span>
+                    <div class="label">Square Miles</div>
+                </div>
+                <div class="stat">
+                    <span class="number">130+</span>
+                    <div class="label">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cta-section">
+        <div class="container">
+            <h3>Ready to Launch Implementation?</h3>
+            <p>Complete pilot strategy with volunteer teacher recruitment and professional development plan</p>
+            <a href="#" class="cta-button" onclick="showPilotPlan()">View Pilot Plan</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <div class="district-info">Empowering all students to develop their unique potential</div>
+            <div class="contact">105 Casey Rd, East Amherst, NY 14051 • (716) 626-8000</div>
+            <a href="https://www.williamsvillek12.org/">
+            <img
+                src="/Logos/WCSDLogoHorizontalCOLOR.png"
+                alt="Williamsville Central School District Logo"
+                style="margin-top: 25px; max-height: 50px; filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.1));"
+            >
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        function openDesign(type) {
+            // In a real implementation, these would link to the actual designs
+            const designs = {
+                'stakeholder': 'Opens the stakeholder infographic in a new window',
+                'brief': 'Opens the executive brief document in a new window', 
+                'poster': 'Opens the conference poster in a new window'
+            };
+            
+            alert(`${designs[type]}\n\n(In your presentation, these would link directly to the Canva designs or PDFs)`);
+        }
+        
+        function downloadPDF(type) {
+            alert(`Downloads ${type} as PDF\n\n(You can link these to actual PDF exports of your designs)`);
+        }
+        
+        function showPilotPlan() {
+            alert(`Opens detailed pilot implementation plan\n\n(Perfect opportunity to show your comprehensive strategy document)`);
+        }
+    </script>
+</body>
+</html>
