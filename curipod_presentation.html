@@ -1084,11 +1084,47 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let currentSlideIndex = 0;
-            const slides = document.querySelectorAll('.slide');
-            const totalSlides = slides.length;
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentSlideIndex) {
+                    slide.classList.add('active');
+                } else if (index < currentSlideIndex) {
+                    slide.classList.add('prev');
+                }
+            });
             
+            // Update counter
+            document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
+            
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
+        }
+        
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                updateSlide();
+            }
+        }
+        
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlide();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('totalSlides').textContent = totalSlides;
             
             // Create dots
@@ -1099,42 +1135,6 @@
                 if (i === 0) dot.classList.add('active');
                 dot.onclick = () => goToSlide(i);
                 dotsContainer.appendChild(dot);
-            }
-            
-            function updateSlide() {
-                slides.forEach((slide, index) => {
-                    slide.classList.remove('active', 'prev');
-                    if (index === currentSlideIndex) {
-                        slide.classList.add('active');
-                    } else if (index < currentSlideIndex) {
-                        slide.classList.add('prev');
-                    }
-                });
-                
-                // Update counter
-                document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
-                
-                // Update dots
-                document.querySelectorAll('.dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlideIndex);
-                });
-                
-                // Update navigation buttons
-                document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
-                document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
-            }
-            
-            function changeSlide(direction) {
-                const newIndex = currentSlideIndex + direction;
-                if (newIndex >= 0 && newIndex < totalSlides) {
-                    currentSlideIndex = newIndex;
-                    updateSlide();
-                }
-            }
-            
-            function goToSlide(index) {
-                currentSlideIndex = index;
-                updateSlide();
             }
             
             // Keyboard navigation
