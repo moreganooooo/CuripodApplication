@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curipod Pilot Metrics Tracker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --wcsd-burgundy: #A94442;
+            --wcsd-navy: #2C3E50;
+            --wcsd-white: #FFFFFF;
+            --wcsd-black: #000000;
+            --wcsd-light-gray: #F8F9FA;
+            --curipod-orange: #E67E44;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--wcsd-light-gray);
+            color: var(--wcsd-black);
+            line-height: 1.6;
+        }
+        
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--wcsd-white);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+            color: var(--wcsd-white);
+            padding: 30px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: skewX(-20deg);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .metrics-badge {
+            background: var(--curipod-orange);
+            color: var(--wcsd-white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tabs-container {
+            background: var(--wcsd-white);
+            border-bottom: 2px solid var(--wcsd-light-gray);
+            padding: 0 40px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            color: #666;
+        }
+        
+        .tab.active {
+            color: var(--wcsd-burgundy);
+            border-bottom-color: var(--wcsd-burgundy);
+        }
+        
+        .tab:hover {
+            color: var(--wcsd-navy);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 40px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: var(--wcsd-white);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid var(--wcsd-light-gray);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            border-color: var(--wcsd-burgundy);
+            transform: translateY(-2px);
+        }
+        
+        .metric-card .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--wcsd-burgundy);
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .metric-card .label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .data-table {
+            background: var(--wcsd-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        
+        .table-header {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .table-content {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: var(--wcsd-light-gray);
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--wcsd-navy);
+            font-size: 0.9rem;
+            border-bottom: 2px solid #E0E0E0;
+        }
+        
+        td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #E8E9EA;
+            font-size: 0.9rem;
+        }
+        
+        tr:nth-child(even) {
+            background: var(--wcsd-light-gray);
+        }
+        
+        tr:hover {
+            background: rgba(169, 68, 66, 0.05);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #E0E0E0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--wcsd-burgundy);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-badge.active {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+        
+        .status-badge.planning {
+            background: rgba(33, 150, 243, 0.2);
+            color: #2196F3;
+        }
+        
+        .status-badge.review {
+            background: rgba(255, 152, 0, 0.2);
+            color: #FF9800;
+        }
+        
+        .chart-placeholder {
+            background: var(--wcsd-light-gray);
+            border: 2px dashed #D0D0D0;
+            border-radius: 12px;
+            padding: 60px;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+        }
+        
+        .chart-placeholder .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .reflection-box {
+            background: var(--wcsd-light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--wcsd-burgundy);
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .formula-section {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        
+        .formula-section h4 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .formula-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .formula-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .formula-item .title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .formula-item .formula {
+            font-family: monospace;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .header { padding: 20px; }
+            .header h1 { font-size: 1.8rem; }
+            .tab-content { padding: 20px; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <div class="header-top">
+                <a href="/landing.html">
+                    <img src="/BackArrows/reply (2).png" alt="Back Arrow" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://www.williamsvillek12.org/">
+                    <img src="/Logos/WilliamsvilleDistrictLogo.png" alt="Williamsville Central School District Logo" style="width: 60px; height: 40px; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+                </a>
+            </div>
+            <div class="metrics-badge">📊 Metrics Tracker</div>
+            <h1>Curipod Pilot Metrics Dashboard</h1>
+            <div class="subtitle">Real-time tracking for Fall 2025 pilot program</div>
+        </div>
+        
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('lesson-tracker')">Lesson Tracker</button>
+                <button class="tab" onclick="showTab('rubric-comparison')">Rubric Comparison</button>
+                <button class="tab" onclick="showTab('teacher-reflections')">Teacher Reflections</button>
+                <button class="tab" onclick="showTab('student-polls')">Student Poll Summary</button>
+            </div>
+        </div>
+        
+        <!-- Tab 1: Lesson Tracker -->
+        <div id="lesson-tracker" class="tab-content active">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="value">47</span>
+                    <div class="label">Total Lessons</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">12</span>
+                    <div class="label">Active Teachers</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">312</span>
+                    <div class="label">Students Engaged</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">89%</span>
+                    <div class="label">Avg Participation</div>
+                </div>
+            </div>
+            
+            <div class="data-table">
+                <div class="table-header">📚 Lesson Activity Log</div>
+                <div class="table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Teacher</th>
+                                <th>School</th>
+                                <th>Lesson Type</th>
+                                <th># Students</th>
+                                <th>% Participation</th>
+                                <th>Tool Used</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 15, 2025</td>
+                                <td>Sarah Johnson</td>
+                                <td>Mill MS</td>
+                                <td>ELA Writing</td>
+                                <td>28</td>
+                                <td>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 96%"></div>
+                                    </div>
+                                    96%
+                                </td>
+                                <td>Word Cloud + AI Feedback</td>
+                                <td>Great engagement with character analysis</td>
+                            </tr>
+                            <tr>
+                                <td>Oct 14, 2025</td>
+                                <td>Mike Chen</td>
+                                <td>Maple East</td>
+                                <td>Science Inquiry</td>
+                                <td>24</td>
+                                <td>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 83%"></div>
+                                    </div>
+                                    83%
+                                </td>
+                                <td>Polls + Drawing</td>
+                                <td>Students loved hypothesis visualization</td>
+                            </tr>
+                            <tr>
+                                <td>Oct 13, 2025</td>
+                                <td>Lisa Rodriguez</td>
+                                <td>Country Parkway</td>
+                                <td>Math Problem Solving</td>
+                                <td>22</td>
+                                <td>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 91%"></div>
+                                    </div>
+                                    91%
+                                </td>
+                                <td>AI Feedback</td>
+                                <td>Strong confidence building evident</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab 2: Rubric Comparison -->
+        <div id="rubric-comparison" class="tab-content">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="value">+24%</span>
+                    <div class="label">Avg Writing Growth</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">67%</span>
+                    <div class="label">Students Above Baseline</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">8.2</span>
+                    <div class="label">Avg Week 10 Score</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">94%</span>
+                    <div class="label">Data Completion Rate</div>
+                </div>
+            </div>
+            
+            <div class="data-table">
+                <div class="table-header">📈 Student Writing Progress</div>
+                <div class="table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Grade</th>
+                                <th>Baseline Score</th>
+                                <th>Week 5 Score</th>
+                                <th>Week 10 Score</th>
+                                <th>% Growth</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alex M.</td>
+                                <td>5th</td>
+                                <td>6.2</td>
+                                <td>7.1</td>
+                                <td>8.4</td>
+                                <td>+35%</td>
+                                <td>Significant confidence improvement</td>
+                            </tr>
+                            <tr>
+                                <td>Jordan T.</td>
+                                <td>7th</td>
+                                <td>7.8</td>
+                                <td>8.2</td>
+                                <td>9.1</td>
+                                <td>+17%</td>
+                                <td>Strong use of AI feedback</td>
+                            </tr>
+                            <tr>
+                                <td>Maya P.</td>
+                                <td>5th</td>
+                                <td>5.9</td>
+                                <td>6.8</td>
+                                <td>8.0</td>
+                                <td>+36%</td>
+                                <td>Creative breakthrough in week 7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chart-placeholder">
+                <span class="icon">📊</span>
+                <div>Growth Chart Visualization</div>
+                <div style="font-size: 0.9rem; margin-top: 10px;">Baseline vs. Week 5 vs. Week 10 Progress</div>
+            </div>
+        </div>
+        
+        <!-- Tab 3: Teacher Reflections -->
+        <div id="teacher-reflections" class="tab-content">
+            <div class="data-table">
+                <div class="table-header">💭 Teacher Feedback & Observations</div>
+                <div class="table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Teacher</th>
+                                <th>Date</th>
+                                <th>Reflection / Quote</th>
+                                <th>Suggested Improvements</th>
+                                <th>Support Needed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sarah Johnson</td>
+                                <td>Oct 15</td>
+                                <td>
+                                    <div class="reflection-box">
+                                        "The AI feedback is giving my quieter students a voice they never had before. I'm seeing confidence bloom in real-time."
+                                    </div>
+                                </td>
+                                <td>More rubric customization options</td>
+                                <td>Help with advanced AI prompts</td>
+                            </tr>
+                            <tr>
+                                <td>Mike Chen</td>
+                                <td>Oct 12</td>
+                                <td>
+                                    <div class="reflection-box">
+                                        "Students are actually excited about writing now. The drawing + writing combo is magic for my science lessons."
+                                    </div>
+                                </td>
+                                <td>Cross-curricular templates</td>
+                                <td>Co-planning session</td>
+                            </tr>
+                            <tr>
+                                <td>Lisa Rodriguez</td>
+                                <td>Oct 10</td>
+                                <td>
+                                    <div class="reflection-box">
+                                        "The 2-minute lesson creation is no joke. I'm saving so much prep time and students are more engaged than ever."
+                                    </div>
+                                </td>
+                                <td>More math-specific prompts</td>
+                                <td>PD credit documentation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab 4: Student Poll Summary -->
+        <div id="student-polls" class="tab-content">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="value">8.7/10</span>
+                    <div class="label">Avg Confidence</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">92%</span>
+                    <div class="label">Used AI Feedback</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">89%</span>
+                    <div class="label">Want to Continue</div>
+                </div>
+                <div class="metric-card">
+                    <span class="value">156</span>
+                    <div class="label">Comments Collected</div>
+                </div>
+            </div>
+            
+            <div class="data-table">
+                <div class="table-header">🗣️ Student Voice & Feedback</div>
+                <div class="table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Prompt</th>
+                                <th>Avg Confidence</th>
+                                <th>% Used AI Feedback</th>
+                                <th>Comments Summary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 15</td>
+                                <td>How confident do you feel about your writing today?</td>
+                                <td>8.4/10</td>
+                                <td>89%</td>
+                                <td>"AI helps me find better words" • "I feel smarter"</td>
+                            </tr>
+                            <tr>
+                                <td>Oct 10</td>
+                                <td>Did the AI feedback help improve your work?</td>
+                                <td>8.9/10</td>
+                                <td>94%</td>
+                                <td>"Like having a writing buddy" • "Makes editing fun"</td>
+                            </tr>
+                            <tr>
+                                <td>Oct 5</td>
+                                <td>How do you feel about sharing your ideas?</td>
+                                <td>8.1/10</td>
+                                <td>87%</td>
+                                <td>"Less scary to share" • "Everyone participates now"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="chart-placeholder">
+                <span class="icon">📈</span>
+                <div>Confidence Trend Analysis</div>
+                <div style="font-size: 0.9rem; margin-top: 10px;">Student confidence progression over 10-week pilot</div>
+            </div>
+        </div>
+        
+        <div class="formula-section">
+            <h4>📊 Automated Calculations & Formulas</h4>
+            <div class="formula-list">
+                <div class="formula-item">
+                    <div class="title">Average Engagement Score</div>
+                    <div class="formula">=AVERAGE(participation_rates)</div>
+                </div>
+                <div class="formula-item">
+                    <div class="title">% of Students Using AI Feedback</div>
+                    <div class="formula">=COUNTIF(ai_usage,"Yes")/COUNT(total_students)</div>
+                </div>
+                <div class="formula-item">
+                    <div class="title">Rubric Growth Across Pilot</div>
+                    <div class="formula">=(week10_avg - baseline_avg)/baseline_avg</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Mark clicked tab as active
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

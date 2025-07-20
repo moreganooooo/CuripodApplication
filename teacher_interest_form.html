@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curipod Pilot Cohort Interest Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --wcsd-burgundy: #A94442;
+            --wcsd-navy: #2C3E50;
+            --wcsd-white: #FFFFFF;
+            --wcsd-black: #000000;
+            --wcsd-light-gray: #F8F9FA;
+            --curipod-orange: #E67E44;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--wcsd-light-gray);
+            color: var(--wcsd-black);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--wcsd-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+            color: var(--wcsd-white);
+            padding: 40px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: skewX(-20deg);
+        }
+        
+        .logo-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .teacher-badge {
+            background: var(--curipod-orange);
+            color: var(--wcsd-white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .description {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .form-content {
+            padding: 50px;
+        }
+        
+        .form-section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            color: var(--wcsd-navy);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--wcsd-burgundy);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--wcsd-navy);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--wcsd-burgundy);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: var(--wcsd-light-gray);
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-item:hover {
+            border-color: var(--wcsd-burgundy);
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: var(--wcsd-light-gray);
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .radio-item:hover {
+            border-color: var(--wcsd-burgundy);
+        }
+        
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .radio-item label {
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .form-note {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 8px;
+        }
+        
+        .submit-section {
+            background: var(--wcsd-light-gray);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--wcsd-burgundy) 0%, #8B3A38 100%);
+            color: var(--wcsd-white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(169, 68, 66, 0.3);
+        }
+        
+        .footer {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 30px 50px;
+            text-align: center;
+        }
+        
+        .footer .district-info {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .footer .contact {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .form-content { padding: 30px 25px; }
+            .checkbox-group { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <div class="logo-row">
+                <a href="/landing.html">
+                    <img src="/BackArrows/reply (2).png" alt="Back Arrow" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://www.williamsvillek12.org/">
+                    <img src="/Logos/WilliamsvilleDistrictLogo.png" alt="Williamsville Central School District Logo" style="width: 60px; height: 40px; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+                </a>
+            </div>
+            <div class="teacher-badge">👩‍🏫 Teacher Interest Form</div>
+            <h1>Curipod Pilot Cohort Interest Form</h1>
+            <div class="description">Help us design a meaningful pilot of Curipod! We're seeking interested educators for a short, supported pilot running Sept–Nov 2025.</div>
+        </div>
+        
+        <div class="form-content">
+            <div class="form-section">
+                <div class="section-title">Basic Information</div>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="school">School</label>
+                    <select id="school" name="school" required>
+                        <option value="">Select your school...</option>
+                        <option value="mill-middle">Mill Middle School</option>
+                        <option value="maple-east">Maple East Elementary</option>
+                        <option value="country-parkway">Country Parkway Elementary</option>
+                        <option value="other">Other WCSD School</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gradeSubject">Grade/Subject</label>
+                    <input type="text" id="gradeSubject" name="gradeSubject" placeholder="e.g., 5th Grade ELA, 7th Grade Science" required>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="section-title">Experience & Interest</div>
+                
+                <div class="form-group">
+                    <label for="toolExperience">Have you used other tools like Pear Deck, Nearpod, EdPuzzle, etc?</label>
+                    <textarea id="toolExperience" name="toolExperience" placeholder="Tell us about your experience with interactive classroom tools..."></textarea>
+                    <div class="form-note">Short answer</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="aiExcitement">What excites you about AI in the classroom?</label>
+                    <textarea id="aiExcitement" name="aiExcitement" placeholder="Share your thoughts on AI's potential to enhance learning..."></textarea>
+                    <div class="form-note">Paragraph</div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="section-title">Support Preferences</div>
+                
+                <div class="form-group">
+                    <label>What support would help you get started?</label>
+                    <div class="form-note">Check all that apply</div>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="walkthrough" name="support" value="walkthrough">
+                            <label for="walkthrough">Curipod walkthrough</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="planning" name="support" value="planning">
+                            <label for="planning">Lesson planning help</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="coaching" name="support" value="coaching">
+                            <label for="coaching">Co-teaching/coaching</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="pd-credit" name="support" value="pd-credit">
+                            <label for="pd-credit">PD credit options</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="section-title">Timeline</div>
+                
+                <div class="form-group">
+                    <label>Preferred pilot start week</label>
+                    <div class="form-note">Choose your ideal launch timeframe</div>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="sept22" name="startWeek" value="sept22">
+                            <label for="sept22">Week of Sept 22</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="sept29" name="startWeek" value="sept29">
+                            <label for="sept29">Week of Sept 29</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="oct6" name="startWeek" value="oct6">
+                            <label for="oct6">Week of Oct 6</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Interest Form</button>
+                <div style="margin-top: 15px; font-size: 0.9rem; color: #666;">
+                    Thank you for your interest in the Curipod pilot! We'll be in touch soon.
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="district-info">Empowering all students to develop their unique potential</div>
+            <div class="contact">Questions? Contact your instructional coach or building principal</div>
+        </div>
+    </div>
+
+    <script>
+        // Simple form validation and submission
+        document.querySelector('.submit-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Check required fields
+            const requiredFields = document.querySelectorAll('input[required], select[required]');
+            let allValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = '#e74c3c';
+                    allValid = false;
+                } else {
+                    field.style.borderColor = '#E0E0E0';
+                }
+            });
+            
+            if (allValid) {
+                alert('Thank you for your interest! In a real implementation, this would submit to your district\'s system.');
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+    </script>
+</body>
+</html>

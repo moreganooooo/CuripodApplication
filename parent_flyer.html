@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Communication Flyer - Curipod Pilot</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --wcsd-burgundy: #A94442;
+            --wcsd-navy: #2C3E50;
+            --wcsd-white: #FFFFFF;
+            --wcsd-black: #000000;
+            --wcsd-light-gray: #F8F9FA;
+            --curipod-orange: #E67E44;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #E8E9EA;
+            color: var(--wcsd-black);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        
+        .flyer {
+            width: 8.5in;
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--wcsd-white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        
+        .letterhead {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .district-info {
+            flex: 1;
+        }
+        
+        .district-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .district-address {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .district-logo-area {
+            text-align: right;
+        }
+        
+        .logo-placeholder {
+            width: 80px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .alert-banner {
+            background: var(--curipod-orange);
+            color: var(--wcsd-white);
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        .alert-banner::before,
+        .alert-banner::after {
+            content: '🚨';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+        
+        .alert-banner::before { left: 20px; }
+        .alert-banner::after { right: 20px; }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .date-line {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #E0E0E0;
+            padding-bottom: 15px;
+        }
+        
+        .subject-line {
+            background: var(--wcsd-light-gray);
+            padding: 15px 20px;
+            border-left: 5px solid var(--wcsd-burgundy);
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--wcsd-navy);
+        }
+        
+        .greeting {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .main-content p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .highlight-section {
+            background: var(--wcsd-light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 2px solid var(--wcsd-burgundy);
+        }
+        
+        .highlight-title {
+            color: var(--wcsd-burgundy);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .benefit-list li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: var(--wcsd-burgundy);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .info-boxes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .image-placeholder {
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .image-box {
+            border: 2px dashed #C0C0C0;
+            border-radius: 8px;
+            padding: 40px 20px;
+            background: #FAFAFA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            min-height: 150px;
+        }
+        
+        .image-icon {
+            font-size: 3rem;
+            color: #999;
+        }
+        
+        .image-text {
+            text-align: left;
+        }
+        
+        .image-title {
+            font-weight: 700;
+            color: var(--wcsd-navy);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .image-suggestion {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+            font-style: italic;
+        }
+        
+        .info-box {
+            background: var(--wcsd-white);
+            border: 2px solid;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .info-box.dates { border-color: var(--curipod-orange); }
+        .info-box.schools { border-color: var(--wcsd-navy); }
+        .info-box.privacy { border-color: #4CAF50; }
+        
+        .info-box .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .info-box .title {
+            font-weight: 700;
+            color: var(--wcsd-navy);
+            margin-bottom: 8px;
+        }
+        
+        .info-box .details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .contact-section {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .contact-section h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .signature-area {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #E0E0E0;
+        }
+        
+        .signature {
+            margin-bottom: 5px;
+        }
+        
+        .signature.name {
+            font-weight: 600;
+            color: var(--wcsd-navy);
+        }
+        
+        .footer-strip {
+            background: var(--wcsd-burgundy);
+            color: var(--wcsd-white);
+            padding: 15px 40px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .footer-strip .motto {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .footer-strip .contact {
+            opacity: 0.9;
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .flyer {
+                box-shadow: none;
+                max-width: none;
+                width: 100%;
+            }
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .flyer { 
+                width: 100%; 
+                margin: 0;
+            }
+            
+            .letterhead {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .content { padding: 25px; }
+            
+            .info-boxes { 
+                grid-template-columns: 1fr; 
+                gap: 15px;
+            }
+            
+            .image-box {
+                flex-direction: column;
+                gap: 15px;
+                padding: 30px 15px;
+            }
+            
+            .image-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <!-- School Letterhead -->
+        <div class="letterhead">
+            <div class="district-info">
+                <div class="district-name">Williamsville Central School District</div>
+                <div class="district-address">
+                    105 Casey Road<br>
+                    East Amherst, NY 14051<br>
+                    (716) 626-8000
+                </div>
+            </div>
+            <div class="district-logo-area">
+                <div class="logo-placeholder">WCSD<br>LOGO</div>
+            </div>
+        </div>
+        
+        <!-- Alert Banner -->
+        <div class="alert-banner">
+            NEW IN CLASSROOMS: The Curipod Pilot!
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="date-line">November 2024</div>
+            
+            <div class="subject-line">
+                RE: Exciting Learning Innovation Coming This Fall
+            </div>
+            
+            <div class="greeting">Dear Williamsville CSD Families,</div>
+            
+            <div class="main-content">
+                <p>We are excited to announce a new classroom pilot beginning this fall! Select teachers across our schools will be testing <strong>Curipod</strong>, an interactive learning platform powered by safe, secure AI.</p>
+                
+                <p>Curipod helps students engage deeply through live polls, drawing prompts, word clouds, and AI-powered writing support—all while ensuring <strong>student privacy</strong> and meeting FERPA/COPPA guidelines.</p>
+            </div>
+            
+            <div class="highlight-section">
+                <div class="highlight-title">🌟 Why Curipod?</div>
+                <ul class="benefit-list">
+                    <li>Boosts student voice and participation</li>
+                    <li>Enhances writing confidence with real-time feedback</li>
+                    <li>Supports creativity and critical thinking</li>
+                    <li>Works on Chromebooks and iPads—no accounts or logins needed</li>
+                </ul>
+            </div>
+            
+            <div class="image-placeholder">
+                <div class="image-box">
+                    <div class="image-icon">📸</div>
+                    <div class="image-text">
+                        <div class="image-title">STOCK IMAGE PLACEHOLDER</div>
+                        <div class="image-suggestion">Suggested: Students engaged with technology in classroom<br>or collaborative learning scene</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-boxes">
+                <div class="info-box dates">
+                    <span class="emoji">📅</span>
+                    <div class="title">Pilot Dates</div>
+                    <div class="details">September–November 2025</div>
+                </div>
+                <div class="info-box schools">
+                    <span class="emoji">🏫</span>
+                    <div class="title">Pilot Schools</div>
+                    <div class="details">Mill MS, Maple East, Country Parkway</div>
+                </div>
+                <div class="info-box privacy">
+                    <span class="emoji">🔒</span>
+                    <div class="title">Privacy Assured</div>
+                    <div class="details">No data stored or used to train models</div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <p>If you have questions, please contact your child's teacher or principal. We're thrilled to bring more voice, creativity, and fun into the classroom—powered by tools that serve all learners.</p>
+            </div>
+            
+            <div class="contact-section">
+                <h4>Questions? We're Here to Help!</h4>
+                <p>Contact your child's teacher, building principal, or the main office at (716) 626-8000</p>
+            </div>
+            
+            <div class="signature-area">
+                <div class="signature">Sincerely,</div>
+                <div class="signature name">[Principal Name]</div>
+                <div class="signature">[School Name]</div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer-strip">
+            <div class="motto">Empowering all students to develop their unique potential</div>
+            <div class="contact">www.williamsvillek12.org • Follow us on social media</div>
+        </div>
+    </div>
+</body>
+</html>

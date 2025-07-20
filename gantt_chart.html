@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curipod Pilot Gantt Chart - Fall 2025</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --wcsd-burgundy: #A94442;
+            --wcsd-navy: #2C3E50;
+            --wcsd-white: #FFFFFF;
+            --wcsd-black: #000000;
+            --wcsd-light-gray: #F8F9FA;
+            --curipod-orange: #E67E44;
+            --planning-blue: #3498DB;
+            --training-orange: #E67E44;
+            --pilot-green: #27AE60;
+            --review-red: #E74C3C;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--wcsd-light-gray);
+            color: var(--wcsd-black);
+            line-height: 1.6;
+        }
+        
+        .gantt-container {
+            max-width: 1400px;
+            margin: 20px auto;
+            background: var(--wcsd-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+            color: var(--wcsd-white);
+            padding: 40px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: skewX(-20deg);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gantt-badge {
+            background: var(--curipod-orange);
+            color: var(--wcsd-white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .legend {
+            padding: 30px 50px;
+            background: var(--wcsd-light-gray);
+            border-bottom: 2px solid #E0E0E0;
+        }
+        
+        .legend h3 {
+            color: var(--wcsd-navy);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .legend-items {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .legend-color.planning { background: var(--planning-blue); }
+        .legend-color.training { background: var(--training-orange); }
+        .legend-color.pilot { background: var(--pilot-green); }
+        .legend-color.review { background: var(--review-red); }
+        
+        .legend-label {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .chart-container {
+            padding: 40px 50px;
+            overflow-x: auto;
+        }
+        
+        .gantt-chart {
+            min-width: 1000px;
+            background: var(--wcsd-white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .chart-header {
+            display: grid;
+            grid-template-columns: 300px repeat(12, 1fr);
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+        }
+        
+        .header-cell {
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .task-header {
+            padding: 15px 20px;
+            font-weight: 700;
+            background: var(--wcsd-burgundy);
+        }
+        
+        .chart-row {
+            display: grid;
+            grid-template-columns: 300px repeat(12, 1fr);
+            border-bottom: 1px solid #E8E9EA;
+        }
+        
+        .chart-row:nth-child(even) {
+            background: var(--wcsd-light-gray);
+        }
+        
+        .chart-row:hover {
+            background: rgba(169, 68, 66, 0.05);
+        }
+        
+        .task-cell {
+            padding: 20px;
+            border-right: 1px solid #E0E0E0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .task-name {
+            font-weight: 600;
+            color: var(--wcsd-navy);
+            margin-bottom: 5px;
+        }
+        
+        .task-owner {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 3px;
+        }
+        
+        .task-duration {
+            font-size: 0.8rem;
+            color: var(--wcsd-burgundy);
+            font-weight: 500;
+        }
+        
+        .timeline-cell {
+            padding: 10px 5px;
+            border-right: 1px solid #E0E0E0;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .task-bar {
+            height: 25px;
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--wcsd-white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .task-bar.planning { background: linear-gradient(135deg, var(--planning-blue), #2980B9); }
+        .task-bar.training { background: linear-gradient(135deg, var(--training-orange), #D68910); }
+        .task-bar.pilot { background: linear-gradient(135deg, var(--pilot-green), #229954); }
+        .task-bar.review { background: linear-gradient(135deg, var(--review-red), #C0392B); }
+        
+        .milestone {
+            width: 15px;
+            height: 15px;
+            background: var(--wcsd-burgundy);
+            border: 3px solid var(--wcsd-white);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .notes-section {
+            padding: 40px 50px;
+            background: var(--wcsd-light-gray);
+        }
+        
+        .notes-section h3 {
+            color: var(--wcsd-navy);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .note-card {
+            background: var(--wcsd-white);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--wcsd-burgundy);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .note-card h4 {
+            color: var(--wcsd-navy);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .note-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            .header { padding: 20px; }
+            .header h1 { font-size: 2rem; }
+            .chart-container { padding: 20px; }
+            .legend-items { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="gantt-container">
+        <div class="header">
+            <div class="header-top">
+                <a href="/landing.html">
+                    <img src="/BackArrows/reply (2).png" alt="Back Arrow" style="width: 40px; height: 40px;">
+                </a>
+                <a href="https://www.williamsvillek12.org/">
+                    <img src="/Logos/WilliamsvilleDistrictLogo.png" alt="Williamsville Central School District Logo" style="width: 60px; height: 40px; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+                </a>
+            </div>
+            <div class="gantt-badge">📅 Gantt Chart</div>
+            <h1>Curipod Pilot Gantt - Fall 2025</h1>
+            <div class="subtitle">12-Week Implementation Timeline • Planning → Onboarding → Pilot → Review</div>
+        </div>
+        
+        <div class="legend">
+            <h3>Phase Color Coding:</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color planning"></div>
+                    <span class="legend-label">Blue: Planning</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color training"></div>
+                    <span class="legend-label">Orange: Training</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color pilot"></div>
+                    <span class="legend-label">Green: Pilot</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color review"></div>
+                    <span class="legend-label">Red: Review</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="gantt-chart">
+                <div class="chart-header">
+                    <div class="task-header">Task | Owner | Duration</div>
+                    <div class="header-cell">Aug<br>Week 1</div>
+                    <div class="header-cell">Aug<br>Week 2</div>
+                    <div class="header-cell">Sep<br>Week 1</div>
+                    <div class="header-cell">Sep<br>Week 2</div>
+                    <div class="header-cell">Sep<br>Week 3</div>
+                    <div class="header-cell">Sep<br>Week 4</div>
+                    <div class="header-cell">Oct<br>Week 1</div>
+                    <div class="header-cell">Oct<br>Week 2</div>
+                    <div class="header-cell">Oct<br>Week 3</div>
+                    <div class="header-cell">Oct<br>Week 4</div>
+                    <div class="header-cell">Nov<br>Week 1</div>
+                    <div class="header-cell">Nov<br>Week 2</div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="task-cell">
+                        <div class="task-name">Leadership Pitch & School Selection</div>
+                        <div class="task-owner">Admins</div>
+                        <div class="task-duration">2 weeks</div>
+                    </div>
+                    <div class="timeline-cell">
+                        <div class="task-bar planning" style="width: 90%;">Planning</div>
+                    </div>
+                    <div class="timeline-cell">
+                        <div class="task-bar planning" style="width: 90%;">Phase</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="task-cell">
+                        <div class="task-name">IT Review & Teacher Signups</div>
+                        <div class="task-owner">IT + Coaches</div>
+                        <div class="task-duration">1 week</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell">
+                        <div class="task-bar planning" style="width: 90%;">IT Setup</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="task-cell">
+                        <div class="task-name">Teacher Onboarding Webinar</div>
+                        <div class="task-owner">Coaches</div>
+                        <div class="task-duration">1 day</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell">
+                        <div class="milestone"></div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="task-cell">
+                        <div class="task-name">Onboarding + PD</div>
+                        <div class="task-owner">Coaches</div>
+                        <div class="task-duration">1 week</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell">
+                        <div class="task-bar training" style="width: 90%;">PD Week</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="task-cell">
+                        <div class="task-name">Launch Pilot</div>
+                        <div class="task-owner">Teachers</div>
+                        <div class="task-duration">1 day</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell">
+                        <div class="milestone"></div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="task-cell">
+                        <div class="task-name">Active Pilot Period</div>
+                        <div class="task-owner">Teachers + Students</div>
+                        <div class="task-duration">8 weeks</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell">
+                        <div class="task-bar pilot" style="width: 85%;">Week 1</div>
+                    </div>
+                    <div class="timeline-cell">
+                        <div class="task-bar pilot" style="width: 95%;">Week 2-3</div>
+                    </div>
+                    <div class="timeline-cell">
+                        <div class="task-bar pilot" style="width: 95%;">Week 4-5</div>
+                    </div>
+                    <div class="timeline-cell">
+                        <div class="task-bar pilot" style="width: 95%;">Week 6-7</div>
+                    </div>
+                    <div class="timeline-cell">
+                        <div class="task-bar pilot" style="width: 95%;">Week 8</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                </div>
+                
+                <div class="chart-row">
+                    <div class="task-cell">
+                        <div class="task-name">Data Collection & Analysis</div>
+                        <div class="task-owner">Coaches + Admins</div>
+                        <div class="task-duration">2 weeks</div>
+                    </div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell"></div>
+                    <div class="timeline-cell">
+                        <div class="task-bar review" style="width: 90%;">Analysis</div>
+                    </div>
+                    <div class="timeline-cell">
+                        <div class="task-bar review" style="width: 90%;">Report</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="notes-section">
+            <h3>📝 Implementation Notes & Dependencies</h3>
+            <div class="notes-grid">
+                <div class="note-card">
+                    <h4>Critical Success Factors</h4>
+                    <p>Early buy-in from volunteer teachers, robust IT support, and consistent coaching presence throughout the pilot period.</p>
+                </div>
+                <div class="note-card">
+                    <h4>Key Milestones</h4>
+                    <p>Teacher Onboarding (Sept 16), Pilot Launch (Sept 29), Mid-Point Review (Oct 20), Final Assessment (Nov 15).</p>
+                </div>
+                <div class="note-card">
+                    <h4>Risk Mitigation</h4>
+                    <p>Built-in buffer time, backup teacher recruitment, and alternative timeline if technical issues arise.</p>
+                </div>
+                <div class="note-card">
+                    <h4>Resource Allocation</h4>
+                    <p>2 FTE coach hours/week, IT support on-call, administrative oversight bi-weekly, teacher stipends for participation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
