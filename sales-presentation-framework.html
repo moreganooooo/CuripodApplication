@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Research to Conversation: Sample Sales Presentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --wcsd-burgundy: #A94442;
+            --wcsd-navy: #2C3E50;
+            --wcsd-white: #FFFFFF;
+            --wcsd-black: #000000;
+            --wcsd-light-gray: #F8F9FA;
+            --curipod-orange: #E67E44;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--wcsd-light-gray);
+            color: var(--wcsd-black);
+            line-height: 1.6;
+        }
+        
+        .page-container {
+            max-width: 1400px;
+            margin: 20px auto;
+            background: var(--wcsd-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+            color: var(--wcsd-white);
+            padding: 40px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: skewX(-20deg);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .strategy-badge {
+            background: var(--curipod-orange);
+            color: var(--wcsd-white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+        }
+        
+        .intro-section {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 35px 50px;
+            border-left: 4px solid #3498DB;
+            margin: 40px 50px;
+            border-radius: 8px;
+        }
+        
+        .intro-section h3 {
+            color: var(--wcsd-navy);
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        
+        .strategy-insight {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 35px 50px;
+            margin: 40px 50px;
+            border-radius: 12px;
+        }
+        
+        .strategy-insight h4 {
+            color: var(--curipod-orange);
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        
+        .strategy-insight p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            margin-bottom: 12px;
+        }
+        
+        .presentation-framework {
+            padding: 40px 50px;
+        }
+        
+        .section-title {
+            color: var(--wcsd-navy);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--wcsd-burgundy);
+            padding-bottom: 10px;
+        }
+        
+        .framework-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .framework-card {
+            background: var(--wcsd-light-gray);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--wcsd-burgundy);
+        }
+        
+        .framework-card h5 {
+            color: var(--wcsd-navy);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .framework-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .framework-card .slides-covered {
+            color: var(--wcsd-burgundy);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .presentation-container {
+            background: #1a1a1a;
+            border-radius: 16px;
+            margin: 30px 0;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .presentation-header {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .presentation-header h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .presentation-badge {
+            background: var(--curipod-orange);
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* Embedded presentation styles */
+        .slide-container {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: var(--wcsd-white);
+            transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 80px 50px 50px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .slide.v-center {
+            justify-content: center;
+        }
+
+        .slide.active {
+            left: 0;
+        }
+
+        .slide.prev {
+            left: -100%;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            background: rgba(44, 62, 80, 0.95);
+            padding: 15px 25px;
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            margin: 15px auto 0 auto;
+            width: fit-content;
+        }
+
+        .nav-btn {
+            background: var(--wcsd-burgundy);
+            color: var(--wcsd-white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover {
+            background: #8B3A38;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            color: var(--wcsd-white);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0 8px;
+        }
+
+        .slide-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--wcsd-white);
+            transform: scale(1.2);
+        }
+
+        /* Slide content styles */
+        .slide-title {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+            color: var(--wcsd-white);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            justify-content: center;
+        }
+
+        .slide-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 400px;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: skewX(-20deg);
+        }
+
+        .slide h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--wcsd-white);
+            margin-bottom: 20px;
+        }
+
+        .slide .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--wcsd-white);
+        }
+
+        .slide h2 {
+            color: var(--wcsd-navy);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .slide h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--wcsd-burgundy);
+            border-radius: 2px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            height: auto;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .benefit-list {
+            list-style: none;
+            font-size: 1rem;
+        }
+
+        .benefit-list li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background: var(--wcsd-burgundy);
+            color: var(--wcsd-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .visual-emphasis {
+            background: linear-gradient(135deg, #f0f2f5 0%, #e8e9ea 100%);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 3px solid var(--wcsd-burgundy);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 180px;
+        }
+
+        .highlight-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--wcsd-burgundy);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .highlight-text {
+            font-size: 1.2rem;
+            color: var(--wcsd-navy);
+            font-weight: 600;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .district-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 10px 25px;
+            border-radius: 25px;
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .stakeholder-analysis {
+            padding: 40px 50px;
+            background: var(--wcsd-light-gray);
+        }
+
+        .stakeholder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .stakeholder-card {
+            background: var(--wcsd-white);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--wcsd-burgundy);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .stakeholder-card h5 {
+            color: var(--wcsd-navy);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .stakeholder-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .stakeholder-card li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .stakeholder-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--wcsd-burgundy);
+            font-weight: bold;
+        }
+
+        .takeaway-section {
+            padding: 40px 50px;
+        }
+
+        .takeaway-box {
+            background: linear-gradient(135deg, var(--wcsd-burgundy) 0%, var(--wcsd-navy) 100%);
+            color: var(--wcsd-white);
+            padding: 35px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+
+        .takeaway-box h4 {
+            color: var(--curipod-orange);
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .takeaway-box p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            opacity: 0.95;
+        }
+
+        .adaptation-framework {
+            background: var(--wcsd-white);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid var(--wcsd-light-gray);
+            margin-bottom: 20px;
+        }
+
+        .adaptation-framework h5 {
+            color: var(--wcsd-navy);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .adaptation-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .adaptation-list li {
+            background: rgba(169, 68, 66, 0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            list-style: none;
+            border-left: 3px solid var(--wcsd-burgundy);
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 30px 20px; }
+            .header h1 { font-size: 2.2rem; }
+            .intro-section, .strategy-insight, .presentation-framework, .stakeholder-analysis, .takeaway-section { 
+                padding: 25px 20px; 
+                margin: 20px 20px; 
+            }
+            .framework-grid, .stakeholder-grid { grid-template-columns: 1fr; }
+            .slide { padding: 60px 20px 40px 20px; }
+            .slide h1 { font-size: 2.5rem; }
+            .slide h2 { font-size: 1.8rem; }
+            .two-column { grid-template-columns: 1fr; }
+            .adaptation-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="header">
+            <div class="header-top">
+                <a href="/index.html">
+                    <img src="/BackArrows/reply (2).png" alt="Back Arrow" style="width: 40px; height: 40px;">
+                </a>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="/Logos/CuripodTextOrangeLogo.png" alt="Curipod Logo" style="height: 50px; width: auto; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+                    <a href="https://www.williamsvillek12.org/">
+                        <img src="/Logos/WilliamsvilleDistrictLogo.png" alt="Williamsville Central School District Logo" style="height: 50px; width: auto; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+                    </a>
+                </div>
+            </div>
+            <div class="strategy-badge">🛠️ Sales Tools in Action</div>
+            <h1>From Research to Conversation</h1>
+            <div class="subtitle">Sample Sales Presentation Framework</div>
+        </div>
+        
+        <div class="intro-section">
+            <h3>→ Strategic Sales Intelligence in Practice</h3>
+            <p>Research is only valuable if it translates into better sales conversations. Based on everything I learned about stakeholder motivations, implementation challenges, and competitive positioning, I created this sample presentation framework for district leadership teams.</p>
+            <p>This isn't just a pretty slide deck—it's a roadmap for consultative selling that addresses real stakeholder concerns and positions Curipod as an implementation partner, not just a tool vendor. The framework demonstrates how market research transforms generic pitches into strategic partnership discussions.</p>
+        </div>
+        
+        <div class="strategy-insight">
+            <h4>🎯 Consultative Sales Strategy:</h4>
+            <p><strong>Traditional Demo Approach:</strong> "Here's what our tool does" - Feature-focused, one-size-fits-all messaging, implementation as an afterthought.</p>
+            <p><strong>This Framework:</strong> "Here's how we solve your specific challenges" - Outcome-focused, stakeholder-specific benefits, implementation as core value proposition.</p>
+            <p><strong>Key Differentiator:</strong> When prospects see detailed implementation strategy and stakeholder-specific research, they know you're thinking about their success from day one. That transforms conversations from "Will this work?" to "How do we make this work?"</p>
+        </div>
+        
+        <div class="presentation-framework">
+            <div class="section-title">Presentation Framework Structure</div>
+            
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <h5>📋 Opening: Problem Recognition</h5>
+                    <p><strong>Purpose:</strong> Establish credibility and surface pain points</p>
+                    <p><strong>Key Message:</strong> "We understand the challenges you're facing"</p>
+                    <p><strong>Strategy:</strong> All stakeholders see their concerns reflected</p>
+                    <div class="slides-covered">Slides 1-4</div>
+                </div>
+                
+                <div class="framework-card">
+                    <h5>💡 Middle: Solution Alignment</h5>
+                    <p><strong>Purpose:</strong> Connect Curipod capabilities to specific district needs</p>
+                    <p><strong>Key Message:</strong> "Here's how we address your specific situation"</p>
+                    <p><strong>Strategy:</strong> Each stakeholder group sees clear value for their role</p>
+                    <div class="slides-covered">Slides 5-14</div>
+                </div>
+                
+                <div class="framework-card">
+                    <h5>🤝 Close: Partnership Proposition</h5>
+                    <p><strong>Purpose:</strong> Position implementation support as key differentiator</p>
+                    <p><strong>Key Message:</strong> "We're committed to your success, not just our sale"</p>
+                    <p><strong>Strategy:</strong> Implementation concerns addressed proactively</p>
+                    <div class="slides-covered">Slides 15-21</div>
+                </div>
+            </div>
+            
+            <div class="presentation-container">
+                <div class="presentation-header">
+                    <h4>Interactive Sales Presentation Demo</h4>
+                    <div class="presentation-badge">Live Framework</div>
+                </div>
+                
+                <div class="slide-container">
+                    <!-- Slide 1: Title Slide -->
+                    <div class="slide slide-title active">
+                        <div class="center-content">
+                            <h1>Empowering Every Classroom</h1>
+                            <div class="subtitle">Curipod for WCSD</div>
+                            <div class="district-badge">Fall 2025 Pilot Proposal</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: What is Curipod? Why Now? -->
+                    <div class="slide">
+                        <h2>What is Curipod? Why Now?</h2>
+                        <div class="two-column">
+                            <div>
+                                <ul class="benefit-list">
+                                    <li>AI-powered interactive lesson builder</li>
+                                    <li>Builds polls, prompts, drawings in minutes</li>
+                                    <li>Focused on creativity, voice, and writing</li>
+                                    <li>100% student participation guaranteed</li>
+                                    <li>Standards-aligned content generation</li>
+                                </ul>
+                            </div>
+                            <div class="visual-emphasis">
+                                <span class="highlight-number">2min</span>
+                                <div class="highlight-text">Lesson Creation Time</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Strategic Alignment -->
+                    <div class="slide">
+                        <h2>Strategic Alignment with WCSD's Vision</h2>
+                        <div class="two-column">
+                            <div>
+                                <h3 style="color: var(--wcsd-navy); font-size: 1.6rem; margin-bottom: 20px;">WCSD Strategic Pillars</h3>
+                                <ul class="benefit-list">
+                                    <li><strong>Student Voice:</strong> Amplify every student's perspective</li>
+                                    <li><strong>Literacy Focus:</strong> Strengthen writing across all subjects</li>
+                                    <li><strong>Inclusive Instruction:</strong> Support diverse learners</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 style="color: var(--wcsd-navy); font-size: 1.6rem; margin-bottom: 20px;">Curipod Match</h3>
+                                <ul class="benefit-list">
+                                    <li>100% participation tools</li>
+                                    <li>Writing growth via reflection loops</li>
+                                    <li>DEI-aligned prompts and scaffolds</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional slides would continue here... -->
+                    <div class="slide">
+                        <h2>Implementation Partnership Approach</h2>
+                        <div class="center-content">
+                            <p style="font-size: 1.3rem; margin-bottom: 30px; color: var(--wcsd-navy); font-weight: 600;">This presentation continues with 18 more slides covering stakeholder value, implementation timeline, and partnership commitments...</p>
+                            <div class="visual-emphasis">
+                                <span class="highlight-number">21</span>
+                                <div class="highlight-text">Total Strategic Slides</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="nav-container">
+                    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Prev</button>
+                    <div class="slide-counter">
+                        <span id="currentSlide">1</span> / <span id="totalSlides">4</span>
+                    </div>
+                    <div class="slide-dots" id="slideDots"></div>
+                    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stakeholder-analysis">
+            <div class="section-title">How This Framework Addresses Stakeholder Concerns</div>
+            
+            <div class="stakeholder-grid">
+                <div class="stakeholder-card">
+                    <h5>🔒 IT & Data Teams</h5>
+                    <ul>
+                        <li>Slide 6: COPPA/FERPA compliance front and center</li>
+                        <li>Security credentials presented upfront, not buried</li>
+                        <li>Technical documentation promised in appendix</li>
+                        <li>Minimal infrastructure requirements highlighted</li>
+                    </ul>
+                </div>
+                
+                <div class="stakeholder-card">
+                    <h5>🎓 Instructional Coaches</h5>
+                    <ul>
+                        <li>Slides 7-12: PD integration and peer collaboration features</li>
+                        <li>Built-in coaching opportunities emphasized</li>
+                        <li>Teacher support structure clearly outlined</li>
+                        <li>Professional development hours included in value prop</li>
+                    </ul>
+                </div>
+                
+                <div class="stakeholder-card">
+                    <h5>👩‍🏫 Teachers</h5>
+                    <ul>
+                        <li>Slide 9: Time savings demonstrated first, not features</li>
+                        <li>"2 minutes" lesson creation prominently featured</li>
+                        <li>Workflow integration emphasized over disruption</li>
+                        <li>Immediate value and ongoing support promised</li>
+                    </ul>
+                </div>
+                
+                <div class="stakeholder-card">
+                    <h5>📊 Administrators</h5>
+                    <ul>
+                        <li>Slides 4, 10, 17: Data and ROI metrics throughout</li>
+                        <li>Strategic alignment with district goals emphasized</li>
+                        <li>Clear measurement strategy and success criteria</li>
+                        <li>Implementation partnership positioned as value-add</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="takeaway-section">
+            <div class="takeaway-box">
+                <h4>💡 Strategic Sales Advantage:</h4>
+                <p><strong>Research Enables Consultative Selling:</strong> The difference between order-taking and consultative selling is preparation. When you understand stakeholder motivations, competitive landscape, and implementation challenges, you can have strategic conversations rather than just product demos.</p>
+                <p><strong>Implementation as Differentiator:</strong> This presentation framework positions implementation support as a core competitive advantage. While other vendors focus on features, this approach demonstrates commitment to district success beyond contract signing.</p>
+                <p><strong>Conversation Transformation:</strong> When prospects see this level of preparation and stakeholder-specific intelligence, they know you're thinking about their success from day one. That transforms the conversation from "Will this work?" to "How do we make this work?"</p>
+            </div>
+            
+            <div class="adaptation-framework">
+                <h5>🔄 Adaptability Framework for Any District:</h5>
+                <p>This presentation structure can be adapted for any district by customizing three key elements:</p>
+                <ul class="adaptation-list">
+                    <li><strong>Local Data Integration:</strong> District strategic plan priorities, current tech infrastructure, specific curriculum goals</li>
+                    <li><strong>Stakeholder Composition:</strong> Who's in the room determines messaging emphasis and demo flow</li>
+                    <li><strong>Competitive Context:</strong> What tools they use, what they've tried, what vendors they're considering</li>
+                    <li><strong>Implementation Capacity:</strong> Coaching infrastructure, professional development cycles, change management readiness</li>
+                    <li><strong>Budget & Timeline:</strong> Decision-making process, funding cycles, pilot vs. full rollout preferences</li>
+                    <li><strong>Community Values:</strong> Parent engagement expectations, transparency requirements, outcome priorities</li>
+                </ul>
+            </div>
+            
+            <div class="takeaway-box orange-theme">>
+                <h4>🏆 Competitive Differentiator:</h4>
+                <p><strong>While Other AEs Show Generic Demos:</strong> You're showing research-backed stakeholder intelligence, implementation partnership commitment, and district-customized solutions.</p>
+                <p><strong>The Research Investment Pays Off:</strong> When you can walk into any district meeting with relevant, strategic conversation frameworks based on deep market intelligence, you transform product pitches into partnership discussions.</p>
+                <p><strong>Implementation Intelligence:</strong> This framework demonstrates that you understand successful EdTech rollouts depend on more than great products—they depend on great implementation partnerships.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentSlideIndex) {
+                    slide.classList.add('active');
+                } else if (index < currentSlideIndex) {
+                    slide.classList.add('prev');
+                }
+            });
+            
+            document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
+            
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+            
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
+        }
+        
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                updateSlide();
+            }
+        }
+        
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlide();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('totalSlides').textContent = totalSlides;
+            
+            const dotsContainer = document.getElementById('slideDots');
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') changeSlide(-1);
+                if (e.key === 'ArrowRight') changeSlide(1);
+            });
+            
+            updateSlide();
+        });
+    </script>
+</body>
+</html>

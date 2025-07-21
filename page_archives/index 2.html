@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curipod for WCSD - Marketing Materials Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --wcsd-burgundy: #A94442;
+            --wcsd-navy: #2C3E50;
+            --wcsd-white: #FFFFFF;
+            --wcsd-black: #000000;
+            --wcsd-light-gray: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--wcsd-white);
+            color: var(--wcsd-black);
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+            color: var(--wcsd-white);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 400px;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: skewX(-20deg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-content {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .district-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 25px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+        
+        .header .description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 80px 0;
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .intro-section h2 {
+            color: var(--wcsd-navy);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .intro-section p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .material-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit; /* Inherit text color from parent */
+            background: var(--wcsd-white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--wcsd-burgundy);
+        }
+        
+        .material-card-link:nth-child(2) {
+            border-top-color: var(--wcsd-burgundy);
+        }
+        
+        .material-card-link:nth-child(3) {
+            border-top-color: var(--wcsd-burgundy);
+        }
+        
+        .material-card-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .card-preview {
+            height: 200px;
+            background: var(--wcsd-light-gray);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-preview.infographic {
+            background: linear-gradient(135deg, var(--wcsd-light-gray) 0%, #E8E9EA 100%);
+        }
+        
+        .card-preview.brief {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+        }
+        
+        .card-preview.poster {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+        }
+
+        .card-preview.metrics {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+        }
+
+        .card-preview.parent-flyer {
+            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+        }
+        
+        .preview-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%; /* Ensure it takes full height of card-preview */
+        }
+
+        .preview-icon img {
+            max-width: 100px; /* Adjust as needed */
+            max-height: 100px; /* Adjust as needed */
+            object-fit: contain;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+        
+        .card-content h3 {
+            color: var(--wcsd-navy);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .card-content p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        
+        
+        .stats-section {
+            background: var(--wcsd-light-gray);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-section h3 {
+            color: var(--wcsd-navy);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat .number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--wcsd-burgundy);
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .stat .label {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .cta-section {
+            background: var(--wcsd-navy);
+            color: var(--wcsd-white);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: var(--wcsd-burgundy);
+            color: var(--wcsd-white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #8B3A38;
+        }
+        
+        .footer {
+            background: var(--wcsd-white);
+            padding: 40px 0 80px;
+            text-align: center;
+            border-top: 1px solid #E0E0E0;
+        }
+        
+        .footer .district-info {
+            color: var(--wcsd-navy);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .footer .contact {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Adjust as needed for spacing between icons */
+            margin-top: 50px; /* Space from the WCSD logo */
+            flex-wrap: nowrap; /* Prevent wrapping */
+        }
+
+        .footer-contact-info img {
+            margin: 0; /* Remove any default margins */
+        }
+
+        .footer-contact-info p {
+            text-align: center;
+            margin-bottom: 5px; /* Space between icons and text */
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .container { padding: 0 20px; }
+            .materials-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <div style="position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 10px;">
+        <a href="https://www.curipod.com">
+            <img
+                src="/Logos/CuripodTextOrangeLogo.png"
+                alt="Curipod Logo"
+                style="height: 50px; margin-right: 10px; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));"
+            >
+        </a>
+        <a href="https://www.williamsvillek12.org/">
+            <img
+                src="/Logos/WilliamsvilleDistrictLogo.png"
+                alt="Williamsville Central School District Logo"
+                style="height: 50px; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));"
+            >
+        </a>
+    </div>
+        <div class="container">
+            <div class="header-content">
+                <div class="district-badge">Williamsville Central School District • Est. 1893</div>
+                <h1>Curipod Implementation Hub</h1>
+                <div class="subtitle">Deep customer research + implementation psychology = successful EdTech rollouts</div>
+                <div class="description"><strong></strong></div>
+                <p><strong>District-ready materials that demonstrate how strategic AEs think about:</strong><br>
+                    ✓ Stakeholder psychology across decision-maker roles<br>
+                    ✓ Competitive positioning and market barriers<br>
+                    ✓ Change management for complex B2B sales cycles<br>
+                    ✓ Replicable frameworks that scale across territories</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="container">
+            <div class="intro-section">
+                <h2>Market Intelligence in Action</h2>
+                <p><strong>How Deep Customer Research Drives Successful EdTech Implementations</strong></p><br>
+                <p style="font-size: 15px;">Successful EdTech sales require deep understanding of implementation psychology, competitive positioning, and stakeholder dynamics. This portfolio demonstrates strategic methodology applied to a real market opportunity: positioning Curipod for district adoption in competitive landscape dominated by Kahoot, Nearpod, and Google tools. Each piece represents replicable thinking that scales across territories and customer segments.</p>
+            </div>
+            
+            <div class="materials-grid">
+                <a href="infographic.html" class="material-card-link">
+                    <div class="card-preview infographic">
+                        <div class="preview-icon"><img src="/index_icons/StakeholderValueInfographic.png" alt="Infographic Icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Stakeholder Psychology Mapping</h3>
+                        <p>How strategic AEs identify what each decision-maker actually cares about.</p>
+                    </div>
+                </a>
+                
+                <a href="executivebrief.html" class="material-card-link">
+                    <div class="card-preview brief">
+                    <div class="preview-icon"><img src="/index_icons/ExecutiveImplementationBrief.png" alt="Executive Implementation Brief Icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>C-Suite Sales Methodology</h3>
+                        <p>Speaking the language of strategic priorities and measurable outcomes.</p>
+                    </div>
+                </a>
+                
+                <a href="conferenceposter.html" class="material-card-link">
+                    <div class="card-preview poster">
+                        <div class="preview-icon"><img src="/index_icons/ConferencePresentationPoster.png" alt="Conference Presentation Poster Icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Stakeholder Alignment Tool</h3>
+                        <p>Visual frameworks that get buy-in across departments.</p>
+                    </div>
+                </a>
+
+                <a href="curipod_presentation.html" class="material-card-link">
+                    <div class="card-preview">
+                        <div class="preview-icon"><img src="/index_icons/CuripodPresentation.png" alt="Curipod Presentation Icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Comprehensive Sales Presentation Framework</h3>
+                        <p>Structured methodology for complex stakeholder presentations.</p>
+                    </div>
+                </a>
+
+                <a href="gantt_chart.html" class="material-card-link">
+                    <div class="card-preview">
+                        <div class="preview-icon"><img src="/index_icons/ProjectGanttChart.png" alt="Gantt Chart Icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Implementation Psychology Applied</h3>
+                        <p>Why 73% of EdTech rollouts fail - and how strategic planning prevents it.</p>
+                    </div>
+                </a>
+
+                <a href="metrics_tracker.html" class="material-card-link">
+                    <div class="card-preview metrics">
+                        <div class="preview-icon"><img src="/index_icons/MetricsTracker.png" alt="Metrics Tracker Icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Metrics Tracking Template</h3>
+                        <p>A dashboard to track key performance indicators (KPIs) and measure the success of the implementation.</p>
+                    </div>
+                </a>
+
+                <a href="parent_flyer.html" class="material-card-link">
+                    <div class="card-preview parent-flyer">
+                        <div class="preview-icon"><img src="/index_icons/ParentCommunicationFlyer.png" alt="Parent Communication Flyer Icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Parent Communication Flyer</h3>
+                        <p>An informational flyer designed to introduce Curipod to parents and guardians in the district.</p>
+                    </div>
+                </a>
+
+                <a href="teacher_interest_form.html" class="material-card-link">
+                    <div class="card-preview">
+                        <div class="preview-icon"><img src="/index_icons/TeacherInterestForm.png" alt="Teacher Interest Form Icon"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Teacher Interest Form</h3>
+                        <p>A simple form for teachers to express interest in joining the pilot program and receive more information.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stats-section">
+        <div class="container">
+            <h3>WCSD Territory Opportunity</h3>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="number">10,000</span>
+                    <div class="label">Students Served</div>
+                </div>
+                <div class="stat">
+                    <span class="number">13</span>
+                    <div class="label">School Buildings</div>
+                </div>
+                <div class="stat">
+                    <span class="number">40</span>
+                    <div class="label">Square Miles</div>
+                </div>
+                <div class="stat">
+                    <span class="number">130+</span>
+                    <div class="label">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cta-section">
+        <div class="container">
+            <h3>Ready to Launch Implementation?</h3>
+            <p>Complete pilot strategy with volunteer teacher recruitment and professional development plan</p>
+            <a href="https://curipod.com/signup" class="cta-button">Let's Get Started</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <div class="district-info">Empowering all students to develop their unique potential</div>
+            <div class="contact">105 Casey Rd, East Amherst, NY 14051 • (716) 626-8000</div>
+            <a href="https://www.williamsvillek12.org/">
+            <img
+                src="/Logos/WCSDLogoHorizontalCOLOR.png"
+                alt="Williamsville Central School District Logo"
+                style="margin-top: 35px; max-height: 50px; filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.1));">
+        </a>
+        <div class="footer-contact-info">
+        <a href="mailto:escott.morgan@gmail.com">
+            <img
+                src="/personal_logos/mail.png"
+                alt="Email Logo"
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+        </a>
+        <a href="https://www.linkedin.com/in/morganescott">
+            <img
+                src="/personal_logos/linkedin.png"
+                alt="LinkedIn Logo"
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+        </a>
+        <a href="MorganEscott_AccountExecutive_Curipod_Resume.pdf" target="_blank">
+            <img
+                src="/personal_logos/download.png"
+                alt="Download Resume"
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+        </a>
+        <p style="font-size: 0.85rem; opacity: 0.2;">Prepared with care by Morgan Escott. Email me, visit my LinkedIn, or download my resume!</p>
+        </div>
+        </div>
+    </div>
+
+    <script>
+    // Find the form, input, and result elements on the page
+    const form = document.getElementById('analysis-form');
+    const urlInput = document.getElementById('url-input');
+    const resultDiv = document.getElementById('result');
+    const loadingDiv = document.getElementById('loading');
+
+    // NEW: Check if the form element actually exists before proceeding
+    if (form) {
+        // This function now only runs if the form is on the page
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevents the page from reloading
+            
+            const slideUrl = urlInput.value; // Get the URL from the input box
+            
+            loadingDiv.style.display = 'block'; // Show the loading message
+            resultDiv.textContent = ''; // Clear old results
+
+            try {
+                // This is the NEW, SECURE way to call our backend function
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ slideUrl: slideUrl }), // Send the URL to our function
+                });
+
+                if (!response.ok) {
+                    throw new Error('The analysis failed to load.');
+                }
+                
+                const data = await response.json();
+                const analysisText = data.choices[0].text;
+                
+                // Display the result
+                resultDiv.textContent = analysisText.trim();
+
+            } catch (error) {
+                resultDiv.textContent = error.message;
+            } finally {
+                loadingDiv.style.display = 'none'; // Hide the loading message
+            }
+        });
+    } // NEW: Closing brace for the safety check
+</script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
