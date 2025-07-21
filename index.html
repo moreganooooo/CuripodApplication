@@ -303,6 +303,24 @@
             color: #666;
             font-size: 0.95rem;
         }
+
+        .footer-contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Adjust as needed for spacing between icons */
+            margin-top: 20px; /* Space from the WCSD logo */
+            flex-wrap: nowrap; /* Prevent wrapping */
+        }
+
+        .footer-contact-info img {
+            margin: 0; /* Remove any default margins */
+        }
+
+        .footer-contact-info p {
+            text-align: center;
+            margin-bottom: 5px; /* Space between icons and text */
+        }
         
         @media (max-width: 768px) {
             .header h1 { font-size: 2.5rem; }
@@ -464,26 +482,26 @@
                 alt="Williamsville Central School District Logo"
                 style="margin-top: 35px; max-height: 50px; filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.1));">
         </a>
-        <div style="position: static; top: 0; bottom: 0; left: 0; text-align: center; padding: 20px; height: 30px;">
+        <div class="footer-contact-info">
         <a href="mailto:escott.morgan@gmail.com">
             <img
                 src="/personal_logos/mail.png"
                 alt="Email Logo"
-                style="position: absolute; top: 185px; left: 15px; height: 30px; z-index: 2; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
         </a>
         <a href="https://www.linkedin.com/in/morganescott">
             <img
                 src="/personal_logos/linkedin.png"
                 alt="LinkedIn Logo"
-                style="position: absolute; top: 185px; left: 85px; height: 30px; z-index: 2; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
         </a>
         <a href="MorganEscott_AccountExecutive_Curipod_Resume.pdf" target="_blank">
             <img
                 src="/personal_logos/download.png"
                 alt="Download Resume"
-                style="position: absolute; top: 185px; left: 135px; height: 30px; z-index: 2; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
         </a>
-        <p style="position: absolute; top: 188px; left: 180px; text-align: center; font-size: 0.85rem; opacity: 0.2;">Prepared with care by Morgan Escott. Email me, visit my LinkedIn, or download my resume!</p>
+        <p style="font-size: 0.85rem; opacity: 0.2;">Prepared with care by Morgan Escott. Email me, visit my LinkedIn, or download my resume!</p>
         </div>
         </div>
     </div>
