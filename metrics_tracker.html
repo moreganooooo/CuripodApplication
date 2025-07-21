@@ -323,6 +323,43 @@
             .tab-content { padding: 20px; }
             .metrics-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        
+        .footer {
+            background: var(--wcsd-white);
+            padding: 40px 0 80px;
+            text-align: center;
+            border-top: 1px solid #E0E0E0;
+        }
+        
+        .footer .district-info {
+            color: var(--wcsd-navy);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .footer .contact {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: nowrap;
+        }
+
+        .footer-contact-info img {
+            margin: 0;
+        }
+
+        .footer-contact-info p {
+            text-align: center;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -336,7 +373,7 @@
                     <img
                         src="/Logos/CuripodTextOrangeLogo.png"
                         alt="Curipod Logo"
-                        style="height: 40px; width: auto; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));"
+                        style="height: 50px; width: auto; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));"
                     >
                     <a href="https://www.williamsvillek12.org/">
                         <img
@@ -649,43 +686,35 @@
             </div>
         </div>
         
-        <div class="formula-section">
-            <h4>📊 Automated Calculations & Formulas</h4>
-            <div class="formula-list">
-                <div class="formula-item">
-                    <div class="title">Average Engagement Score</div>
-                    <div class="formula">=AVERAGE(participation_rates)</div>
-                </div>
-                <div class="formula-item">
-                    <div class="title">% of Students Using AI Feedback</div>
-                    <div class="formula">=COUNTIF(ai_usage,"Yes")/COUNT(total_students)</div>
-                </div>
-                <div class="formula-item">
-                    <div class="title">Rubric Growth Across Pilot</div>
-                    <div class="formula">=(week10_avg - baseline_avg)/baseline_avg</div>
-                </div>
-            </div>
+        <div class="footer">
+        <div class="container">
+            <div class="district-info">Empowering all students to develop their unique potential</div>
+            <div class="contact">105 Casey Rd, East Amherst, NY 14051 • (716) 626-8000</div>
+            <a href="https://www.williamsvillek12.org/">
+            <img
+                src="/Logos/WCSDLogoHorizontalCOLOR.png"
+                alt="Williamsville Central School District Logo"
+                style="margin-top: 35px; max-height: 50px; filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.1));">
+        </a>
+        <div class="footer-contact-info">
+        <a href="mailto:escott.morgan@gmail.com">
+            <img
+                src="/personal_logos/mail.png"
+                alt="Email Logo"
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+        </a>
+        <a href="https://www.linkedin.com/in/morganescott">
+            <img
+                src="/personal_logos/linkedin.png"
+                alt="LinkedIn Logo"
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+        </a>
+        <a href="MorganEscott_AccountExecutive_Curipod_Resume.pdf" target="_blank">
+            <img
+                src="/personal_logos/download.png"
+                alt="Download Resume"
+                style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
+        </a>
+        <p style="font-size: 0.85rem; opacity: 0.2;">Prepared with care by Morgan Escott. Email me, visit my LinkedIn, or download my resume!</p>
         </div>
-    </div>
-
-    <script>
-        function showTab(tabId) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected tab content
-            document.getElementById(tabId).classList.add('active');
-            
-            // Mark clicked tab as active
-            event.target.classList.add('active');
-        }
-    </script>
-</body>
-</html>
+        </div>
