@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morgan Escott | Account Executive - Curipod</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +14,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Lexend', sans-serif;
             line-height: 1.6;
             color: #2c3e50;
             background-color: #fefefe;
@@ -25,104 +27,9 @@
         }
 
         /* Header/Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.05) 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 2px, transparent 2px);
-            background-size: 80px 80px;
-            animation: float 25s ease-in-out infinite;
-        }
-
         .hero-content {
             position: relative;
             z-index: 3;
-        }
-
-        .floating-waves {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .wave-shape {
-            position: absolute;
-            opacity: 0.3;
-            fill: rgba(255, 255, 255, 0.2);
-        }
-
-        .wave-1 {
-            top: 5%;
-            left: -20%;
-            width: 600px;
-            height: 120px;
-            animation: wave-float-1 15s ease-in-out infinite;
-        }
-
-        .wave-2 {
-            top: 35%;
-            right: -30%;
-            width: 500px;
-            height: 100px;
-            animation: wave-float-2 18s ease-in-out infinite reverse;
-        }
-
-        .wave-3 {
-            top: 15%;
-            left: -10%;
-            width: 700px;
-            height: 140px;
-            animation: wave-float-3 12s ease-in-out infinite;
-        }
-
-        .wave-4 {
-            bottom: 5%;
-            right: -25%;
-            width: 450px;
-            height: 90px;
-            animation: wave-float-4 20s ease-in-out infinite reverse;
-        }
-
-        @keyframes wave-float-1 {
-            0% { transform: translateX(0px) translateY(0px); }
-            50% { transform: translateX(120px) translateY(-30px); }
-            100% { transform: translateX(0px) translateY(0px); }
-        }
-
-        @keyframes wave-float-2 {
-            0% { transform: translateX(0px) translateY(0px); }
-            50% { transform: translateX(-100px) translateY(25px); }
-            100% { transform: translateX(0px) translateY(0px); }
-        }
-
-        @keyframes wave-float-3 {
-            0% { transform: translateX(0px) translateY(0px); }
-            50% { transform: translateX(150px) translateY(-20px); }
-            100% { transform: translateX(0px) translateY(0px); }
-        }
-
-        @keyframes wave-float-4 {
-            0% { transform: translateX(0px) translateY(0px); }
-            50% { transform: translateX(-130px) translateY(-35px); }
-            100% { transform: translateX(0px) translateY(0px); }
         }
 
         .hero h1 {
@@ -145,16 +52,113 @@
             display: inline-block;
             padding: 10px 20px;
             border-radius: 25px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             backdrop-filter: blur(10px);
         }
 
+        /* Updated Wave & Background Styles */
+        .hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            /* We add overflow:hidden to contain the new background lines */
+            overflow: hidden;
+            border-bottom: 2px solid #ebebeb;
+        }
+
+        /* This is the new part that adds the stationary background lines! */
+        /* This updated rule staggers the stationary background lines */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 200'%3E%3Cpath d='M0 100 Q 250 0 500 100 T 1000 100' stroke='rgba(255,255,255,0.15)' fill='none' stroke-width='2'/%3E%3Cpath d='M-150 120 Q 100 20 350 120 T 850 120' stroke='rgba(255,255,255,0.1)' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: 1000px 200px;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Make sure content is above the waves */
+        }
+
+        .waves-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh; /* Adjust height of the wave area */
+            min-height: 100px;
+            max-height: 150px;
+            z-index: 1; /* Waves are behind content but in front of lines */
+        }
+
+        .waves {
+            position: relative;
+            width: 100%;
+            height: 100%; /* Use full height of the container */
+        }
+
+        .parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+
+        /* SLOWER animation-duration values */
+        .parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 14s; /* Slower */
+        }
+        .parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 20s; /* Slower */
+        }
+        .parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 26s; /* Slower */
+        }
+        .parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 35s; /* Slower */
+        }
+
+        @keyframes move-forever {
+            0% {
+                transform: translate3d(-90px,0,0);
+            }
+            100% { 
+                transform: translate3d(85px,0,0);
+            }
+        }
+
+        /* Responsive adjustment for waves */
+        @media (max-width: 768px) {
+            .waves-container {
+                height: 10vh; /* Make waves smaller on mobile */
+            }
+        }
+
         .contact-bar {
+            position: absolute;
+            top: 25px;
+            right: 25px;
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .rolename-bar {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            display: flex;
+            gap: 20px;
+            z-index: 10;
         }
 
         .contact-item {
@@ -163,17 +167,43 @@
             gap: 8px;
             color: white;
             text-decoration: none;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 50px;
+            backdrop-filter: blur(8px);
         }
 
         .contact-item:hover {
             transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.25);
         }
 
         /* Alignment Section */
         .alignment {
             padding: 80px 0;
-            background: #f8f9fa;
+            position: relative;
+            background-image: url("lightabstractbackground.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .alignment::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.80); /* This creates the 50% opacity effect */
+            z-index: 0;
+        }
+
+        .alignment .container {
+            position: relative;
+            z-index: 1; /* This ensures the content stays on top of the overlay */
         }
 
         .section-title {
@@ -188,7 +218,7 @@
             font-size: 1.2em;
             color: #7f8c8d;
             margin-bottom: 60px;
-            max-width: 600px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -203,6 +233,12 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .alignment-grid:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .requirement {
@@ -232,11 +268,12 @@
         .connector::after {
             content: '→';
             position: absolute;
-            right: -15px;
-            top: -12px;
+            right: -18px; /* Adjust for better visual connection */
+            top: 50%;
+            transform: translateY(-50%);
             color: #ff6b35;
-            font-size: 1.5em;
-            font-weight: bold;
+            font-size: 1.8em; /* Slightly larger for better visibility */
+            line-height: 1; /* Prevent extra vertical space */
         }
 
         .experience {
@@ -278,7 +315,7 @@
 
         .why-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .why-card .icon {
@@ -316,6 +353,12 @@
             border-radius: 15px;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
         }
 
         .result-number {
@@ -497,36 +540,37 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="floating-waves">
-            <svg class="wave-shape wave-1" viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 60C60 20 140 100 200 60C260 20 340 100 400 60C460 20 540 100 600 60V120H0V60Z" fill="rgba(255, 255, 255, 0.25)"/>
-            </svg>
-            <svg class="wave-shape wave-2" viewBox="0 0 500 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 50C50 10 110 90 160 50C210 10 270 90 320 50C370 10 430 90 480 50C490 45 495 55 500 50V100H0V50Z" fill="rgba(255, 255, 255, 0.2)"/>
-            </svg>
-            <svg class="wave-shape wave-3" viewBox="0 0 700 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 70C70 30 140 110 210 70C280 30 350 110 420 70C490 30 560 110 630 70C665 50 682 90 700 70V140H0V70Z" fill="rgba(255, 255, 255, 0.15)"/>
-            </svg>
-            <svg class="wave-shape wave-4" viewBox="0 0 450 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 45C45 15 90 75 135 45C180 15 225 75 270 45C315 15 360 75 405 45C427 35 438 55 450 45V90H0V45Z" fill="rgba(255, 255, 255, 0.3)"/>
+        <div class="rolename-bar">Account Executive Candidate</div>
+        <div class="contact-bar">
+            <a href="mailto:escott.morgan@gmail.com" class="contact-item">
+                <img src="/contact_icons/paper-plane-tilt.svg" alt="Paper Plane" style="width: 16px; height: 16px;"><span>Email Me</span>
+            </a>
+            <a href="tel:716-352-9050" class="contact-item">
+                <img src="/contact_icons/device-mobile.svg" alt="Cell Phone" style="width: 16px; height: 16px;"><span>Give Me a Call</span>
+            </a>
+            <a href="https://linkedin.com/in/morganescott" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <img src="/contact_icons/linkedin-logo.svg" alt="LinkedIn Logo" style="width: 16px; height: 16px;"><span>Visit My LinkedIn</span>
+            </a>
+        </div>
+
+        <div class="waves-container">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
             </svg>
         </div>
+
         <div class="container hero-content">
-            <div class="role">Account Executive Candidate</div>
             <h1>Morgan Escott</h1>
             <p class="subtitle">Bridging Technology & Human Connection in EdTech Sales</p>
-            
-            <div class="contact-bar">
-                <a href="mailto:escott.morgan@gmail.com" class="contact-item">
-                    <span>📧</span> escott.morgan@gmail.com
-                </a>
-                <a href="tel:716-352-9050" class="contact-item">
-                    <span>📱</span> 716-352-9050
-                </a>
-                <a href="https://linkedin.com/in/morganescott" class="contact-item" target="_blank">
-                    <span>💼</span> LinkedIn
-                </a>
-            </div>
         </div>
     </section>
 
@@ -657,7 +701,7 @@
             <div class="research-preview">
                 <h3>Want to see my process in action?</h3>
                 <p>I created a comprehensive district implementation strategy for my local school district (where my son attends). It demonstrates exactly how I approach understanding prospects, their challenges, and their opportunities.</p>
-                <a href="https://www.morganawesome.com" class="btn" target="_blank">Explore My District Analysis</a>
+                <a href="https://www.morganawesome.com" class="btn" target="_blank" rel="noopener noreferrer">Explore My District Analysis</a>
             </div>
         </div>
     </section>
@@ -671,7 +715,7 @@
             <div class="footer-links">
                 <a href="mailto:escott.morgan@gmail.com">Send Email</a>
                 <a href="#" onclick="alert('Resume download would be implemented here')">Download Resume</a>
-                <a href="https://linkedin.com/in/morganescott" target="_blank">View LinkedIn</a>
+                <a href="https://linkedin.com/in/morganescott" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
             </div>
         </div>
     </section>
