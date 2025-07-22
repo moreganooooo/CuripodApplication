@@ -2,756 +2,762 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curipod Market Research & Sales Insights</title>
+    <title>Morgan Escott | Account Executive - Curipod</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            --wcsd-burgundy: #A94442;
-            --wcsd-navy: #2C3E50;
-            --wcsd-white: #FFFFFF;
-            --wcsd-black: #000000;
-            --wcsd-light-gray: #F8F9FA;
-        }
-        
+
         body {
-            font-family: 'Open Sans', sans-serif;
-            background: var(--wcsd-white);
-            color: var(--wcsd-black);
+            font-family: 'Lexend', sans-serif;
             line-height: 1.6;
+            color: #2c3e50;
+            background-color: #fefefe;
         }
-        
-        .header {
-            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
-            color: var(--wcsd-white);
-            padding: 60px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -200px;
-            width: 400px;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            transform: skewX(-20deg);
-        }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 20px;
+        }
+
+        /* Header/Hero Section */
+        .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
         }
-        
-        .header-content {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .district-badge {
-            background: rgba(255,255,255,0.15);
-            padding: 8px 20px;
-            border-radius: 25px;
-            display: inline-block;
-            margin-top: 25px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .header h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header .subtitle {
-            font-size: 1.4rem;
-            font-weight: 300;
-            opacity: 0.95;
-            margin-bottom: 30px;
-        }
-        
-        .header .description {
-            font-size: 1.1rem;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
-        .main-content {
-            padding: 80px 0;
-        }
-        
-        .intro-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .intro-section h2 {
-            color: var(--wcsd-navy);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+
+        .hero h1 {
+            font-size: 3.2em;
             font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        
-        .intro-section p {
-            font-size: 1.2rem;
-            color: #666;
+
+        .hero .subtitle {
+            font-size: 1.4em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .hero .role {
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Updated Wave & Background Styles */
+        .hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            /* We add overflow:hidden to contain the new background lines */
+            overflow: hidden;
+            border-bottom: 2px solid #ebebeb;
+        }
+
+        /* This is the new part that adds the stationary background lines! */
+        /* This updated rule staggers the stationary background lines */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 200'%3E%3Cpath d='M0 100 Q 250 0 500 100 T 1000 100' stroke='rgba(255,255,255,0.15)' fill='none' stroke-width='2'/%3E%3Cpath d='M-150 120 Q 100 20 350 120 T 850 120' stroke='rgba(255,255,255,0.1)' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: 1000px 200px;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Make sure content is above the waves */
+        }
+
+        .waves-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh; /* Adjust height of the wave area */
+            min-height: 100px;
+            max-height: 150px;
+            z-index: 1; /* Waves are behind content but in front of lines */
+        }
+
+        .waves {
+            position: relative;
+            width: 100%;
+            height: 100%; /* Use full height of the container */
+        }
+
+        .parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+
+        /* SLOWER animation-duration values */
+        .parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 14s; /* Slower */
+        }
+        .parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 20s; /* Slower */
+        }
+        .parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 26s; /* Slower */
+        }
+        .parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 35s; /* Slower */
+        }
+
+        @keyframes move-forever {
+            0% {
+                transform: translate3d(-90px,0,0);
+            }
+            100% { 
+                transform: translate3d(85px,0,0);
+            }
+        }
+
+        /* Responsive adjustment for waves */
+        @media (max-width: 768px) {
+            .waves-container {
+                height: 10vh; /* Make waves smaller on mobile */
+            }
+        }
+
+        .contact-bar {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .rolename-bar {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 50px;
+            backdrop-filter: blur(8px);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Alignment Section */
+        .alignment {
+            padding: 80px 0;
+            position: relative;
+            background-image: url("lightabstractbackground.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .alignment::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.465); /* This creates the 50% opacity effect */
+            z-index: 0;
+        }
+
+        .alignment .container {
+            position: relative;
+            z-index: 1; /* This ensures the content stays on top of the overlay */
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 60px;
             max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .insight-boxes {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin: 50px 0;
-            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
         }
-        
-        .insight-box {
-            background: var(--wcsd-white);
-            border: 2px solid var(--wcsd-light-gray);
-            border-radius: 12px;
-            padding: 25px;
+
+        .section-title-ondark {
             text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
         }
-        
-        .insight-box:hover {
-            transform: translateY(-3px);
-            border-color: var(--wcsd-burgundy);
+
+        .section-subtitle-ondark {
+            text-align: center;
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .insight-box .insight-title {
-            color: var(--wcsd-navy);
-            font-size: 1.1rem;
-            font-weight: 700;
+
+        .alignment-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border: 1px solid #e1e1e1;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .alignment-grid:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .requirement {
+            text-align: right;
+            padding-right: 20px;
+        }
+
+        .requirement h4 {
+            background: linear-gradient(135deg, #e9e9e9, #a5a5a5);
+            -webkit-background-clip: text; /* Clip the background to the text shape */
+            background-clip: text; /* Standard property for clipping */
+            -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
+            color: transparent; /* Make the text transparent in other browsers */
+            font-size: 1.1em;
             margin-bottom: 10px;
         }
-        
-        .insight-box .insight-text {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
+
+        .requirement p {
+            color: #7f8c8d;
+            font-size: 0.95em;
         }
-        
-        .materials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .material-card-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            background: var(--wcsd-white);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 5px solid var(--wcsd-burgundy);
-        }
-        
-        .material-card-link:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-        
-        .card-preview {
-            height: 200px;
-            background: var(--wcsd-light-gray);
+
+        .connector {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            border-radius: 3px;
             position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .card-preview.infographic {
-            background: linear-gradient(135deg, var(--wcsd-light-gray) 0%, #E8E9EA 100%);
-        }
-        
-        .card-preview.brief {
-            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
-        }
-        
-        .card-preview.poster {
-            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
         }
 
-        .card-preview.metrics {
-            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
+        .connector::after {
+            content: '→';
+            position: absolute;
+            right: -18px; /* Adjust for better visual connection */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff6b35;
+            font-size: 1.8em; /* Slightly larger for better visibility */
+            line-height: 1; /* Prevent extra vertical space */
         }
 
-        .card-preview.parent-flyer {
-            background: linear-gradient(135deg, var(--wcsd-navy) 0%, var(--wcsd-burgundy) 100%);
-        }
-        
-        .preview-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
+        .experience {
+            text-align: left;
+            padding-left: 20px;
         }
 
-        .preview-icon img {
-            max-width: 100px;
-            max-height: 100px;
-            object-fit: contain;
+        .experience h4 {
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text; /* Clip the background to the text shape */
+            background-clip: text; /* Standard property for clipping */
+            -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
+            color: transparent; /* Make the text transparent in other browsers */
+            font-size: 1.1em;
+            margin-bottom: 10px;;
         }
 
-        .card-content {
-            padding: 30px;
+        .experience p {
+            color: #7f8c8d;
+            font-size: 0.95em;
         }
-        
-        .card-content h3 {
-            color: var(--wcsd-navy);
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            font-weight: 700;
+
+        /* Why Perfect Section */
+        .why-perfect {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)
         }
-        
-        .card-content p {
-            color: #666;
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            border: 1px solid #cacaca;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .why-card .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .why-card h3 {
+            color: f8f9fa;
             margin-bottom: 15px;
-            font-size: 0.95rem;
+            font-size: 1.3em;
+        }
+
+        .why-card p {
+            color: #7f8c8d;
             line-height: 1.6;
         }
-        
-        .card-insight {
-            background: rgba(169, 68, 66, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid var(--wcsd-burgundy);
-            margin-top: 15px;
+
+        /* Results Section */
+        .results {
+            padding: 80px 0;
+            background: #f8f9fa;
         }
-        
-        .card-insight .insight-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--wcsd-burgundy);
-            margin-bottom: 5px;
-        }
-        
-        .card-insight .insight-content {
-            font-size: 0.9rem;
-            color: #444;
-            font-style: italic;
-        }
-        
-        .stats-section {
-            background: var(--wcsd-light-gray);
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .stats-section h3 {
-            color: var(--wcsd-navy);
-            font-size: 2rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .stats-section .subtitle {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-        }
-        
-        .stats-grid {
+
+        .results-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat .number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--wcsd-burgundy);
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        .stat .label {
-            font-size: 1rem;
-            color: #666;
-            font-weight: 500;
-        }
-        
-        .cta-section {
-            background: var(--wcsd-navy);
-            color: var(--wcsd-white);
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .cta-section h3 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .cta-button {
-            background: var(--wcsd-burgundy);
-            color: var(--wcsd-white);
-            padding: 18px 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            background: #8B3A38;
-        }
-        
-        .footer {
-            background: var(--wcsd-white);
-            padding: 40px 0 80px;
-            text-align: center;
-            border-top: 1px solid #E0E0E0;
-        }
-        
-        .footer .district-info {
-            color: var(--wcsd-navy);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-        
-        .footer .contact {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .footer-contact-info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
             margin-top: 50px;
-            flex-wrap: nowrap;
         }
 
-        .footer-contact-info img {
-            margin: 0;
-        }
-
-        .footer-contact-info p {
+        .result-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
             text-align: center;
-            margin-bottom: 5px;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2.5rem; }
-            .container { padding: 0 20px; }
-            .materials-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .insight-boxes { grid-template-columns: 1fr; }
-        }
-        @keyframes fadeScaleIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            border: 1px solid #e1e1e1;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
-        .nav-toggle {
+        .result-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .result-number {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text; /* Clip the background to the text shape */
+            background-clip: text; /* Standard property for clipping */
+            -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
+            color: transparent; /* Make the text transparent in other browsers */
             display: block;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--wcsd-white);
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 10001;
+            margin-bottom: 10px;
         }
 
-        .nav-menu {
-            position: fixed;
-            top: 60px;
-            left: 20px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 10px 20px;
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 10000;
-            opacity: 0;
-            transform: translateX(-100%); /* <-- Start off-screen to the left */
-            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother timing */
-        }
-
-        .nav-menu.show {
-            display: flex !important;
-            opacity: 1;
-            transform: translateX(0); /* <-- Slide to its final position */
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #A94442;
+        .result-label {
+            color: #2c3e50;
             font-weight: 600;
-            padding: 8px 16px; /* Give them more clickable space */
-            border-radius: 8px; /* Soften the corners */
-            transition: all 0.2s ease-in-out; /* Transition everything smoothly */
+            margin-bottom: 10px;
         }
 
-        .nav-menu a:hover {
-            color: var(--wcsd-navy);
-            background-color: transparent;
-            transform: translateX(2px); /* Nudge the item to the right on hover */
+        .result-detail {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        /* Research Section */
+        .research {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .research-preview {
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin-top: 40px;
             position: relative;
-            display: inline-block;
+            overflow: hidden;
         }
 
-        .nav-menu a::after,
-        .nav-menu a::before {
+        .research-preview::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #A94442, var(--wcsd-navy));
-            bottom: -3px;
-            left: 0;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease-out;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
         }
 
-        .nav-menu a:hover::after,
-        .nav-menu a:hover::before {
-            transform: scaleX(1);
+        .research-preview h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
         }
-        /* Selects the main page content ONLY when the menu is open */
-        body.menu-open .header,
-        body.menu-open .main-content,
-        body.menu-open .stats-section,
-        body.menu-open .cta-section,
-        body.menu-open .footer {
-            filter: grayscale(1); opacity: 0.5; /* Blurs and darkens the background */
-            transition: all 0.2s ease;
+
+        .research-preview p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #ff6b35;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid #cacaca;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background: #ff6b35;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            border: 2px solid #ff6b35;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .footer-links a:hover {
+            transform: translateY(-2px);
+            color: white;
+            border-color: #EA34B0;
+            background: #ff6b35;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+
+            .alignment-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .requirement {
+                text-align: center;
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .connector {
+                margin: 20px auto;
+            }
+
+            .connector::after {
+                content: '↓';
+                right: 50%;
+                transform: translateX(50%);
+                top: 10px;
+            }
+
+            .experience {
+                text-align: center;
+                padding-left: 0;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div style="position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 10px;">
-            <a href="https://www.curipod.com">
-                <img
-                    src="/Logos/CuripodTextOrangeLogo.png"
-                    alt="Curipod Logo"
-                    style="height: 50px; margin-right: 10px; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));"
-                >
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="rolename-bar">Account Executive Candidate</div>
+        <div class="contact-bar">
+            <a href="mailto:escott.morgan@gmail.com" class="contact-item">
+                <img src="/contact_icons/paper-plane-tilt.png" alt="Paper Plane" style="width: 16px; height: 16px;"><span>Email Me</span>
             </a>
-            <a href="https://www.williamsvillek12.org/">
-                <img
-                    src="/Logos/WCSDLogoVerticalWHITE.png"
-                    alt="Williamsville Central School District Logo"
-                    style="height: 50px; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));"
-                >
+            <a href="tel:716-352-9050" class="contact-item">
+                <img src="/contact_icons/device-mobile.png" alt="Cell Phone" style="width: 16px; height: 16px;"><span>Give Me a Call</span>
+            </a>
+            <a href="https://linkedin.com/in/morganescott" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <img src="/contact_icons/linkedin-logo.png" alt="LinkedIn Logo" style="width: 16px; height: 16px;"><span>Visit My LinkedIn</span>
             </a>
         </div>
+
+        <div class="waves-container">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="container hero-content">
+            <h1>Morgan Escott</h1>
+            <p class="subtitle">Bridging Technology & Human Connection in EdTech Sales</p>
+        </div>
+    </section>
+
+    <!-- Perfect Alignment Section -->
+    <section class="alignment">
         <div class="container">
-            <div class="header-content">
-                <div class="district-badge">Market Research & Competitive Intelligence</div>
-                <h1>Understanding the Curipod Opportunity</h1>
-                <div class="subtitle">What I Discovered About Your Market, Customers & Sales Challenges</div>
-                <div class="description">
-                    <p><strong>As someone passionate about EdTech that actually connects with people, I dove deep into Curipod's competitive landscape, customer decision-making, and implementation challenges. Here's what I learned—and how strategic AEs can use these insights to transform sales conversations.</strong></p>
+            <h2 class="section-title">The Perfect Match</h2>
+            <p class="section-subtitle">Your job requirements → My experience. It's almost too perfect to believe.</p>
+
+            <div class="alignment-grid">
+                <div class="requirement">
+                    <h4>EdTech Sales Experience</h4>
+                    <p>Proven track record in educational technology sales</p>
+                </div>
+                <div class="connector"></div>
+                <div class="experience">
+                    <h4>9 Years EdTech Sales Excellence</h4>
+                    <p>$1M+ sourced revenue, 17% above target, built trust in exploitative industry</p>
+                </div>
+            </div>
+
+            <div class="alignment-grid">
+                <div class="requirement">
+                    <h4>CRM & Sales Tools Mastery</h4>
+                    <p>Maintain accurate pipeline and customer data</p>
+                </div>
+                <div class="connector"></div>
+                <div class="experience">
+                    <h4>Salesforce Expert & Outreach.io Trainer</h4>
+                    <p>10+ years CRM experience, trained teams on best practices</p>
+                </div>
+            </div>
+
+            <div class="alignment-grid">
+                <div class="requirement">
+                    <h4>Educator Empathy & Trust</h4>
+                    <p>Understand teacher challenges and build authentic relationships</p>
+                </div>
+                <div class="connector"></div>
+                <div class="experience">
+                    <h4>EdTech & K-12 Industry Expert</h4>
+                    <p>Parent in WCSD, rebuilt trust after exploitative companies, teacher-focused approach</p>
+                </div>
+            </div>
+
+            <div class="alignment-grid">
+                <div class="requirement">
+                    <h4>Travel & Territory Management</h4>
+                    <p>Willingness to travel up to 25% for client meetings</p>
+                </div>
+                <div class="connector"></div>
+                <div class="experience">
+                    <h4>Road Warrior Ready</h4>
+                    <p>Love building face-to-face relationships, experienced in territory management</p>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="main-content">
+    </section>
+
+    <!-- Why Perfect Section -->
+    <section class="why-perfect">
         <div class="container">
-            <div class="intro-section">
-                <h2>Market Intelligence in Action</h2>
-                <p><strong>When I started researching Curipod, I got curious about more than just product features. I wanted to understand the real challenges districts face, how decision-making actually works, and where the biggest opportunities lie. What I found surprised me—and I think it might interest you too.</strong></p>
+            <h2 class="section-title-ondark">Why I'm Perfect for Curipod</h2>
+            <p class="section-subtitle-ondark">Your mission resonates with everything I believe about EdTech</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/networking.png" alt="Human Connection Icon" style="width: 225px; padding-top: 35px; padding-bottom: 15px"></div>
+                    <h3>Human-First Philosophy</h3>
+                    <p>Like Curipod, I believe technology should amplify human connection, not replace it. My approach builds genuine relationships with educators who've been burned before.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/linked.png" alt="Human Connection Icon" style="width: 175px;"></div>
+                    <h3>Educator Perspective</h3>
+                    <p>As a parent in the education system, I understand the real challenges teachers face. I speak their language and earn their trust through authentic empathy.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/dashboard.png" alt="Human Connection Icon" style="width: 175px;"></div>
+                    <h3>Proven Results</h3>
+                    <p>$1M+ in sourced revenue, 17% above target, and a track record of turning skeptical prospects into delighted customers through strategic relationship building.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <h2 class="section-title">Results That Matter</h2>
+            <p class="section-subtitle">Numbers that demonstrate my impact in EdTech sales</p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <span class="result-number">$1M+</span>
+                    <div class="result-label">Sourced Revenue</div>
+                    <div class="result-detail">Consistently exceeded targets</div>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">17%</span>
+                    <div class="result-label">Above Target</div>
+                    <div class="result-detail">Performance vs. quota</div>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">9+</span>
+                    <div class="result-label">Years EdTech</div>
+                    <div class="result-detail">Deep industry experience</div>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">10+</span>
+                    <div class="result-label">Years CRM</div>
+                    <div class="result-detail">Salesforce & pipeline expertise</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research">
+        <div class="container">
+            <h2 class="section-title">How I Research Prospects</h2>
+            <p class="section-subtitle">Strategic thinking meets practical execution</p>
+
+            <div class="research-preview">
+                <h3>Want to see my process in action?</h3>
+                <p>I created a comprehensive district implementation strategy for my local school district (where my son attends). It demonstrates exactly how I approach understanding prospects, their challenges, and their opportunities.</p>
+                <a href="https://www.morganawesome.com/districtanalysis" class="btn" target="_blank" rel="noopener noreferrer">Explore My District Analysis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer/CTA -->
+    <section class="footer">
+        <div class="container">
+            <h2>Ready to Connect?</h2>
+            <p>Let's discuss how I can help Curipod build authentic relationships with educators and drive meaningful growth.</p>
             
-            <div class="insight-boxes">
-                <div class="insight-box">
-                    <div class="insight-title">"Districts don't make decisions—people do"</div>
-                    <div class="insight-text">IT directors worry about data privacy. Curriculum coaches need easy PD integration. Teachers just want tools that actually save time. Most EdTech sales treats them all the same. That's a mistake.</div>
-                </div>
-                <div class="insight-box">
-                    <div class="insight-title">"I studied a real district opportunity"</div>
-                    <div class="insight-text">Williamsville CSD has great infrastructure, strategic goals around student voice, and overwhelmed teachers. There's a clear opportunity here—but timing and messaging matter.</div>
-                </div>
-                <div class="insight-box">
-                    <div class="insight-title">"The sale is just the beginning"</div>
-                    <div class="insight-text">Pilot programs that never scale are your biggest competition. Districts need implementation partnership, not just product features. Here's how successful rollouts actually work.</div>
-                </div>
-                <div class="insight-box">
-                    <div class="insight-title">"Curipod's unique positioning advantage"</div>
-                    <div class="insight-text">You're not Kahoot, you're not Pear Deck. You're the AI-powered lesson creation tool that solves a different problem entirely. Here's how to leverage that.</div>
-                </div>
-            </div>
-            
-            <div class="materials-grid">
-                <a href="subpages/infographic.html" class="material-card-link">
-                    <div class="card-preview infographic">
-                        <div class="preview-icon"><img src="/index_icons/StakeholderValueInfographic.png" alt="Infographic Icon"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Customer Discovery</h3>
-                        <p>Who Really Makes EdTech Decisions (And What They Actually Care About)</p>
-                        <div class="card-insight">
-                            <div class="insight-label">Sales Insight:</div>
-                            <div class="insight-content">Understanding stakeholder psychology is the difference between generic pitches and strategic conversations.</div>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="subpages/executivebrief.html" class="material-card-link">
-                    <div class="card-preview brief">
-                        <div class="preview-icon"><img src="/index_icons/localization.png" alt="Executive Implementation Brief Icon"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Local Market Intelligence</h3>
-                        <p>Case Study: Williamsville CSD - A Real District Opportunity</p>
-                        <div class="card-insight">
-                            <div class="insight-label">Sales Insight:</div>
-                            <div class="insight-content">Local context drives everything. Generic EdTech pitches fail because they ignore district-specific priorities and constraints.</div>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="subpages/implementation.html" class="material-card-link">
-                    <div class="card-preview poster">
-                        <div class="preview-icon"><img src="/index_icons/gantt-chart.png" alt="Gantt Chart Icon"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Implementation = Sales Success</h3>
-                        <p>Why Implementation Strategy IS Sales Strategy</p>
-                        <div class="card-insight">
-                            <div class="insight-label">Sales Insight:</div>
-                            <div class="insight-content">Your biggest competitor isn't other EdTech tools—it's failed pilot programs that never scale.</div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="material-card-link">
-                    <div class="card-preview">
-                        <div class="preview-icon"><img src="/index_icons/opponent.png" alt="Conference Presentation Poster Icon"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Competitive Intelligence</h3>
-                        <p>Curipod's Competitive Sweet Spot</p>
-                        <div class="card-insight">
-                            <div class="insight-label">Sales Insight:</div>
-                            <div class="insight-content">Position based on problems solved, not features offered. Curipod solves lesson creation challenges, not just engagement needs.</div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="subpages/presentation.html" class="material-card-link">
-                    <div class="card-preview">
-                        <div class="preview-icon"><img src="/index_icons/database-management.png" alt="Curipod Presentation Icon"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Sales Tools in Action</h3>
-                        <p>From Research to Conversation: Sample Sales Presentation</p>
-                        <div class="card-insight">
-                            <div class="insight-label">Sales Insight:</div>
-                            <div class="insight-content">Research only matters if it translates into better sales conversations. Here's the methodology in practice.</div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="subpages/teacher_interest_form.html" class="material-card-link">
-                    <div class="card-preview metrics">
-                        <div class="preview-icon"><img src="/index_icons/sign.png" alt="Teacher Interest Form Icon"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Champion Identification</h3>
-                        <p>How to Find Teacher Champions During the Sales Process</p>
-                        <div class="card-insight">
-                            <div class="insight-label">Sales Insight:</div>
-                            <div class="insight-content">Teacher adoption is peer-driven, not admin-mandated. Identify champions early for pilot success.</div>
-                        </div>
-                    </div>
-                </a>
+            <div class="footer-links">
+                <a href="mailto:escott.morgan@gmail.com">Send Email</a>
+                <a href="#" onclick="alert('Resume download would be implemented here')">Download Resume</a>
+                <a href="https://linkedin.com/in/morganescott" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
             </div>
         </div>
-    </div>
-    
-    <div class="stats-section">
-        <div class="container">
-            <h3>The Research Subject</h3>
-            <p class="subtitle">Williamsville Central School District - A Representative Market Opportunity</p>
-            <div class="stats-grid">
-                <div class="stat">
-                    <span class="number">10,000</span>
-                    <div class="label">Students Served</div>
-                </div>
-                <div class="stat">
-                    <span class="number">13</span>
-                    <div class="label">School Buildings</div>
-                </div>
-                <div class="stat">
-                    <span class="number">$156M</span>
-                    <div class="label">Annual Budget</div>
-                </div>
-                <div class="stat">
-                    <span class="number">1:1</span>
-                    <div class="label">Device Access</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="cta-section">
-        <div class="container">
-            <h3>Strategic Sales Thinking</h3>
-            <p>This research demonstrates how strategic AEs think about markets, customers, and competitive positioning</p>
-            <a href="mailto:escott.morgan@gmail.com" class="cta-button">Let's Talk Strategy</a>
-        </div>
-    </div>
-    
-    <div class="footer">
-        <div class="container">
-            <div class="district-info">Market Research by Morgan Escott</div>
-            <div class="contact">Strategic thinking for EdTech sales success</div>
-            <div class="footer-contact-info">
-                <a href="mailto:escott.morgan@gmail.com">
-                    <img
-                        src="/personal_logos/mail.png"
-                        alt="Email Logo"
-                        style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
-                </a>
-                <a href="https://www.linkedin.com/in/morganescott">
-                    <img
-                        src="/personal_logos/linkedin.png"
-                        alt="LinkedIn Logo"
-                        style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
-                </a>
-                <a href="MorganEscott_AccountExecutive_Curipod_Resume.pdf" target="_blank">
-                    <img
-                        src="/personal_logos/download.png"
-                        alt="Download Resume"
-                        style="height: 30px; opacity: 0.3; filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2));">
-                </a>
-                <p style="font-size: 0.85rem; opacity: 0.2;">Research prepared for Curipod Account Executive opportunity</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 📄 index.html MODAL INJECTION -->
-    <!-- ✨ 1. Insert this just before </body> -->
-    <button class="nav-toggle" id="navToggle">☰</button>
-    <div class="nav-menu" id="navMenu">
-    <a href="#" onclick="toggleMenu()">Home</a>
-    <a href="subpages/infographic.html" onclick="toggleMenu()">Customer Discovery</a>
-    <a href="subpages/executivebrief.html" onclick="toggleMenu()">Local Market Intelligence</a>
-    <a href="subpages/implementation.html" onclick="toggleMenu()">Implementation = Sales Success</a>
-    <a href="#" onclick="toggleMenu()">Competitive Intelligence</a>
-    <a href="subpages/presentation.html" onclick="toggleMenu()">Sales Tools in Action</a>
-    <a href="subpages/teacher_interest_form.html" onclick="toggleMenu()">Champion Identification</a>
-    <a href="#" onclick="toggleMenu()">About Morgan: Strategic Account Executive & EdTech Specialist</a>
-    </div>
-
-    <div id="welcomeModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,230,208,0.95); z-index:9999; justify-content:center; align-items:center; font-family: 'Open Sans', sans-serif; padding: 20px;">
-    <div id="modalBox" style="background:#FFF9F3; padding:40px 20px; border-radius:20px; width:100%; max-width:640px; text-align:center; position:relative; box-shadow:0 8px 40px rgba(0,0,0,0.15); opacity:0; transform:scale(0.95);">
-        <button onclick="closeModal()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:2rem; cursor:pointer; color:#F57C00;">&times;</button>
-        <img src="/index_icons/starburst.png" alt="Welcome Illustration" style="width:80px; margin-bottom:20px; max-width:100%; height:auto;">
-        <h2 style="margin-bottom:20px; font-size:1.75rem; font-weight:800; color:#FF7300">Hi there! 🌟</h2>
-        <p style="color:#444; font-size:1rem; line-height:1.5; max-width:90%; margin:0 auto;">
-        Welcome to my Curipod Market Research Application! You're about to explore insights, strategy, and creativity tailored for EdTech impact.
-        </p>
-        <div style="margin-top:25px;">
-        <button onclick="closeModal()" style="background:#FF7300; color:white; border:none; padding:12px 24px; font-size:1rem; border-radius:10px; font-weight:700; cursor:pointer; box-shadow:0 3px 10px rgba(0,0,0,0.1); width:90%; max-width:300px;">Let’s Go!</button>
-        </div>
-    </div>
-    </div>
-
-    <script>
-    function closeModal() {
-        document.getElementById('welcomeModal').style.display = 'none';
-        localStorage.setItem('visited', 'true');
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const hasVisited = localStorage.getItem('visited');
-        if (!hasVisited) {
-        const modal = document.getElementById('welcomeModal');
-        const box = document.getElementById('modalBox');
-        modal.style.display = 'flex';
-        requestAnimationFrame(() => {
-            box.style.animation = 'fadeScaleIn 0.4s ease-out forwards';
-        });
-        }
-    });
-
-    function toggleMenu() {
-        const menu = document.getElementById('navMenu');
-        const toggle = document.getElementById('navToggle');
-        const isVisible = menu.classList.contains('show');
-        
-        // Add this line to toggle a class on the whole page
-        document.body.classList.toggle('menu-open'); 
-
-        if (isVisible) {
-            menu.classList.remove('show');
-            toggle.textContent = '☰';
-        } else {
-            menu.classList.add('show');
-            toggle.textContent = '✕';
-        }
-    }
-
-    // ✨ ADD THIS LINE RIGHT HERE!
-    document.getElementById('navToggle').addEventListener('click', toggleMenu);
-    </script>
-
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script>
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
+    </section>
 </body>
 </html>
