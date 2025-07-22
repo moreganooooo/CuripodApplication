@@ -197,7 +197,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.157); /* This creates the 50% opacity effect */
+            background-color: rgba(255, 255, 255, 0.465); /* This creates the 50% opacity effect */
             z-index: 0;
         }
 
@@ -250,6 +250,7 @@
             margin-bottom: 40px;
             padding: 30px;
             background: white;
+            border: 1px solid #e1e1e1;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
@@ -266,7 +267,11 @@
         }
 
         .requirement h4 {
-            color: #ff6b35;
+            background: linear-gradient(135deg, #e9e9e9, #a5a5a5);
+            -webkit-background-clip: text; /* Clip the background to the text shape */
+            background-clip: text; /* Standard property for clipping */
+            -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
+            color: transparent; /* Make the text transparent in other browsers */
             font-size: 1.1em;
             margin-bottom: 10px;
         }
@@ -301,9 +306,13 @@
         }
 
         .experience h4 {
-            color: #2c3e50;
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text; /* Clip the background to the text shape */
+            background-clip: text; /* Standard property for clipping */
+            -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
+            color: transparent; /* Make the text transparent in other browsers */
             font-size: 1.1em;
-            margin-bottom: 10px;
+            margin-bottom: 10px;;
         }
 
         .experience p {
@@ -314,7 +323,7 @@
         /* Why Perfect Section */
         .why-perfect {
             padding: 80px 0;
-            background: #ff6b35;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)
         }
 
         .why-grid {
@@ -329,6 +338,7 @@
             padding: 40px 30px;
             border-radius: 15px;
             background: #f8f9fa;
+            border: 1px solid #cacaca;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
@@ -371,6 +381,7 @@
             padding: 40px 30px;
             border-radius: 15px;
             text-align: center;
+            border: 1px solid #e1e1e1;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
@@ -383,7 +394,11 @@
         .result-number {
             font-size: 3em;
             font-weight: bold;
-            color: #ff6b35;
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text; /* Clip the background to the text shape */
+            background-clip: text; /* Standard property for clipping */
+            -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
+            color: transparent; /* Make the text transparent in other browsers */
             display: block;
             margin-bottom: 10px;
         }
@@ -407,7 +422,7 @@
         }
 
         .research-preview {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
             color: white;
             padding: 50px;
             border-radius: 20px;
@@ -447,14 +462,16 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
+            border: 1px solid #cacaca;
             transition: all 0.3s;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .btn:hover {
+            background: #ff6b35;
+            color: white;
             transform: translateY(-2px);
             box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-            color: #e55a2b;
         }
 
         .btn-primary {
@@ -498,14 +515,18 @@
             color: white;
             text-decoration: none;
             padding: 15px 25px;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid #ff6b35;
             border-radius: 50px;
             transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .footer-links a:hover {
-            border-color: #ff6b35;
+            transform: translateY(-2px);
+            color: white;
+            border-color: #EA34B0;
             background: #ff6b35;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
         }
 
         /* Responsive */
@@ -630,7 +651,7 @@
                 </div>
                 <div class="connector"></div>
                 <div class="experience">
-                    <h4>Educator Parent + Industry Expert</h4>
+                    <h4>EdTech & K-12 Industry Expert</h4>
                     <p>Parent in WCSD, rebuilt trust after exploitative companies, teacher-focused approach</p>
                 </div>
             </div>
@@ -657,19 +678,19 @@
 
             <div class="why-grid">
                 <div class="why-card">
-                    <div class="icon">🤝</div>
+                    <div class="icon"><img src="/index_icons/networking.png" alt="Human Connection Icon" style="width: 225px; padding-top: 35px; padding-bottom: 15px"></div>
                     <h3>Human-First Philosophy</h3>
                     <p>Like Curipod, I believe technology should amplify human connection, not replace it. My approach builds genuine relationships with educators who've been burned before.</p>
                 </div>
 
                 <div class="why-card">
-                    <div class="icon">🎯</div>
+                    <div class="icon"><img src="/index_icons/linked.png" alt="Human Connection Icon" style="width: 175px;"></div>
                     <h3>Educator Perspective</h3>
                     <p>As a parent in the education system, I understand the real challenges teachers face. I speak their language and earn their trust through authentic empathy.</p>
                 </div>
 
                 <div class="why-card">
-                    <div class="icon">📈</div>
+                    <div class="icon"><img src="/index_icons/dashboard.png" alt="Human Connection Icon" style="width: 175px;"></div>
                     <h3>Proven Results</h3>
                     <p>$1M+ in sourced revenue, 17% above target, and a track record of turning skeptical prospects into delighted customers through strategic relationship building.</p>
                 </div>
@@ -720,7 +741,7 @@
             <div class="research-preview">
                 <h3>Want to see my process in action?</h3>
                 <p>I created a comprehensive district implementation strategy for my local school district (where my son attends). It demonstrates exactly how I approach understanding prospects, their challenges, and their opportunities.</p>
-                <a href="https://www.morganawesome.com" class="btn" target="_blank" rel="noopener noreferrer">Explore My District Analysis</a>
+                <a href="https://www.morganawesome.com/districtanalysis" class="btn" target="_blank" rel="noopener noreferrer">Explore My District Analysis</a>
             </div>
         </div>
     </section>
