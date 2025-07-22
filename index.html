@@ -371,14 +371,28 @@
 
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
             margin-top: 50px;
+        }
+        
+        @media (max-width: 1024px) {
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
 
         .result-card {
             background: white;
-            padding: 40px 30px;
+            padding: 40px 35px;
             border-radius: 15px;
             text-align: center;
             border: 1px solid #e1e1e1;
@@ -580,7 +594,7 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="rolename-bar">Account Executive Candidate</div>
+        <div class="rolename-bar">Senior Account Executive</div>
         <div class="contact-bar">
             <a href="mailto:escott.morgan@gmail.com" class="contact-item">
                 <img src="/contact_icons/paper-plane-tilt.png" alt="Paper Plane" style="width: 16px; height: 16px;"><span>Email Me</span>
@@ -610,7 +624,7 @@
 
         <div class="container hero-content">
             <h1>Morgan Escott</h1>
-            <p class="subtitle">Bridging Technology & Human Connection in EdTech Sales</p>
+            <p class="subtitle">Record-Breaking Sales Leader | First SDR to $1M+ Revenue | Strategic EdTech Expert</p>
         </div>
     </section>
 
@@ -706,27 +720,27 @@
 
             <div class="results-grid">
                 <div class="result-card">
-                    <span class="result-number">$1M+</span>
-                    <div class="result-label">Sourced Revenue</div>
-                    <div class="result-detail">Consistently exceeded targets</div>
+                    <span class="result-number">First to $1M</span>
+                    <div class="result-label">Company Record-Holder</div>
+                    <div class="result-detail">First Sales Development Representative in Treering history to reach $1M+ revenue</div>
                 </div>
 
                 <div class="result-card">
-                    <span class="result-number">17%</span>
-                    <div class="result-label">Above Target</div>
-                    <div class="result-detail">Performance vs. quota</div>
+                    <span class="result-number">$3M+</span>
+                    <div class="result-label">Pipeline Discovery</div>
+                    <div class="result-detail">Strategic CRM analysis uncovered dormant accounts, created new role, generated massive pipeline expansion</div>
                 </div>
 
                 <div class="result-card">
-                    <span class="result-number">9+</span>
-                    <div class="result-label">Years EdTech</div>
-                    <div class="result-detail">Deep industry experience</div>
+                    <span class="result-number">2,933+</span>
+                    <div class="result-label">Accounts Managed</div>
+                    <div class="result-detail">Across 50 states and 565 districts while maintaining record-breaking individual performance</div>
                 </div>
 
                 <div class="result-card">
-                    <span class="result-number">10+</span>
-                    <div class="result-label">Years CRM</div>
-                    <div class="result-detail">Salesforce & pipeline expertise</div>
+                    <span class="result-number">Founding Member</span>
+                    <div class="result-label">Built From Zero</div>
+                    <div class="result-detail">One of two founding SDRs who built entire outbound sales operation with systematic processes that scaled to 20+ team</div>
                 </div>
             </div>
         </div>
@@ -735,12 +749,12 @@
     <!-- Research Section -->
     <section class="research">
         <div class="container">
-            <h2 class="section-title">How I Research Prospects</h2>
-            <p class="section-subtitle">Strategic thinking meets practical execution</p>
+            <h2 class="section-title">Strategic Thinking in Action</h2>
+            <p class="section-subtitle">sdfjalskdjfsldfkj</p>
 
             <div class="research-preview">
-                <h3>Want to see my process in action?</h3>
-                <p>I created a comprehensive district implementation strategy for my local school district (where my son attends). It demonstrates exactly how I approach understanding prospects, their challenges, and their opportunities.</p>
+                <h3>Want to see how I approach complex challenges?</h3>
+                <p>My district implementation strategy demonstrates the same systematic thinking I used to discover $3M+ in dormant pipeline at Treering and build processes that scaled a team from 2 to 20+ members.</p>
                 <a href="https://www.morganawesome.com/districtanalysis" class="btn" target="_blank" rel="noopener noreferrer">Explore My District Analysis</a>
             </div>
         </div>
@@ -750,7 +764,7 @@
     <section class="footer">
         <div class="container">
             <h2>Ready to Connect?</h2>
-            <p>Let's discuss how I can help Curipod build authentic relationships with educators and drive meaningful growth.</p>
+            <p>Let's discuss how I can help Curipod scale authentic relationships and drive strategic growth through proven sales leadership.</p>
             
             <div class="footer-links">
                 <a href="mailto:escott.morgan@gmail.com">Send Email</a>
