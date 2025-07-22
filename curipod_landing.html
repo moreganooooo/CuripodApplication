@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgan Escott | Account Executive - Curipod</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #fefefe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+            background-size: 80px 80px;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .floating-waves {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .wave-shape {
+            position: absolute;
+            opacity: 0.3;
+            fill: rgba(255, 255, 255, 0.2);
+        }
+
+        .wave-1 {
+            top: 5%;
+            left: -20%;
+            width: 600px;
+            height: 120px;
+            animation: wave-float-1 15s ease-in-out infinite;
+        }
+
+        .wave-2 {
+            top: 35%;
+            right: -30%;
+            width: 500px;
+            height: 100px;
+            animation: wave-float-2 18s ease-in-out infinite reverse;
+        }
+
+        .wave-3 {
+            top: 15%;
+            left: -10%;
+            width: 700px;
+            height: 140px;
+            animation: wave-float-3 12s ease-in-out infinite;
+        }
+
+        .wave-4 {
+            bottom: 5%;
+            right: -25%;
+            width: 450px;
+            height: 90px;
+            animation: wave-float-4 20s ease-in-out infinite reverse;
+        }
+
+        @keyframes wave-float-1 {
+            0% { transform: translateX(0px) translateY(0px); }
+            50% { transform: translateX(120px) translateY(-30px); }
+            100% { transform: translateX(0px) translateY(0px); }
+        }
+
+        @keyframes wave-float-2 {
+            0% { transform: translateX(0px) translateY(0px); }
+            50% { transform: translateX(-100px) translateY(25px); }
+            100% { transform: translateX(0px) translateY(0px); }
+        }
+
+        @keyframes wave-float-3 {
+            0% { transform: translateX(0px) translateY(0px); }
+            50% { transform: translateX(150px) translateY(-20px); }
+            100% { transform: translateX(0px) translateY(0px); }
+        }
+
+        @keyframes wave-float-4 {
+            0% { transform: translateX(0px) translateY(0px); }
+            50% { transform: translateX(-130px) translateY(-35px); }
+            100% { transform: translateX(0px) translateY(0px); }
+        }
+
+        .hero h1 {
+            font-size: 3.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.4em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .hero .role {
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Alignment Section */
+        .alignment {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .alignment-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .requirement {
+            text-align: right;
+            padding-right: 20px;
+        }
+
+        .requirement h4 {
+            color: #ff6b35;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .requirement p {
+            color: #7f8c8d;
+            font-size: 0.95em;
+        }
+
+        .connector {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .connector::after {
+            content: '→';
+            position: absolute;
+            right: -15px;
+            top: -12px;
+            color: #ff6b35;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .experience {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .experience h4 {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .experience p {
+            color: #7f8c8d;
+            font-size: 0.95em;
+        }
+
+        /* Why Perfect Section */
+        .why-perfect {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .why-card .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .why-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .why-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* Results Section */
+        .results {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .result-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .result-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ff6b35;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .result-label {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .result-detail {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        /* Research Section */
+        .research {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .research-preview {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .research-preview h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .research-preview p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #ff6b35;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            color: #e55a2b;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            border-color: #ff6b35;
+            background: #ff6b35;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+
+            .alignment-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .requirement {
+                text-align: center;
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .connector {
+                margin: 20px auto;
+            }
+
+            .connector::after {
+                content: '↓';
+                right: 50%;
+                transform: translateX(50%);
+                top: 10px;
+            }
+
+            .experience {
+                text-align: center;
+                padding-left: 0;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-waves">
+            <svg class="wave-shape wave-1" viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 60C60 20 140 100 200 60C260 20 340 100 400 60C460 20 540 100 600 60V120H0V60Z" fill="rgba(255, 255, 255, 0.25)"/>
+            </svg>
+            <svg class="wave-shape wave-2" viewBox="0 0 500 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 50C50 10 110 90 160 50C210 10 270 90 320 50C370 10 430 90 480 50C490 45 495 55 500 50V100H0V50Z" fill="rgba(255, 255, 255, 0.2)"/>
+            </svg>
+            <svg class="wave-shape wave-3" viewBox="0 0 700 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 70C70 30 140 110 210 70C280 30 350 110 420 70C490 30 560 110 630 70C665 50 682 90 700 70V140H0V70Z" fill="rgba(255, 255, 255, 0.15)"/>
+            </svg>
+            <svg class="wave-shape wave-4" viewBox="0 0 450 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 45C45 15 90 75 135 45C180 15 225 75 270 45C315 15 360 75 405 45C427 35 438 55 450 45V90H0V45Z" fill="rgba(255, 255, 255, 0.3)"/>
+            </svg>
+        </div>
+        <div class="container hero-content">
+            <div class="role">Account Executive Candidate</div>
+            <h1>Morgan Escott</h1>
+            <p class="subtitle">Bridging Technology & Human Connection in EdTech Sales</p>
+            
+            <div class="contact-bar">
+                <a href="mailto:escott.morgan@gmail.com" class="contact-item">
+                    <span>📧</span> escott.morgan@gmail.com
+                </a>
+                <a href="tel:716-352-9050" class="contact-item">
+                    <span>📱</span> 716-352-9050
+                </a>
+                <a href="https://linkedin.com/in/morganescott" class="contact-item" target="_blank">
+                    <span>💼</span> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfect Alignment Section -->
+    <section class="alignment">
+        <div class="container">
+            <h2 class="section-title">The Perfect Match</h2>
+            <p class="section-subtitle">Your job requirements → My experience. It's almost too perfect to believe.</p>
+
+            <div class="alignment-grid">
+                <div class="requirement">
+                    <h4>EdTech Sales Experience</h4>
+                    <p>Proven track record in educational technology sales</p>
+                </div>
+                <div class="connector"></div>
+                <div class="experience">
+                    <h4>9 Years EdTech Sales Excellence</h4>
+                    <p>$1M+ sourced revenue, 17% above target, built trust in exploitative industry</p>
+                </div>
+            </div>
+
+            <div class="alignment-grid">
+                <div class="requirement">
+                    <h4>CRM & Sales Tools Mastery</h4>
+                    <p>Maintain accurate pipeline and customer data</p>
+                </div>
+                <div class="connector"></div>
+                <div class="experience">
+                    <h4>Salesforce Expert & Outreach.io Trainer</h4>
+                    <p>10+ years CRM experience, trained teams on best practices</p>
+                </div>
+            </div>
+
+            <div class="alignment-grid">
+                <div class="requirement">
+                    <h4>Educator Empathy & Trust</h4>
+                    <p>Understand teacher challenges and build authentic relationships</p>
+                </div>
+                <div class="connector"></div>
+                <div class="experience">
+                    <h4>Educator Parent + Industry Expert</h4>
+                    <p>Parent in WCSD, rebuilt trust after exploitative companies, teacher-focused approach</p>
+                </div>
+            </div>
+
+            <div class="alignment-grid">
+                <div class="requirement">
+                    <h4>Travel & Territory Management</h4>
+                    <p>Willingness to travel up to 25% for client meetings</p>
+                </div>
+                <div class="connector"></div>
+                <div class="experience">
+                    <h4>Road Warrior Ready</h4>
+                    <p>Love building face-to-face relationships, experienced in territory management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Perfect Section -->
+    <section class="why-perfect">
+        <div class="container">
+            <h2 class="section-title">Why I'm Perfect for Curipod</h2>
+            <p class="section-subtitle">Your mission resonates with everything I believe about EdTech</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="icon">🤝</div>
+                    <h3>Human-First Philosophy</h3>
+                    <p>Like Curipod, I believe technology should amplify human connection, not replace it. My approach builds genuine relationships with educators who've been burned before.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="icon">🎯</div>
+                    <h3>Educator Perspective</h3>
+                    <p>As a parent in the education system, I understand the real challenges teachers face. I speak their language and earn their trust through authentic empathy.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="icon">📈</div>
+                    <h3>Proven Results</h3>
+                    <p>$1M+ in sourced revenue, 17% above target, and a track record of turning skeptical prospects into delighted customers through strategic relationship building.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <h2 class="section-title">Results That Matter</h2>
+            <p class="section-subtitle">Numbers that demonstrate my impact in EdTech sales</p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <span class="result-number">$1M+</span>
+                    <div class="result-label">Sourced Revenue</div>
+                    <div class="result-detail">Consistently exceeded targets</div>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">17%</span>
+                    <div class="result-label">Above Target</div>
+                    <div class="result-detail">Performance vs. quota</div>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">9+</span>
+                    <div class="result-label">Years EdTech</div>
+                    <div class="result-detail">Deep industry experience</div>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">10+</span>
+                    <div class="result-label">Years CRM</div>
+                    <div class="result-detail">Salesforce & pipeline expertise</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research">
+        <div class="container">
+            <h2 class="section-title">How I Research Prospects</h2>
+            <p class="section-subtitle">Strategic thinking meets practical execution</p>
+
+            <div class="research-preview">
+                <h3>Want to see my process in action?</h3>
+                <p>I created a comprehensive district implementation strategy for my local school district (where my son attends). It demonstrates exactly how I approach understanding prospects, their challenges, and their opportunities.</p>
+                <a href="https://www.morganawesome.com" class="btn" target="_blank">Explore My District Analysis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer/CTA -->
+    <section class="footer">
+        <div class="container">
+            <h2>Ready to Connect?</h2>
+            <p>Let's discuss how I can help Curipod build authentic relationships with educators and drive meaningful growth.</p>
+            
+            <div class="footer-links">
+                <a href="mailto:escott.morgan@gmail.com">Send Email</a>
+                <a href="#" onclick="alert('Resume download would be implemented here')">Download Resume</a>
+                <a href="https://linkedin.com/in/morganescott" target="_blank">View LinkedIn</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
