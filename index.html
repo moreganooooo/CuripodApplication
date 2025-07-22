@@ -385,6 +385,92 @@
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .insight-boxes { grid-template-columns: 1fr; }
         }
+        @keyframes fadeScaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .nav-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--wcsd-white);
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10001;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 10px 20px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10000;
+            opacity: 0;
+            transform: translateX(-100%); /* <-- Start off-screen to the left */
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother timing */
+        }
+
+        .nav-menu.show {
+            display: flex !important;
+            opacity: 1;
+            transform: translateX(0); /* <-- Slide to its final position */
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #A94442;
+            font-weight: 600;
+            padding: 8px 16px; /* Give them more clickable space */
+            border-radius: 8px; /* Soften the corners */
+            transition: all 0.2s ease-in-out; /* Transition everything smoothly */
+        }
+
+        .nav-menu a:hover {
+            color: var(--wcsd-navy);
+            background-color: transparent;
+            transform: translateX(2px); /* Nudge the item to the right on hover */
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-menu a::after,
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #A94442, var(--wcsd-navy));
+            bottom: -3px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease-out;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a:hover::before {
+            transform: scaleX(1);
+        }
+        /* Selects the main page content ONLY when the menu is open */
+        body.menu-open .header,
+        body.menu-open .main-content,
+        body.menu-open .stats-section,
+        body.menu-open .cta-section,
+        body.menu-open .footer {
+            filter: grayscale(1); opacity: 0.5; /* Blurs and darkens the background */
+            transition: all 0.2s ease;
+        }
     </style>
 </head>
 <body>
@@ -444,7 +530,7 @@
             </div>
             
             <div class="materials-grid">
-                <a href="infographic.html" class="material-card-link">
+                <a href="subpages/infographic.html" class="material-card-link">
                     <div class="card-preview infographic">
                         <div class="preview-icon"><img src="/index_icons/StakeholderValueInfographic.png" alt="Infographic Icon"></div>
                     </div>
@@ -458,7 +544,7 @@
                     </div>
                 </a>
                 
-                <a href="executivebrief.html" class="material-card-link">
+                <a href="subpages/executivebrief.html" class="material-card-link">
                     <div class="card-preview brief">
                         <div class="preview-icon"><img src="/index_icons/localization.png" alt="Executive Implementation Brief Icon"></div>
                     </div>
@@ -472,7 +558,7 @@
                     </div>
                 </a>
                 
-                <a href="implementation.html" class="material-card-link">
+                <a href="subpages/implementation.html" class="material-card-link">
                     <div class="card-preview poster">
                         <div class="preview-icon"><img src="/index_icons/gantt-chart.png" alt="Gantt Chart Icon"></div>
                     </div>
@@ -486,7 +572,7 @@
                     </div>
                 </a>
 
-                <a href="conferenceposter.html" class="material-card-link">
+                <a href="#" class="material-card-link">
                     <div class="card-preview">
                         <div class="preview-icon"><img src="/index_icons/opponent.png" alt="Conference Presentation Poster Icon"></div>
                     </div>
@@ -500,7 +586,7 @@
                     </div>
                 </a>
 
-                <a href="presentation.html" class="material-card-link">
+                <a href="subpages/presentation.html" class="material-card-link">
                     <div class="card-preview">
                         <div class="preview-icon"><img src="/index_icons/database-management.png" alt="Curipod Presentation Icon"></div>
                     </div>
@@ -514,7 +600,7 @@
                     </div>
                 </a>
 
-                <a href="teacher_interest_form.html" class="material-card-link">
+                <a href="subpages/teacher_interest_form.html" class="material-card-link">
                     <div class="card-preview metrics">
                         <div class="preview-icon"><img src="/index_icons/sign.png" alt="Teacher Interest Form Icon"></div>
                     </div>
@@ -591,6 +677,73 @@
             </div>
         </div>
     </div>
+
+    <!-- 📄 index.html MODAL INJECTION -->
+    <!-- ✨ 1. Insert this just before </body> -->
+    <button class="nav-toggle" id="navToggle">☰</button>
+    <div class="nav-menu" id="navMenu">
+    <a href="#" onclick="toggleMenu()">Home</a>
+    <a href="subpages/infographic.html" onclick="toggleMenu()">Customer Discovery</a>
+    <a href="subpages/executivebrief.html" onclick="toggleMenu()">Local Market Intelligence</a>
+    <a href="subpages/implementation.html" onclick="toggleMenu()">Implementation = Sales Success</a>
+    <a href="#" onclick="toggleMenu()">Competitive Intelligence</a>
+    <a href="subpages/presentation.html" onclick="toggleMenu()">Sales Tools in Action</a>
+    <a href="subpages/teacher_interest_form.html" onclick="toggleMenu()">Champion Identification</a>
+    <a href="#" onclick="toggleMenu()">About Morgan: Strategic Account Executive & EdTech Specialist</a>
+    </div>
+
+    <div id="welcomeModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,230,208,0.95); z-index:9999; justify-content:center; align-items:center; font-family: 'Open Sans', sans-serif; padding: 20px;">
+    <div id="modalBox" style="background:#FFF9F3; padding:40px 20px; border-radius:20px; width:100%; max-width:640px; text-align:center; position:relative; box-shadow:0 8px 40px rgba(0,0,0,0.15); opacity:0; transform:scale(0.95);">
+        <button onclick="closeModal()" style="position:absolute; top:15px; right:20px; background:none; border:none; font-size:2rem; cursor:pointer; color:#F57C00;">&times;</button>
+        <img src="/index_icons/starburst.png" alt="Welcome Illustration" style="width:80px; margin-bottom:20px; max-width:100%; height:auto;">
+        <h2 style="margin-bottom:20px; font-size:1.75rem; font-weight:800; color:#FF7300">Hi there! 🌟</h2>
+        <p style="color:#444; font-size:1rem; line-height:1.5; max-width:90%; margin:0 auto;">
+        Welcome to my Curipod Market Research Application! You're about to explore insights, strategy, and creativity tailored for EdTech impact.
+        </p>
+        <div style="margin-top:25px;">
+        <button onclick="closeModal()" style="background:#FF7300; color:white; border:none; padding:12px 24px; font-size:1rem; border-radius:10px; font-weight:700; cursor:pointer; box-shadow:0 3px 10px rgba(0,0,0,0.1); width:90%; max-width:300px;">Let’s Go!</button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+    function closeModal() {
+        document.getElementById('welcomeModal').style.display = 'none';
+        localStorage.setItem('visited', 'true');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const hasVisited = localStorage.getItem('visited');
+        if (!hasVisited) {
+        const modal = document.getElementById('welcomeModal');
+        const box = document.getElementById('modalBox');
+        modal.style.display = 'flex';
+        requestAnimationFrame(() => {
+            box.style.animation = 'fadeScaleIn 0.4s ease-out forwards';
+        });
+        }
+    });
+
+    function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        const toggle = document.getElementById('navToggle');
+        const isVisible = menu.classList.contains('show');
+        
+        // Add this line to toggle a class on the whole page
+        document.body.classList.toggle('menu-open'); 
+
+        if (isVisible) {
+            menu.classList.remove('show');
+            toggle.textContent = '☰';
+        } else {
+            menu.classList.add('show');
+            toggle.textContent = '✕';
+        }
+    }
+
+    // ✨ ADD THIS LINE RIGHT HERE!
+    document.getElementById('navToggle').addEventListener('click', toggleMenu);
+    </script>
 
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
