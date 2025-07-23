@@ -13,6 +13,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Lexend', sans-serif;
             line-height: 1.6;
@@ -478,30 +482,31 @@
         .results {
             padding: 80px 0;
             background: #f8f9fa;
+            overflow: hidden;
         }
 
         .results-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
             margin-top: 50px;
-        }
-        
-        @media (max-width: 1024px) {
-            .results-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .results-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
+            padding: 0 20px; /* Add padding to the grid itself */
+            padding-bottom: 20px; /* Space for scrollbar */
+            align-items: center;
         }
 
+        .results-grid::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for a cleaner look */
+        }
+        
         .result-card {
+            flex-shrink: 0; /* Prevent cards from shrinking */
+            width: calc(100% - 20px); /* Full width of parent minus its own margins */
+            scroll-snap-align: center; /* Snap to center */
+            margin-left: 10px; /* Space on left of card */
+            margin-right: 10px; /* Space on right of card */
+
             background: white;
             padding: 40px 35px;
             border-radius: 15px;
@@ -609,6 +614,188 @@
             line-height: 1.7;
         }
 
+        /* Testimonial Section */
+        .testimonials-section {
+            padding: 80px 0;
+            background: linear-gradient(45deg, #f8f9fa 0%, #ffffff 50%, #fff8f5 100%);
+            position: relative;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ff6b35' fill-opacity='0.03'%3E%3Cpath d='M25 25c0-6.9-5.6-12.5-12.5-12.5S0 18.1 0 25s5.6 12.5 12.5 12.5S25 31.9 25 25zm12.5 0c0-6.9-5.6-12.5-12.5-12.5S12.5 18.1 12.5 25s5.6 12.5 12.5 12.5S37.5 31.9 37.5 25z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .testimonials-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-section .section-title {
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* === START: REPLACE YOUR OLD SWIPER CSS WITH THIS === */
+
+        .testimonial-swiper {
+            width: 100%;
+            max-width: 850px; /* Give the slider a max-width to live in */
+            margin: 40px auto 0; /* Add space above and center the whole slider */
+            padding: 0 80px; /* Add space on the sides for the navigation arrows */
+            position: relative; /* Needed for positioning the arrows */
+            overflow: hidden;
+        }
+
+        .testimonial-swiper .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            max-width: 700px; 
+            margin: 0 auto;
+            height: auto;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-card .quote-dark {
+            font-size: 1.15em;
+            font-weight: 200;
+            line-height: 1.7;
+            color: #ffffff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-card .quote-light {
+            font-size: 1.15em;
+            font-weight: 200;
+            line-height: 1.7;
+            color: #536270;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-card .quote::before {
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            font-family: serif;
+        }
+
+        .testimonial-card .attribution-dark {
+            font-weight: 600;
+            color: white;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .testimonial-card .attribution-light {
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            margin-bottom: 20px;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .testimonial-card .note-dark {
+            font-weight: normal;
+            font-size: 0.9em;
+            color: #dddddd;
+            margin-top: 5px;
+        }
+
+        .testimonial-card .note-light {
+            font-weight: normal;
+            font-size: 0.9em;
+            color: #dddddd;
+            margin-top: 5px;
+        }
+
+        .spotlight {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(234, 52, 176, 0.1) 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .spotlight::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .testimonial-swiper .swiper-button-next,
+        .testimonial-swiper .swiper-button-prev {
+            color: #ff6b35 !important;
+            background: rgba(255,255,255,0.95) !important;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            margin-top: -25px; /* Keeps arrows vertically centered */
+            position: absolute; /* Explicitly define position */
+            top: 50%; /* Position relative to the swiper container */
+        }
+
+        .testimonial-swiper .swiper-button-next {
+            right: 15px; /* Position inside the container's padding */
+        }
+
+        .testimonial-swiper .swiper-button-prev {
+            left: 15px; /* Position inside the container's padding */
+        }
+
+        .testimonial-swiper .swiper-button-next:hover,
+        .testimonial-swiper .swiper-button-prev:hover {
+            background: #ff6b35 !important;
+            color: white !important;
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .testimonial-swiper .swiper-button-next::after,
+        .testimonial-swiper .swiper-button-prev::after {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
         /* Research Section */
         .research {
             padding: 80px 0;
@@ -641,6 +828,70 @@
 
         .research .section-subtitle {
             color: rgba(255,255,255,0.9);
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 15px 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu:hover {
+            background: rgba(255,255,255,1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .nav-item {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 12px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background: #ff6b35;
+            transform: scale(1.3);
+        }
+
+        .nav-item.active {
+            background: #EA34B0;
+            transform: scale(1.2);
+        }
+
+        .nav-item::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            opacity: 1;
+            right: 20px;
         }
 
         .research-preview {
@@ -891,6 +1142,9 @@
             .section-subtitle {
                 font-size: 1.1em;
             }
+            .nav-menu {
+                display: none; /* Hide on mobile for cleaner experience */
+            }
 
             .requirement {
                 text-align: center;
@@ -922,12 +1176,61 @@
             .section-title {
                 font-size: 2em;
             }
+
+            .testimonial-swiper {
+                padding: 0 20px; /* Adjust padding for mobile */
+            }
+
+            .testimonial-card {
+                padding: 30px 25px;
+                min-height: 250px;
+            }
+
+            .testimonial-card .quote {
+                font-size: 1.05em;
+            }
+
+            .testimonial-card .quote::before {
+                font-size: 3em;
+                top: -10px;
+                left: -8px;
+            }
+
+            .testimonial-swiper .swiper-button-next,
+            .testimonial-swiper .swiper-button-prev {
+                width: 40px;
+                height: 40px;
+                margin-top: -20px;
+            }
+
+            .testimonial-swiper .swiper-button-next {
+                right: 5px;
+            }
+
+            .testimonial-swiper .swiper-button-prev {
+                left: 5px;
+            }
         }
     </style>
+    <!-- SwiperJS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
 <body>
+    <!-- Floating Navigation -->
+    <nav class="nav-menu">
+        <a href="#hero" class="nav-item active" data-label="Home"></a>
+        <a href="#perfect-match" class="nav-item" data-label="Perfect Match"></a>
+        <a href="#why-perfect" class="nav-item" data-label="Why I'm Perfect"></a>
+        <a href="#results" class="nav-item" data-label="Results"></a>
+        <a href="#stories" class="nav-item" data-label="Stories"></a>
+        <a href="#testimonials" class="nav-item" data-label="Testimonials"></a>
+        <a href="#future" class="nav-item" data-label="My Future"></a>
+        <a href="#strategic-thinking" class="nav-item" data-label="Strategic Thinking"></a>
+        <a href="#contact" class="nav-item" data-label="Contact"></a>
+    </nav>
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="hero" class="hero">
         <div class="rolename-bar">Senior Account Executive</div>
         <div class="contact-bar">
             <a href="mailto:escott.morgan@gmail.com" class="contact-item">
@@ -970,7 +1273,7 @@
     </section>
 
     <!-- Perfect Alignment Section -->
-    <section class="alignment">
+    <section id="perfect-match" class="alignment">
         <div class="container">
             <h2 class="section-title">The Perfect Match</h2>
             <p class="section-subtitle">Your job requirements → My experience.</p>
@@ -1074,7 +1377,7 @@
     </section>
 
     <!-- Why Perfect Section -->
-    <section class="why-perfect">
+    <section id="why-perfect" class="why-perfect">
         <div class="why-card">
             <h3>Why I'm Perfect for Curipod</h3>
             <div class="why-content-grid">
@@ -1096,7 +1399,7 @@
     </section>
 
     <!-- Results Section -->
-    <section class="results">
+    <section id="results" class="results">
         <div class="container" style="width:950px;">
             <h2 class="section-title">Measurable Impact</h2>
                 <div><img src="index_icons/asterisk.png" alt="Asterisk" style="width: 16px; height: 16px; opacity:0.4; margin-right: 5px;"><span class="result-detail">First SDR </span><span class="result-number"> to surpass $1M+ in sourced revenue</span></div>
@@ -1110,7 +1413,7 @@
     </section>
 
         <!-- Stories from the Field Section -->
-<section class="stories-section">
+<section id="stories" class="stories-section">
   <div class="container">
     <h2 class="section-title">Stories from the Field</h2>
     <p class="section-subtitle">Real moments that shaped how I sell, lead, and serve</p>
@@ -1164,26 +1467,70 @@
   </div>
 </section>
 
-<section class="future-section">
+<section id="testimonials" class="testimonials-section">
   <div class="container">
-    <h2 class="section-title">Why Curipod Is My Future</h2>
-    <p class="section-subtitle">Vision, values, and the next chapter</p>
-
-    <div class="future-grid">
-        <div class="future-image-placeholder">
-            Image Placeholder
-        </div>
-        <div class="future-text-content">
-            <p>I see Curipod not just as a tool, but as a movement — one that reimagines what authentic classroom engagement can look like.</p>
-            <p>I’ve spent years navigating complex sales cycles, earning educator trust, and coaching teams to success. What excites me most about Curipod is how deeply it aligns with everything I believe: curiosity as a catalyst, pedagogy backed by empathy, and technology as an enabler — not a barrier — to learning.</p>
-            <p>I’m eager to help Curipod deepen district partnerships, build community advocacy, and scale adoption in ways that stay personal. Let’s make curiosity contagious.</p>
-        </div>
-    </div>
+    <h2 class="section-title">What Others Say</h2>
+    <p class="section-subtitle">A few words from those who've seen me in action</p>
   </div>
+
+  <div class="swiper testimonial-swiper">
+  <div class="swiper-wrapper">
+
+    <div class="swiper-slide">
+      <div class="testimonial-card spotlight">
+        <p class="quote-dark">“I truly appreciated Morgan’s thorough and thoughtful approach to sales development. She was on point with our brand focus of always trying to help new prospects first, and had tremendous results in driving engagement with target customers. I’d readily recommend Morgan for any company looking to dramatically grow their engagement through outbound efforts.”</p>
+        <p class="attribution-dark">Ray Mina, Former Head of Sales @ Treering Yearbooks<br><span class="note-dark">Current Role: Head of Marketing @ Freshpaint</span></p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testimonial-card">
+        <p class="quote-light">“Morgan brought a high degree of professionalism and creativity to every project. Her detail-oriented approach ensured we were always putting our best foot forward.”</p>
+        <p class="attribution-light">Justin Lee, Former Creative Team Lead @ Element 8<br><span class="note-light">Current Role: @ jkh</span></p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testimonial-card spotlight">
+        <p class="quote-dark">“Morgan’s work producing and coaching through marketing messaging or discovery processes usually exceeds client expectations. My companies have benefitted enormously.”</p>
+        <p class="attribution-dark">Ed Roche, Founding Partner @ Strategy, LLC</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testimonial-card">
+        <p class="quote-light">“She worked under pressure and with tight deadlines and still delivered quickly, accurately, and with creativity. I would highly recommend Morgan Escott.”</p>
+        <p class="attribution-light">Robin Rowland, VP Donor Relations @ Humane Society of Greater Kansas City<br><span class="note-light">Current Role: @ Wayside Waifs</span></p>
+      </div>
+    </div>
+
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    </div>
 </section>
 
+      <!--Why Curipod is My Future Section -->
+    <section id="future" class="future-section">
+    <div class="container">
+        <h2 class="section-title">Why Curipod Is My Future</h2>
+        <p class="section-subtitle">Vision, values, and the next chapter</p>
+
+        <div class="future-grid">
+            <div class="future-image-placeholder">
+                Image Placeholder
+            </div>
+            <div class="future-text-content">
+                <p>I see Curipod not just as a tool, but as a movement — one that reimagines what authentic classroom engagement can look like.</p>
+                <p>I’ve spent years navigating complex sales cycles, earning educator trust, and coaching teams to success. What excites me most about Curipod is how deeply it aligns with everything I believe: curiosity as a catalyst, pedagogy backed by empathy, and technology as an enabler — not a barrier — to learning.</p>
+                <p>I’m eager to help Curipod deepen district partnerships, build community advocacy, and scale adoption in ways that stay personal. Let’s make curiosity contagious.</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
     <!-- Research Section -->
-    <section class="research">
+    <section id="strategic-thinking" class="research">
         <div class="container">
             <h2 class="section-title">Strategic Thinking in Action</h2>
             <p class="section-subtitle">Strategic analysis → Process innovation → Scalable growth</p>
@@ -1197,7 +1544,7 @@
     </section>
 
     <!-- Footer/CTA -->
-    <section class="footer">
+    <section id="contact" class="footer">
         <div class="container">
             <h2>Ready to Connect?</h2>
             <p>Let's discuss how I can help Curipod scale authentic relationships and drive strategic growth through proven sales leadership.</p>
@@ -1209,5 +1556,21 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Initialize Swiper
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.testimonial-swiper', {
+                loop: true,
+                navigation: {
+                    nextEl: '.testimonial-swiper .swiper-button-next',
+                    prevEl: '.testimonial-swiper .swiper-button-prev',
+                },
+                slidesPerView: 1,
+                spaceBetween: 30,
+                centeredSlides: true,
+            });
+        });
+    </script>
 </body>
 </html>
