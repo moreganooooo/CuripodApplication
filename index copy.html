@@ -244,7 +244,7 @@
             margin-right: auto;
         }
 
-        .section-title-why {
+        .section-title-ondark {
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 20px;
@@ -252,11 +252,11 @@
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
         }
 
-        .section-subtitle-why {
+        .section-subtitle-ondark {
             text-align: center;
             font-size: 1.2em;
             color: #2c3e50;
-            margin-bottom: 20px;
+            margin-bottom: 60px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -342,16 +342,20 @@
 
         /* Why Perfect Section */
         .why-perfect {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 80px 0;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
         }
 
         .why-card {
-            width: 80%;
-            padding: 40px;
+            text-align: center;
+            padding: 40px 30px;
             border-radius: 15px;
             background: #f8f9fa;
             border: 1px solid #cacaca;
@@ -363,46 +367,20 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .why-card > h3 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: #2c3e50;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .why-card .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
         }
 
-        .why-content-grid {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .why-column {
-            text-align: left;
-        }
-
-        .why-column h4 {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #ff6b35;
+        .why-card h3 {
+            color: f8f9fa;
             margin-bottom: 15px;
+            font-size: 1.3em;
         }
 
-        .why-column p {
+        .why-card p {
             color: #7f8c8d;
-            line-height: 1.7;
-            margin-bottom: 1em;
-        }
-
-        .why-column p:last-child {
-            margin-bottom: 0;
-        }
-
-        .vertical-divider {
-            width: 1px;
-            background-color: #e0e0e0;
-            align-self: stretch;
+            line-height: 1.6;
         }
 
         /* Results Section */
@@ -448,27 +426,26 @@
         }
 
         .result-number {
-            font-size: 1.3em;
+            font-size: 3em;
             font-weight: bold;
             background: linear-gradient(135deg, #ff6b35, #EA34B0);
             -webkit-background-clip: text; /* Clip the background to the text shape */
             background-clip: text; /* Standard property for clipping */
             -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
             color: transparent; /* Make the text transparent in other browsers */
-            display: inline-block;
+            display: block;
             margin-bottom: 10px;
         }
 
         .result-label {
-            font-size: 1.3em;
             color: #2c3e50;
-            display: inline-block;
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
         .result-detail {
-            font-size: 1.3em;
             color: #7f8c8d;
+            font-size: 0.9em;
         }
 
         /* Research Section */
@@ -784,50 +761,78 @@
 
     <!-- Why Perfect Section -->
     <section class="why-perfect">
-        <div class="why-card">
-            <h3>Why I'm Perfect for Curipod</h3>
-            <div class="why-content-grid">
-                <div class="why-column">
-                    <h4>My Philosophy</h4>
-                    <p>Curipod’s mission mirrors what I’ve spent nine years building toward: tech that connects, not distracts.</p>
-                    <p>At Treering, I didn’t just exceed quotas. I rebuilt trust in a space where educators had been burned. I’ve coached teams, created scalable systems, and helped thousands of schools transform how they serve students.</p>
-                    <p>Like Curipod, I believe engagement starts with empathy. That’s why my approach isn’t just strategic — it’s human.</p>
+        <div class="container">
+            <h2 class="section-title-ondark">Why I'm Perfect for Curipod</h2>
+            <p class="section-subtitle-ondark">Your mission resonates with everything I believe about EdTech</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/networking.png" alt="Human Connection Icon" style="width: 225px; padding-top: 35px; padding-bottom: 15px"></div>
+                    <h3>Human-First Philosophy</h3>
+                    <p>Like Curipod, I also believe technology should amplify human connection, not replace it. My approach builds trust by showing educators patience and respect, creating genuine, long-lasting relationships even at a distance.</p>
                 </div>
-                <div class="vertical-divider"></div>
-                <div class="why-column">
-                    <h4>Scaling from Zero</h4>
-                    <p>I joined Treering as one of the first outbound SDRs, tasked with scaling a system from scratch. With only a Gmail account and a spreadsheet, I created the foundation that now powers a 20+ person team.</p>
-                    <p>I coached SDRs, built dashboards and reporting infrastructure, created a help-site for new hires, and discovered $3M in dormant pipeline that fundamentally reshaped our growth path.</p>
-                    <p>Beyond operations, I focused on trust. I developed messaging that honored educators’ time, piloted a PTA council initiative that led to statewide promotions, and became the first SDR to break $1M in sourced revenue.</p>
+
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/linked.png" alt="Humans Linked Icon" style="width: 175px;"></div>
+                    <h3>Educator Perspective</h3>
+                    <p>As someone who spent 9+ years chatting with teachers, PTA presidents, and principals, I understand the real challenges educators face. I speak their language and earn their trust through authentic empathy.</p>
                 </div>
+
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/gold-medal.png" alt="Gold Medal Icon" style="width: 175px;"></div>
+                    <h3>Proven Results</h3>
+                    <p>$1M+ in sourced revenue, 17% above target in my first year, a closed/won rate of over 65%, and a track record of turning skeptical prospects into delighted customers through strategic relationship building.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/high-performance.png" alt="Team on Rocketship Icon" style="width: 225px;"></div>
+                    <h3>Proven Sales Leadership</h3>
+                    <p>Led teams to record-breaking performance while managing the largest account portfolio in company history. Built systematic processes that scaled from 2 to more than 20 team members.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/discovery.png" alt="Discovery Icon" style="width: 175px;"></div>
+                    <h3>Strategic Operations</h3>
+                    <p>Discovered $3M+ in untapped pipeline through strategic CRM analysis. Created new roles and processes that fundamentally influenced company operations.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="icon"><img src="/index_icons/flowchart.png" alt="Flowchart Icon" style="width: 175px;"></div>
+                    <h3>Innovation in EdTech Sales</h3>
+                    <p>Pioneered district-level approach that overwhelmed leadership with requests. Presented to PTA councils, facilitating statewide partnerships and social proof strategies.</p>
             </div>
         </div>
     </section>
 
     <!-- Results Section -->
     <section class="results">
-        <div class="container" style="width:950px;">
-            <h2 class="section-title">Measurable Impact</h2>
-                <div><img src="index_icons/asterisk.png" alt="Asterisk" style="width: 16px; height: 16px; opacity:0.4; margin-right: 5px;"><span class="result-detail">First SDR </span><span class="result-number"> to surpass $1M+ in sourced revenue</span></div>
-                <div><img src="index_icons/asterisk.png" alt="Asterisk" style="width: 16px; height: 16px; opacity:0.4; margin-right: 5px;"><span class="result-detail">Exceeded first-year quota by </span><span class="result-number"> 17% </span></div>
-                <div><img src="index_icons/asterisk.png" alt="Asterisk" style="width: 16px; height: 16px; opacity:0.4; margin-right: 5px;"><span class="result-detail">Discovered </span><span class="result-number"> $3M+ in dormant CRM pipeline </span></div>
-                <div><img src="index_icons/asterisk.png" alt="Asterisk" style="width: 16px; height: 16px; opacity:0.4; margin-right: 5px;"><span class="result-detail">Managed </span><span class="result-number"> 2,933 accounts across 565 districts </span></div>
-                <div><img src="index_icons/asterisk.png" alt="Asterisk" style="width: 16px; height: 16px; opacity:0.4; margin-right: 5px;"><span class="result-detail">Coached </span><span class="result-number"> 4-6 SDRs</span><span class="result-detail"> and ran monthly enablement workshops</span></div>
-                <div><img src="index_icons/asterisk.png" alt="Asterisk" style="width: 16px; height: 16px; opacity:0.4; margin-right: 5px;"><span class="result-detail">Led cross-functional </span><span class="result-number"> Content Committee </span><span class="result-detail"> linking Sales, Marketing, Support, & Product</span></div>
-                <div><img src="index_icons/asterisk.png" alt="Asterisk" style="width: 16px; height: 16px; opacity:0.4; margin-right: 5px;"><span class="result-detail">Maintained a </span><span class="result-number"> 65%+ close/won rate </span><span class="result-detail"> on self-sources meetings</span></div>
-        </div>
-    </section>
-
-        <!-- Perfect Alignment Section -->
-    <section class="alignment">
         <div class="container">
-            <h2 class="section-title">Story from the Field</h2>
-            <p class="section-subtitle">Subtitle Here</p>
-            <div class="experience">
-                    <p>I joined Treering as one of the first outbound SDRs, tasked with scaling a system from scratch. With only a Gmail account and a spreadsheet, I created the foundation that now powers a 20+ person team.</p>
-                    <p>I coached SDRs, built dashboards and reporting infrastructure, created a help-site for new hires, and discovered $3M in dormant pipeline that fundamentally reshaped our growth path.</p>
-                    <p>Beyond operations, I focused on trust. I developed messaging that honored educators’ time, piloted a PTA council initiative that led to statewide promotions, and became the first SDR to break $1M in sourced revenue.</p>
+            <h2 class="section-title">Results That Matter</h2>
+            <p class="section-subtitle">Numbers that demonstrate my impact in EdTech sales</p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <span class="result-number">First to $1M</span>
+                    <div class="result-label">Record-Holder</div>
+                    <div class="result-detail">First Sales Development Representative in the history of Treering Yearbooks to reach $1M+ in closed/won revenue through authentic, human connection</div>
                 </div>
+
+                <div class="result-card">
+                    <span class="result-number">$3M+ Found</span>
+                    <div class="result-label">Pipeline Discovery</div>
+                    <div class="result-detail">Strategic CRM analysis uncovered dormant accounts totaling $3M+ in potential revenue, generating massive pipeline expansion</div>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">2,933+ Schools</span>
+                    <div class="result-label">Accounts Managed</div>
+                    <div class="result-detail">Managed accounts in all 50 states, 565 districts, and across several time zones while maintaining record-breaking individual performance</div>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">Founding Member</span>
+                    <div class="result-label">Built From Zero</div>
+                    <div class="result-detail">One of two founding Sales Development Representatives who built the entire outbound sales operation with systematic processes that scaled to 20+ team members</div>
                 </div>
             </div>
         </div>
