@@ -35,15 +35,33 @@
         .hero h1 {
             font-size: 3.2em;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .hero .subtitle {
+            background: white;
+            -webkit-background-clip: text; /* Clip the background to the text shape */
+            background-clip: text; /* Standard property for clipping */
+            -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
+            color: white; /* Make the text transparent in other browsers */
             font-size: 1.4em;
-            font-weight: 300;
-            margin-bottom: 40px;
-            opacity: 0.95;
+            margin-bottom: 10px;;
+            font-weight: 100;
+            padding: 8px 15px;
+            border-radius: 15px;
+            border: 1px solid #e9e9e983;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero .subtitle2 {
+            background: white;
+            -webkit-background-clip: text; /* Clip the background to the text shape */
+            background-clip: text; /* Standard property for clipping */
+            -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
+            color: transparent; /* Make the text transparent in other browsers */
+            font-size: 1.1em;
+            font-weight: 100;
         }
 
         .hero .role {
@@ -633,6 +651,7 @@
         <div class="container hero-content">
             <h1>Morgan Escott</h1>
             <p class="subtitle">Record-Breaking Sales Leader | First SDR to $1M+ Revenue | Strategic EdTech Expert</p>
+            <p class="subtitle2">Mission-driven EdTech seller blending data fluency, educator empathy, and strategic storytelling to drive adoption and unlock equity.</p>
         </div>
     </section>
 
