@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgan's Answers to Curipod's Three Questions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #fefefe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 200'%3E%3Cpath d='M0 100 Q 250 0 500 100 T 1000 100' stroke='rgba(255,255,255,0.15)' fill='none' stroke-width='2'/%3E%3Cpath d='M-150 120 Q 100 20 350 120 T 850 120' stroke='rgba(255,255,255,0.1)' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: 1000px 200px;
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        /* Questions Section */
+        .questions-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e1e1e1;
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .answer-content {
+            color: #555;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        .answer-content p {
+            margin-bottom: 20px;
+        }
+
+        .answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline;
+            font-weight: 500;
+        }
+
+        /* Positioning subsections */
+        .positioning-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .positioning-item {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(234, 52, 176, 0.05));
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .positioning-item h4 {
+            background: linear-gradient(135deg, #ff6b35, #EA34B0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .positioning-item p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .positioning-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            background: linear-gradient(135deg, #ff6b35 0%, #EA34B0 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .footer-cta p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        /* Floating Progress Dots */
+        .progress-nav {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 15px 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .progress-nav:hover {
+            background: rgba(255,255,255,1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .progress-dot {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 12px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-dot:hover {
+            background: #ff6b35;
+            transform: scale(1.3);
+        }
+
+        .progress-dot.active {
+            background: #EA34B0;
+            transform: scale(1.2);
+        }
+
+        .progress-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot:hover::after {
+            opacity: 1;
+            right: 20px;
+        }
+
+        /* Scroll Animation */
+        .question-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.6s ease;
+            border: 1px solid #e1e1e1;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .question-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* Icons for positioning items */
+        .positioning-item {
+            background: rgba(248, 249, 250, 0.8);
+            padding: 30px 90px 30px 30px;
+            border-radius: 15px;
+            border-left: 4px solid #ff6b35;
+            position: relative;
+        }
+
+        .positioning-item::before {
+            content: attr(data-icon);
+            position: absolute;
+            top: 50%;
+            right: 25px;
+            transform: translateY(-50%);
+            font-size: 3.2em;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            width: 60px;
+            text-align: center;
+        }
+
+        .positioning-item:hover::before {
+            opacity: 0.8;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .progress-nav {
+                display: none;
+            }
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .question-card {
+                padding: 30px 25px;
+            }
+            
+            .question-title {
+                font-size: 1.5em;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .positioning-item {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Progress Navigation -->
+    <nav class="progress-nav">
+        <a href="#question1" class="progress-dot active" data-label="Hardest Thing"></a>
+        <a href="#question2" class="progress-dot" data-label="Positioning"></a>
+        <a href="#question3" class="progress-dot" data-label="Why Curipod"></a>
+    </nav>
+
+    <!-- Header -->
+    <section class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Curipod Application Questions</h1>
+                <p class="subtitle">My responses to the three questions that sparked this journey</p>
+                <a href="index.html" class="back-link">← Back to Main Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questions Section -->
+    <section class="questions-section">
+        <div class="container">
+            
+            <!-- Question 1 -->
+            <div id="question1" class="question-card">
+                <div class="question-number">Question 1</div>
+                <h2 class="question-title">What is the hardest thing you've accomplished?</h2>
+                <div class="answer-content">
+                    <p>Being the first outbound sales hire at Treering to <span class="highlight">surpass $1M in sourced revenue</span> while simultaneously <span class="highlight">rebuilding trust in an industry notorious for exploiting schools</span>. Administrators were skeptical, and rightfully so. Traditional yearbook companies had locked them into expensive contracts with upfront costs, leftover inventory, and administrative nightmares. Schools were choosing between their students' memories and their budgets.</p>
+                    
+                    <p>I didn't just need to sell a product; I needed to dismantle a broken system and prove that EdTech could serve educators rather than burden them. Through patient, personalized outreach and strategic territory management, I helped countless schools cut per-book costs in half, launch yearbook programs for the first time in their history, and eliminate financial risk. The skepticism was fierce, but the transformation was profound. <span class="highlight">I exceeded my first-year target by 17%</span> and the kind, respectful messaging I developed that year became our team-wide template for years.</p>
+                    
+                    <p>The hardest part wasn't the sales metrics; it was earning trust in a space where trust had been repeatedly broken. Every conversation required proving that technology could make educators' lives easier, not harder. That experience taught me that exceptional sales in EdTech isn't about convincing. It's about listening, understanding, and delivering solutions that genuinely serve.</p>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div id="question2" class="question-card">
+                <div class="question-number">Question 2</div>
+                <h2 class="question-title">How would you position Curipod to a teacher, Technology Director, and Curriculum Director?</h2>
+                <div class="answer-content">
+                    <div class="positioning-grid">
+                        <div class="positioning-item" data-icon="👩‍🏫">
+                            <h4>To a Teacher:</h4>
+                            <p>Imagine sparking authentic curiosity across every subject, whether students are exploring complex scientific concepts, analyzing historical events, or preparing for state assessments. Curipod transforms your classroom into a space where <span class="highlight">every voice matters and every student feels heard</span>. The AI-powered feedback meets learners exactly where they are, whether they're crafting persuasive essays, solving mathematical problems, or diving into literature discussions.</p>
+                            <p>Your students will engage with content they care about while building the critical thinking skills that matter far beyond any test. You're not just covering curriculum — you're cultivating the kind of genuine learning that reminds you why teaching chose you.</p>
+                        </div>
+                        
+                        <div class="positioning-item" data-icon="💻">
+                            <h4>To a Technology Director:</h4>
+                            <p>Curipod delivers what every technology investment promises, but rarely achieves: <span class="highlight">adoption that spreads organically because of its immediate value</span>. Even educators who typically resist EdTech ask for access once they experience our platform's intuitive design and measurable impact.</p>
+                            <p>You'll enjoy seamless integration, robust security, and the kind of authentic teacher buy-in that transforms pilot programs into district-wide success stories. It's not another tool to manage; it's the solution that makes your existing investments more effective.</p>
+                        </div>
+                        
+                        <div class="positioning-item" data-icon="📋">
+                            <h4>To a Curriculum Director:</h4>
+                            <p>When schools see <span class="highlight">22% to 46% achievement gains</span> from targeted writing practice, that's systemic transformation. Curipod aligns with modern standards while addressing the real challenge: engaging every student in rigorous learning that builds critical thinking, communication, and collaboration skills.</p>
+                            <p>We implement research-backed pedagogy that closes achievement gaps while preparing students for futures that demand both academic excellence and authentic human connection. The data speaks for itself, as do the teachers who've watched struggling students turn into confident communicators.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div id="question3" class="question-card">
+                <div class="question-number">Question 3</div>
+                <h2 class="question-title">Why are you excited to join the Curipod team?</h2>
+                <div class="answer-content">
+                    <p>Your team embodies everything I've been searching for in my next role. You're <span class="highlight">real humans solving real problems with innovative technology and genuine empathy</span>. I love the way you've positioned yourselves as facilitators of human connection, and I genuinely agree that the best EdTech should enhance human interaction rather than replace it.</p>
+                    
+                    <p>I'm particularly drawn to your commitment to <span class="highlight">sparking curiosity and making questioning "something you do every day, because it is fun and energizing."</span> That philosophy resonates deeply with my approach to sales and relationship-building, as evidenced by my love of A/B testing and personalization (even at scale!), my creation of a Content Committee from the ground up, and my initiative in carving out new outreach processes.</p>
+                    
+                    <p>Having spent nearly a decade building bridges between technical solutions and the educators who need them, I'm thrilled at the opportunity to represent a platform that equally serves teachers and students. Curipod is a thoughtful response to the challenges facing modern education, and I would love to be part of that.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p>Ready to discuss how I can help Curipod spark curiosity and drive meaningful growth?</p>
+            <div class="contact-links">
+                <a href="mailto:escott.morgan@gmail.com">Send Email</a>
+                <a href="tel:716-352-9050">Give Me a Call</a>
+                <a href="https://linkedin.com/in/morganescott" target="_blank">View LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Update active dot
+                    const id = entry.target.id;
+                    document.querySelectorAll('.progress-dot').forEach(dot => {
+                        dot.classList.remove('active');
+                    });
+                    
+                    if (id === 'question1') {
+                        document.querySelector('[href="#question1"]').classList.add('active');
+                    } else if (id === 'question2') {
+                        document.querySelector('[href="#question2"]').classList.add('active');  
+                    } else if (id === 'question3') {
+                        document.querySelector('[href="#question3"]').classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all question cards
+        document.querySelectorAll('.question-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth scroll for navigation dots
+        document.querySelectorAll('.progress-dot').forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(dot.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+
+</body>
+</html>
