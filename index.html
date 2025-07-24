@@ -22,12 +22,22 @@
             line-height: 1.6;
             color: #2c3e50;
             background-color: #fefefe;
+            overflow-x: visible;
+            overflow-y: visible;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            overflow-x: visible;
+            overflow-y: visible;
+        }
+        
+        /* Ensure fortune cookie section has proper overflow handling */
+        .future-section .container {
+            overflow-x: visible;
+            overflow-y: visible;
         }
 
         /* Header/Hero Section */
@@ -413,8 +423,10 @@
         /* Why Curipod is My Future Section */
         .future-section {
             padding: 80px 0;
-            background: linear-gradient(45deg, #f8f9fa 0%, #ffffff 50%, #f0f8ff 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
+            text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .future-section::before {
@@ -424,20 +436,23 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ff6b35' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M40 40c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm20 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
         }
 
         .future-section .container {
             position: relative;
             z-index: 1;
+            overflow: visible;
         }
 
         .future-section .section-title {
-            background: linear-gradient(135deg, #ff6b35, #EA34B0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .future-section .section-subtitle {
+            color: rgba(255,255,255,0.9);
         }
 
         .future-grid {
@@ -446,25 +461,27 @@
             gap: 40px;
             align-items: center;
             margin-top: 40px;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.9);
             padding: 40px;
-            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            overflow: visible; /* Ensure grid doesn't clip the animation */
         }
 
         .future-image-placeholder {
             width: 100%;
-            height: 250px;
+            min-height: 300px;
             background: linear-gradient(135deg, #ff6b35 0%, #EA34B0 100%);
             border-radius: 15px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 25px;
             color: white;
-            font-style: italic;
-            font-size: 1.1em;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            overflow: visible; /* Ensure placeholder doesn't clip the animation */
         }
 
         .future-text-content p {
@@ -472,11 +489,91 @@
             line-height: 1.7;
             margin-bottom: 1em;
             font-size: 1.05em;
+            overflow: visible;
         }
 
         .future-text-content p:last-child {
             margin-bottom: 0;
+            overflow: visible;
         }
+        
+        /* === START: FORTUNE COOKIE STYLES === */
+        /* Updated font import for the fortune */
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+        
+       .fortune-wrapper{
+            width:312px;
+            height:200px;
+            display:block;
+            background-color:transparent;
+            position: relative;
+            left: -31px;
+            }
+
+        .fortune{
+            width:312px; /* Adjusted to fit the cookie image snugly */
+            height:200px;
+            display:block;
+            position:relative;
+            /* Center the cookie inside the wrapper */
+            transform-origin:50% 50%; /* Adjusted origin for the new width (190px / 390px) */
+            transform: rotate(-10deg) scale(0.7); /* Center and apply initial rotation and scale */
+            }
+
+        .fortune-left{
+            width:200px;
+            height:200px;
+            position:absolute;
+            left:0;
+            background-image:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/77607/cookie-left.png");
+            background-repeat:no-repeat;
+            background-position:right center;
+            z-index:1;
+            filter: drop-shadow(8px 12px 15px rgba(0, 0, 0, 0.25)); /* Add a realistic shadow */
+            }
+
+        .fortune-right{
+            width:200px;
+            height:200px;
+            position:absolute;
+            left:190px;
+            background-image:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/77607/cookie-right.png");
+            background-position:20px 20px;
+            background-repeat:no-repeat;
+            background-position:left center;
+            z-index:3;
+            filter: drop-shadow(8px 12px 15px rgba(0, 0, 0, 0.25)); /* Add a realistic shadow */
+            }
+
+        .fortune-message{
+            display: inline-block;
+            position: absolute;
+            left: -150px;
+            right: 0px;
+            font-family: 'Special Elite', monospace;
+            font-size: 1em;
+            color: #685844;
+            top: 50px;
+            bottom: 80px;
+            z-index: 2;
+            overflow: hidden;
+            -webkit-transform: rotateZ(8deg);
+            transform: rotateZ(8deg);
+        
+        span{
+            display:block;
+            background-color: #fff;
+            padding: 8px 65px 7px 15px;
+            white-space: nowrap;
+            
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+            transform-origin:right bottom;
+            position:absolute;
+            bottom: 20px;
+            right: 10px;
+        }
+        }
+        /* === END: FORTUNE COOKIE STYLES === */
 
         /* Results Section */
         .results {
@@ -1057,6 +1154,7 @@
             .future-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
+                overflow: visible;
             }
         }
 
@@ -1105,6 +1203,7 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
                 padding: 30px 20px;
+                overflow: visible;
             }
             .footer-links {
                 flex-direction: column;
@@ -1207,6 +1306,9 @@
     <!-- SwiperJS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- GSAP & jQuery for Fortune Cookie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
 </head>
 <body>
     <!-- Floating Navigation -->
@@ -1218,7 +1320,6 @@
         <a href="#stories" class="nav-item" data-label="Stories"></a>
         <a href="#testimonials" class="nav-item" data-label="Testimonials"></a>
         <a href="#future" class="nav-item" data-label="My Future"></a>
-        <a href="#strategic-thinking" class="nav-item" data-label="Strategic Thinking"></a>
         <a href="#contact" class="nav-item" data-label="Contact"></a>
     </nav>
     <!-- Hero Section -->
@@ -1510,30 +1611,31 @@
 
         <div class="future-grid">
             <div class="future-image-placeholder">
-                Image Placeholder
+                
+                <!-- START: Fortune Cookie HTML -->
+                <div style="text-align: center; margin-bottom: 10px; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                    <div style="font-size: 1.1em; font-weight: 600;">Curiosity leads. So does confidence.</div>
+                    <div style="font-size: 0.85em; font-weight: 300; color: #ddd;">Click to see what the future holds.</div>
+                </div>
+            <div class="fortune-wrapper">
+            <div class="fortune">
+                <div class="fortune-left"></div>
+                <div class="fortune-right"></div>
+                <div class="fortune-message"><span>You will be successful and happy</span></div>
+            </div>
+            </div>
+                <!-- END: Fortune Cookie HTML -->
+
             </div>
             <div class="future-text-content">
                 <p>I see Curipod not just as a tool, but as a movement — one that reimagines what authentic classroom engagement can look like.</p>
-                <p>I’ve spent years navigating complex sales cycles, earning educator trust, and coaching teams to success. What excites me most about Curipod is how deeply it aligns with everything I believe: curiosity as a catalyst, pedagogy backed by empathy, and technology as an enabler — not a barrier — to learning.</p>
-                <p>I’m eager to help Curipod deepen district partnerships, build community advocacy, and scale adoption in ways that stay personal. Let’s make curiosity contagious.</p>
+                <p>I've spent years navigating complex sales cycles, earning educator trust, and coaching teams to success. What excites me most about Curipod is how deeply it aligns with everything I believe: curiosity as a catalyst, pedagogy backed by empathy, and technology as an enabler — not a barrier — to learning.</p>
+                <p>I'm eager to help Curipod deepen district partnerships, build community advocacy, and scale adoption in ways that stay personal. Let's make curiosity contagious.</p>
             </div>
         </div>
     </div>
     </section>
 
-    <!-- Research Section -->
-    <section id="strategic-thinking" class="research">
-        <div class="container">
-            <h2 class="section-title">Strategic Thinking in Action</h2>
-            <p class="section-subtitle">Strategic analysis → Process innovation → Scalable growth</p>
-
-            <div class="research-preview">
-                <h3>Want to see how I approach complex challenges?</h3>
-                <p>My district implementation strategy demonstrates the same systematic thinking I used to discover $3M+ in dormant pipeline at Treering and build processes that scaled a team from 2 to 20+ members.</p>
-                <a href="https://www.morganawesome.com/districtanalysis" class="btn" target="_blank" rel="noopener noreferrer">Explore My District Analysis</a>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer/CTA -->
     <section id="contact" class="footer">
@@ -1562,6 +1664,55 @@
                 spaceBetween: 30,
                 centeredSlides: true,
             });
+        });
+    </script>
+
+    <!-- Fortune Cookie Interaction Script -->
+    <script>
+        $(function() {
+
+        var tl = new TimelineMax({paused: true}); // Pause the timeline initially
+        
+        // Define an array of fortune messages
+        const fortuneMessages = [
+            "You will be successful and happy.",
+            "A pleasant surprise awaits you.",
+            "Believe in yourself and all that you are.",
+            "The early bird gets the worm.",
+            "Your kindness will return to you in unexpected ways.",
+            "Good fortune will follow you wherever you go."
+        ];
+        
+        // Function to get a random fortune message
+        function getRandomFortune() {
+            const randomIndex = Math.floor(Math.random() * fortuneMessages.length); // Generate a random index
+            return fortuneMessages[randomIndex]; // Return the message at the random index
+        }
+        
+        //tl.set($('.fortune-message'),{opacity:0});
+        tl.to($('.fortune'),0.1,{rotation:-5});
+        tl.to($('.fortune'),0.1,{rotation:5});
+        tl.to($('.fortune'),0.1,{rotation:-5});
+        tl.to($('.fortune'),0.1,{rotation:5});
+        tl.to($('.fortune'),0.1,{rotation:-5});
+        tl.to($('.fortune'),0.1,{rotation:0});
+        tl.addLabel("break", "+=0.3");
+        tl.to($('.fortune-left'),0.5,{rotation:-45, x:-70, y:70},"break");
+        tl.to($('.fortune-right'),0.5,{rotation:45, x:70, y:70},"break");
+        
+        // Update the fortune message with a random one before the message animation plays
+        tl.call(function() {
+            $('.fortune-message span').text(getRandomFortune()); // Set the text content of the span element
+        }, null, null, "break"); // Execute this function at the "break" label
+        
+        //tl.set($('.fortune-message'),{opacity:0});
+        tl.from($('.fortune-message span'),1,{x:'110%'},"break");
+        
+        // Add a click event listener to the fortune cookie
+        $('.fortune').on('click', function() {
+            tl.restart(); // Restart the animation on each click
+        });
+
         });
     </script>
 </body>
