@@ -323,28 +323,30 @@
         /* Icons for positioning items */
         .positioning-item {
             background: rgba(248, 249, 250, 0.8);
-            padding: 30px 90px 30px 30px;
+            padding: 40px;
             border-radius: 15px;
             border-left: 4px solid #ff6b35;
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            transition: all 0.3s ease;
         }
 
-        .positioning-item::before {
-            content: attr(data-icon);
-            position: absolute;
-            top: 50%;
-            right: 25px;
-            transform: translateY(-50%);
-            font-size: 3.2em;
+        .positioning-text {
+            flex-grow: 1;
+        }
+
+        .positioning-icon {
+            width: 100px;
+            height: 100px;
             opacity: 0.5;
             transition: all 0.3s ease;
-            width: 60px;
-            text-align: center;
+            flex-shrink: 0; /* Prevents icon from shrinking */
         }
 
-        .positioning-item:hover::before {
+        .positioning-item:hover .positioning-icon {
             opacity: 0.8;
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
         }
 
         /* Responsive */
@@ -370,7 +372,16 @@
             }
             
             .positioning-item {
+                flex-direction: column;
+                text-align: center;
                 padding: 25px 20px;
+            }
+            .positioning-text {
+                order: 2; /* Puts text below icon */
+            }
+            .positioning-icon {
+                order: 1; /* Puts icon on top */
+                margin-bottom: 15px;
             }
         }
     </style>
@@ -417,22 +428,34 @@
                 <h2 class="question-title">How would you position Curipod to a teacher, Technology Director, and Curriculum Director?</h2>
                 <div class="answer-content">
                     <div class="positioning-grid">
-                        <div class="positioning-item" data-icon="👩‍🏫">
-                            <h4>To a Teacher:</h4>
-                            <p>Imagine sparking authentic curiosity across every subject, whether students are exploring complex scientific concepts, analyzing historical events, or preparing for state assessments. Curipod transforms your classroom into a space where <span class="highlight">every voice matters and every student feels heard</span>. The AI-powered feedback meets learners exactly where they are, whether they're crafting persuasive essays, solving mathematical problems, or diving into literature discussions.</p>
-                            <p>Your students will engage with content they care about while building the critical thinking skills that matter far beyond any test. You're not just covering curriculum — you're cultivating the kind of genuine learning that reminds you why teaching chose you.</p>
+                        <!-- To a Teacher -->
+                        <div class="positioning-item">
+                            <div class="positioning-text">
+                                <h4>To a Teacher:</h4>
+                                <p>Imagine sparking authentic curiosity across every subject, whether students are exploring complex scientific concepts, analyzing historical events, or preparing for state assessments. Curipod transforms your classroom into a space where <span class="highlight">every voice matters and every student feels heard</span>. The AI-powered feedback meets learners exactly where they are, whether they're crafting persuasive essays, solving mathematical problems, or diving into literature discussions.</p>
+                                <p>Your students will engage with content they care about while building the critical thinking skills that matter far beyond any test. You're not just covering curriculum — you're cultivating the kind of genuine learning that reminds you why teaching chose you.</p>
+                            </div>
+                            <img src="index_icons/teacher.png" alt="Teacher Icon" class="positioning-icon">
                         </div>
                         
-                        <div class="positioning-item" data-icon="💻">
-                            <h4>To a Technology Director:</h4>
-                            <p>Curipod delivers what every technology investment promises, but rarely achieves: <span class="highlight">adoption that spreads organically because of its immediate value</span>. Even educators who typically resist EdTech ask for access once they experience our platform's intuitive design and measurable impact.</p>
-                            <p>You'll enjoy seamless integration, robust security, and the kind of authentic teacher buy-in that transforms pilot programs into district-wide success stories. It's not another tool to manage; it's the solution that makes your existing investments more effective.</p>
+                        <!-- To a Technology Director -->
+                        <div class="positioning-item">
+                            <div class="positioning-text">
+                                <h4>To a Technology Director:</h4>
+                                <p>Curipod delivers what every technology investment promises, but rarely achieves: <span class="highlight">adoption that spreads organically because of its immediate value</span>. Even educators who typically resist EdTech ask for access once they experience our platform's intuitive design and measurable impact.</p>
+                                <p>You'll enjoy seamless integration, robust security, and the kind of authentic teacher buy-in that transforms pilot programs into district-wide success stories. It's not another tool to manage; it's the solution that makes your existing investments more effective.</p>
+                            </div>
+                            <img src="index_icons/cloud.png" alt="Technology Director Icon" class="positioning-icon">
                         </div>
                         
-                        <div class="positioning-item" data-icon="📋">
-                            <h4>To a Curriculum Director:</h4>
-                            <p>When schools see <span class="highlight">22% to 46% achievement gains</span> from targeted writing practice, that's systemic transformation. Curipod aligns with modern standards while addressing the real challenge: engaging every student in rigorous learning that builds critical thinking, communication, and collaboration skills.</p>
-                            <p>We implement research-backed pedagogy that closes achievement gaps while preparing students for futures that demand both academic excellence and authentic human connection. The data speaks for itself, as do the teachers who've watched struggling students turn into confident communicators.</p>
+                        <!-- To a Curriculum Director -->
+                        <div class="positioning-item">
+                            <div class="positioning-text">
+                                <h4>To a Curriculum Director:</h4>
+                                <p>When schools see <span class="highlight">22% to 46% achievement gains</span> from targeted writing practice, that's systemic transformation. Curipod aligns with modern standards while addressing the real challenge: engaging every student in rigorous learning that builds critical thinking, communication, and collaboration skills.</p>
+                                <p>We implement research-backed pedagogy that closes achievement gaps while preparing students for futures that demand both academic excellence and authentic human connection. The data speaks for itself, as do the teachers who've watched struggling students turn into confident communicators.</p>
+                            </div>
+                            <img src="index_icons/diagram.png" alt="Curriculum Director Icon" class="positioning-icon">
                         </div>
                     </div>
                 </div>
