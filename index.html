@@ -22,22 +22,19 @@
             line-height: 1.6;
             color: #2c3e50;
             background-color: #fefefe;
-            overflow-x: visible;
-            overflow-y: visible;
+            overflow: visible;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            overflow-x: visible;
-            overflow-y: visible;
+            overflow: visible;
         }
         
         /* Ensure fortune cookie section has proper overflow handling */
         .future-section .container {
-            overflow-x: visible;
-            overflow-y: visible;
+            overflow: visible;
         }
 
         /* Header/Hero Section */
@@ -60,7 +57,7 @@
             -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
             color: white; /* Make the text transparent in other browsers */
             font-size: 1.4em;
-            margin-bottom: 10px;;
+            margin-bottom: 10px;
             font-weight: 100;
             padding: 8px 15px;
             border-radius: 15px;
@@ -347,7 +344,7 @@
             -webkit-text-fill-color: transparent; /* Make the text transparent in WebKit browsers */
             color: transparent; /* Make the text transparent in other browsers */
             font-size: 1.1em;
-            margin-bottom: 10px;;
+            margin-bottom: 10px;
         }
 
         .experience p {
@@ -426,7 +423,7 @@
             background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%);
             text-align: center;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .future-section::before {
@@ -461,8 +458,9 @@
             gap: 40px;
             align-items: center;
             margin-top: 40px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,1.0);
             padding: 40px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: visible; /* Ensure grid doesn't clip the animation */
         }
@@ -508,6 +506,7 @@
             background-color:transparent;
             position: relative;
             left: -31px;
+            overflow:visible;
             }
 
         .fortune{
@@ -518,6 +517,7 @@
             /* Center the cookie inside the wrapper */
             transform-origin:50% 50%; /* Adjusted origin for the new width (190px / 390px) */
             transform: rotate(-10deg) scale(0.7); /* Center and apply initial rotation and scale */
+            overflow:visible;
             }
 
         .fortune-left{
@@ -548,8 +548,8 @@
         .fortune-message{
             display: inline-block;
             position: absolute;
-            left: -150px;
-            right: 0px;
+            left: -180px;
+            right: -50px;
             font-family: 'Special Elite', monospace;
             font-size: 1em;
             color: #685844;
@@ -559,8 +559,9 @@
             overflow: hidden;
             -webkit-transform: rotateZ(8deg);
             transform: rotateZ(8deg);
+        }
         
-        span{
+        .fortune-message span{
             display:block;
             background-color: #fff;
             padding: 8px 65px 7px 15px;
@@ -569,9 +570,9 @@
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
             transform-origin:right bottom;
             position:absolute;
+            overflow:visible;
             bottom: 20px;
             right: 10px;
-        }
         }
         /* === END: FORTUNE COOKIE STYLES === */
 
@@ -1327,19 +1328,19 @@
         <div class="rolename-bar">Senior Account Executive</div>
         <div class="contact-bar">
             <a href="mailto:escott.morgan@gmail.com" class="contact-item">
-                <img src="/contact_icons/paper-plane-tilt.png" alt="Paper Plane Icon" style="width: 16px; height: 16px;"><span>Email Me</span>
+                <img src="./contact_icons/paper-plane-tilt.png" alt="Paper Plane Icon" style="width: 16px; height: 16px;"><span>Email Me</span>
             </a>
             <a href="tel:716-352-9050" class="contact-item">
-                <img src="/contact_icons/device-mobile.png" alt="Cell Phone Icon" style="width: 16px; height: 16px;"><span>Give Me a Call</span>
+                <img src="./contact_icons/device-mobile.png" alt="Cell Phone Icon" style="width: 16px; height: 16px;"><span>Give Me a Call</span>
             </a>
-            <a href="https://linkedin.com/in/morganescott" class="contact-item" target="_blank" rel="noopener noreferrer">
-                <img src="/contact_icons/linkedin-logo.png" alt="LinkedIn Icon" style="width: 16px; height: 16px;"><span>Visit My LinkedIn</span>
+            <a href="https://www.linkedin.com/in/morganescott" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <img src="./contact_icons/linkedin-logo.png" alt="LinkedIn Icon" style="width: 16px; height: 16px;"><span>Visit My LinkedIn</span>
             </a>
             <a href="MorganEscott_AccountExecutive_Curipod_Resume.pdf" class="contact-item">
-                <img src="/contact_icons/download-simple.png" alt="Download Icon" style="width: 16px; height: 16px;"><span>Download Resume</span>
+                <img src="./contact_icons/download-simple.png" alt="Download Icon" style="width: 16px; height: 16px;"><span>Download Resume</span>
             </a>
-            <a href="#" class="contact-item">
-                <img src="/contact_icons/question-mark.png" alt="Question Mark Icon" style="width: 16px; height: 16px;"><span>Answers to Curipod's Three Questions</span>
+            <a href="curipod_answers.html" class="contact-item">
+                <img src="./contact_icons/question-mark.png" alt="Question Mark Icon" style="width: 16px; height: 16px;"><span>Answers to Curipod's Three Questions</span>
             </a>
         </div>
 
@@ -1579,7 +1580,7 @@
     <div class="swiper-slide">
       <div class="testimonial-card">
         <p class="quote-light">“Morgan brought a high degree of professionalism and creativity to every project. Her detail-oriented approach ensured we were always putting our best foot forward.”</p>
-        <p class="attribution-light">Justin Lee, Former Creative Team Lead @ Element 8<br><span class="note-light">Current Role: @ Pastor of Worship & Discipleship</span></p>
+        <p class="attribution-light">Justin Lee, Former Creative Team Lead @ Element 8<br><span class="note-light">Current Role: Pastor of Worship & Discipleship</span></p>
       </div>
     </div>
 
@@ -1593,7 +1594,7 @@
     <div class="swiper-slide">
       <div class="testimonial-card">
         <p class="quote-light">“She worked under pressure and with tight deadlines and still delivered quickly, accurately, and with creativity. I would highly recommend Morgan Escott.”</p>
-        <p class="attribution-light">Robin Rowland, VP Donor Relations @ Humane Society of Greater Kansas City<br><span class="note-light">Current Role: @ VP of Donor Rleations, Communications, & Education @ Wayside Waifs</span></p>
+        <p class="attribution-light">Robin Rowland, VP Donor Relations @ Humane Society of Greater KC<br><span class="note-light">Current Role: VP of Donor Relations, Communications, & Education @ Wayside Waifs</span></p>
       </div>
     </div>
 
@@ -1614,8 +1615,9 @@
                 
                 <!-- START: Fortune Cookie HTML -->
                 <div style="text-align: center; margin-bottom: 10px; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
-                    <div style="font-size: 1.1em; font-weight: 600;">Curiosity leads. So does confidence.</div>
-                    <div style="font-size: 0.85em; font-weight: 300; color: #ddd;">Click to see what the future holds.</div>
+                    <div style="font-size: 2em; font-weight: 600;">Curiosity leads.<br></div>
+                    <div style="font-size: 1.3em; font-weight: 200;">So does confidence.</div>
+                    
                 </div>
             <div class="fortune-wrapper">
             <div class="fortune">
@@ -1624,6 +1626,7 @@
                 <div class="fortune-message"><span>You will be successful and happy</span></div>
             </div>
             </div>
+            <div style="font-size: 0.85em; font-weight: 300; color: white; margin-top: -20px;">Click to see what the future holds.</div>
                 <!-- END: Fortune Cookie HTML -->
 
             </div>
@@ -1645,8 +1648,8 @@
             
             <div class="footer-links">
                 <a href="mailto:escott.morgan@gmail.com">Send Email</a>
-                <a href="MorganEscott_AccountExecutive_Curipod_Resume.pdf" onclick="alert('Resume download would be implemented here')">Download Resume</a>
-                <a href="https://linkedin.com/in/morganescott" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
+                <a href="MorganEscott_AccountExecutive_Curipod_Resume.pdf" download>Download Resume</a>
+                <a href="https://www.linkedin.com/in/morganescott" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
             </div>
         </div>
     </section>
@@ -1675,12 +1678,13 @@
         
         // Define an array of fortune messages
         const fortuneMessages = [
-            "You will be successful and happy.",
-            "A pleasant surprise awaits you.",
-            "Believe in yourself and all that you are.",
-            "The early bird gets the worm.",
-            "Your kindness will return to you in unexpected ways.",
-            "Good fortune will follow you wherever you go."
+            "You will meet a great candidate soon.",
+            "Curiosity leads to unknown opportunities.",
+            "Success follows authentic connection.",
+            "Questions spark the best conversations.",
+            "Authentic curiosity opens every door.",
+            "Strategic empathy creates lasting success.",
+            "Trust-building is your superpower.",
         ];
         
         // Function to get a random fortune message
